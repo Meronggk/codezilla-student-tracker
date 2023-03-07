@@ -10,14 +10,13 @@ router.get("/", (_, res) => {
 });
 
 router.get("/fakelogin", (req, res) => {
-	req.session.userId= 12
-	req.session.username="gghfgf";
-	req.session.count= 0;
+	req.session.userId = 12;
+	req.session.username = "gghfgf";
+	req.session.count = 0;
 	res.json({ message: "Login Successful!" });
 });
 router.get("/debugsession", (req, res) => {
-	
-	req.session.count+=1;
+	req.session.count += 1;
 	res.json({ session: req.session });
 });
 export default router;

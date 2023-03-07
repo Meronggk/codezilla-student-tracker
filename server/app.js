@@ -13,9 +13,7 @@ import {
 const apiRoot = "/api";
 
 const app = express();
-app.use(cookieSession({ name: "session",
-  keys: ["hgkhghdhhhhhh"]
-}));
+app.use(cookieSession({ name: "session", keys: ["hgkhghdhhhhhh"] }));
 app.use(express.json());
 app.use(configuredHelmet());
 app.use(configuredMorgan());
@@ -33,9 +31,6 @@ app.use(logErrors());
 
 //coockei session and authenticate user
 /* eslint-disable no-undef */
-
-
-
 
 //----------------------------------------------------------------------
 export default app;
