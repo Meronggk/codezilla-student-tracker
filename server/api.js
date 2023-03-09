@@ -12,10 +12,10 @@ router.get("/", (_, res) => {
 	res.json({ message: "Hello, world!" });
 });
 
-router.get("/getZoomMeeting", function (req, res) {
+router.get("/getZoomMeeting/:id", function (req, res) {
 
 	const sessionid = parseInt(req.params.id);
-	const userid = 10;
+	let userid;
 	let data = {};
 	db.query("SELECT * FROM sessions WHERE id = $1", [sessionid], (error, result) => {
 		if (error) {
@@ -24,6 +24,7 @@ router.get("/getZoomMeeting", function (req, res) {
 		data.link = result[0].meeting_url;
 		data.name = result[0].name;
 		data.time = result[0].time;
+		userid = result[0].userid;
 
 	});
 
