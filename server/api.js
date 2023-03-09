@@ -8,8 +8,6 @@ const router = Router();
 const CLIENT_ID = "438f9e1d00fa92021341";
 const CLIENT_SECRET = "8e75503a0524b30ab1f08e5ac547ef8202df0236";
 
-
-
 router.get("/", async function (req, res) {
 	logger.debug("Welcoming everyone...");
 	res.json({ message: "Hello, world!" });
@@ -64,8 +62,6 @@ router.get("/getUserData", async function (req, res) {
 			res.json(data);
 		});
 });
-
-
 
 router.get("/fakelogin", (req, res) => {
 	req.session.userId = 12;
