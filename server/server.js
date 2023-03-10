@@ -13,6 +13,8 @@ server.on("listening", () => {
 	logger.info("listening on: %s", bind);
 });
 
+
 process.on("SIGTERM", () => server.close(() => disconnectDb()));
 
 connectDb().then(() => server.listen(config.port));
+

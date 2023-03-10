@@ -1,6 +1,36 @@
-const db = require("./db");
+require("dotenv").config();
+const { query } = require("express");
+const { Pool } = require("pg");
 
+const config = {
+	dbUrl: createDatabaseUrl(),
+	logLevel: process.env.LOG_LEVEL ?? "info",
+	port: parseInt(process.env.PORT ?? "3000", 10),
+	production: process.env.NODE_ENV === "production",
+};
 
+function createDatabaseUrl() {
+	if (process.env.DATABASE_URL) {
+		return process.env.DATABASE_URL;
+	}
+	const host = process.env.DB_HOST ?? "localhost";
+	const name = process.env.DB_NAME ?? "cyf";
+	const password = process.env.DB_PASS ?? process.env.DB_PASSWORD ?? "";
+	const port = process.env.DB_PORT ?? "5432";
+	const username = process.env.DB_USER ?? process.env.DB_USERNAME ?? "";
+	const userinfo = `${username}:${password}`;
+	return `postgres://${
+		userinfo !== ":" ? `${userinfo}@` : ""
+	}${host}:${port}/${name}`;
+}
+
+const db = new Pool({
+	connectionString: config.dbUrl,
+	connectionTimeoutMillis: 5000,
+	ssl: config.dbUrl.includes("localhost")
+		? false
+		: { rejectUnauthorized: false },
+});
 
 const users = [
 	{ name: "John", region: "North West", role: "Trainee" },
@@ -15,31 +45,31 @@ const sessions = [
 		name: "JavaScript-1 Week-1",
 		time: "2023-03-11 10:00:00",
 		cohort_name: "NW-2",
-		meeting_url: "https://zoom.us/j/1111111111?pwd=xxxxxxxxxxxxxxxxxxxxx", // add youtbe links
+		meeting_url: "https://www.youtube.com/watch?v=tAGnKpE4NCI",
 	},
 	{
 		name: "JavaScript-1 Week-2",
 		time: "2023-03-12 14:00:00",
 		cohort_name: "NW-3",
-		meeting_url: "https://zoom.us/j/2222222222?pwd=yyyyyyyyyyyyyyyyyyyyy",
+		meeting_url: "https://www.youtube.com/watch?v=JGwWNGJdvx8",
 	},
 	{
 		name: "JavaScript-1 Week-3",
 		time: "2023-03-13 09:00:00",
 		cohort_name: "NW-4",
-		meeting_url: "https://zoom.us/j/3333333333?pwd=zzzzzzzzzzzzzzzzzzzzzzzzz",
+		meeting_url: "https://www.youtube.com/watch?v=nYh-n7EOtMA",
 	},
 	{
 		name: "JavaScript-2 Week-1",
 		time: "2023-03-14 11:00:00",
 		cohort_name: "NW-5",
-		meeting_url: "https://zoom.us/j/4444444444?pwd=aaaaaaaaaaaaaaaaaaaaa",
+		meeting_url: "https://www.youtube.com/watch?v=GzU8KqOY8YA",
 	},
 	{
 		name: "JavaScript-3 Week-3",
 		time: "2023-03-15 13:00:00",
 		cohort_name: "NW-2",
-		meeting_url: "https://zoom.us/j/5555555555?pwd=bbbbbbbbbbbbbbbbbbbbbb",
+		meeting_url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
 	},
 ];
 
@@ -84,7 +114,6 @@ const attendence = [
 	},
 ];
 
-
 db.connect((err) => {
 	if (err) {
 		console.error("connection error", err.stack);
@@ -108,16 +137,10 @@ clearTables("cohorts");
 clearTables("attendence");
 
 const runQuery = async (queries) => {
-	// queries.forEach(async (query) => {
-	// 	await db.query(query);
-	// });
-
-	for (let i=0; i<queries.length; i++) {
+	for (let i = 0; i < queries.length; i++) {
 		console.log(queries[i]);
 		await db.query(queries[i]);
-
 	}
-
 };
 
 users.forEach((user) => {
