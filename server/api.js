@@ -98,14 +98,24 @@ router.get("/getZoomMeeting/:id", function (req, res) {
 });
 
 router.get("/fakelogin", (req, res) => {
-	req.session.userId = 12;
-	req.session.username = "gghfgf";
-	req.session.count = 0;
-	res.json({ message: "Login Successful!" });
+  req.session.userId = 12;
+  req.session.username = "gghfgf";
+  req.session.count = 0;
+  res.json({ message: "Login Successful!" });
 });
+
+// Endpoint for debugging the session
 router.get("/debugsession", (req, res) => {
-	req.session.count += 1;
-	res.json({ session: req.session });
+  req.session.count += 1;
+  res.json({ session: req.session });
+});
+
+// Endpoint for logging out
+router.post("/logout", (req, res) => {
+  req.session = null;
+  res.clearCookie("session");
+  console.log("log out");
+  res.sendStatus(204); // No Content
 });
 
 export default router;
