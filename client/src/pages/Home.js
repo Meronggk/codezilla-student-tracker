@@ -35,9 +35,9 @@ export function Home() {
         <h1 className="message" data-qa="message">
           {message}
         </h1>
-        
+
         <Link to="/about/this/site">About</Link>
-        <LogoutButton/>
+        <LogoutButton />
       </div>
     </main>
   );
