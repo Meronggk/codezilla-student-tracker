@@ -2,7 +2,6 @@ import { Router } from "express";
 import axios from "axios";
 import logger from "./utils/logger";
 
-
 const router = Router();
 
 const CLIENT_ID = "438f9e1d00fa92021341";
