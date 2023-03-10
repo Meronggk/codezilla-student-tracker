@@ -63,7 +63,9 @@ router.get("/getUserData", async function (req, res) {
 			console.log(data);
 			res.json(data);
 		});
-=======
+
+});
+
 router.get("/getZoomMeeting/:id", function (req, res) {
 	const sessionid = parseInt(req.params.id);
 	let userid;
@@ -98,6 +100,7 @@ router.get("/getZoomMeeting/:id", function (req, res) {
 
 });
 
+
 router.get("/fakelogin", (req, res) => {
 	req.session.userId = 12;
 	req.session.username = "gghfgf";
@@ -108,4 +111,5 @@ router.get("/debugsession", (req, res) => {
 	req.session.count += 1;
 	res.json({ session: req.session });
 });
+
 export default router;

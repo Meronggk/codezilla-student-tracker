@@ -26,33 +26,5 @@ const GitHubCalllBack = () => {
 	return <div>loading</div>;
 };
 
-//   const GitHubCalllBack = () => {
-//   const [user, setUser] = useState(null);
-
-//   const handleGitHubCalllBack = async (accessToken) => {
-//     try {
-//       const response = await fetch("/api/getUserData", {
-//         method: "POST",
-//         headers: {
-//           Authorization: `Bearer ${accessToken}`,
-//         },
-//       });
-//       const data = await response.json();
-//       setUser(data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       {user ? (
-//         <p>Welcome, {user.name}!</p>
-//       ) : (
-//         <GitHubLogin onLogin={handleGitHubCalllBack} />
-//       )}
-//     </div>
-//   );
-// };
 
 export default GitHubCalllBack;
