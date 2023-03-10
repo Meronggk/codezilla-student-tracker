@@ -10,7 +10,6 @@ import {
 	logErrors,
 } from "./utils/middleware";
 
-
 const apiRoot = "/api";
 
 const app = express();
