@@ -14,7 +14,6 @@ router.get("/", async function (req, res) {
 	res.json({ message: "Hello, world!" });
 });
 
-
 router.post("/callback", async (req, res) => {
 	const params =
 		"?client_id=" +
@@ -63,7 +62,6 @@ router.get("/getUserData", async function (req, res) {
 			console.log(data);
 			res.json(data);
 		});
-
 });
 
 router.get("/getZoomMeeting/:id", function (req, res) {
@@ -97,9 +95,7 @@ router.get("/getZoomMeeting/:id", function (req, res) {
 		}
 	);
 	res.json(data);
-
 });
-
 
 router.get("/fakelogin", (req, res) => {
 	req.session.userId = 12;

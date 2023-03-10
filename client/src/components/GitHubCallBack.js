@@ -26,5 +26,4 @@ const GitHubCalllBack = () => {
 	return <div>loading</div>;
 };
 
-
 export default GitHubCalllBack;
