@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 require("dotenv").config();
-// const { query } = require("express");
+//const { query } = require("express");
 const { Pool } = require("pg");
 
 const config = {
@@ -116,9 +117,9 @@ const attendence = [
 
 db.connect((err) => {
 	if (err) {
-	//	console.error("connection error", err.stack);
+		console.error("connection error", err.stack);
 	} else {
-	// console.log("connected");
+		console.log("connected");
 	}
 });
 
@@ -138,7 +139,7 @@ clearTables("attendence");
 
 const runQuery = async (queries) => {
 	for (let i = 0; i < queries.length; i++) {
-	//	console.log(queries[i]);
+		//console.log(queries[i]);
 		await db.query(queries[i]);
 	}
 };
