@@ -24,6 +24,7 @@ if (config.production) {
 }
 
 app.use(apiRoot, apiRouter);
+
 app.use("/health", (_, res) => res.sendStatus(200));
 app.use(clientRouter(apiRoot));
 
