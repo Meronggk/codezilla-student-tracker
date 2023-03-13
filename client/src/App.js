@@ -5,11 +5,13 @@ import Login from "./components/Login";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import Homepage from "./components/Homepage/Homepage";
-//import { useEffect } from "react";
+import NavBar from "./components/Homepage/NavBar";
+
 
 function App() {
 	return (
 		<div>
+			<NavBar />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/about/this/site" element={<About />} />
