@@ -1,5 +1,4 @@
 import React from "react";
-// import NavBar from "./NavBar";
 import "./Homepage.css";
 import img2 from "../Homepage/assets/images/img2.jpg";
 import img3 from "../Homepage/assets/images/img3.jpg";
