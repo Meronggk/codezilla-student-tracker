@@ -7,7 +7,6 @@ import Home from "./pages/Home";
 import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
 
-
 function App() {
 	return (
 		<div>
