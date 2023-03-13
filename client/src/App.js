@@ -4,17 +4,20 @@ import GitHubCalllBack from "./components/GitHubCallBack";
 import Login from "./components/Login";
 import About from "./pages/About";
 import Home from "./pages/Home";
-//import { useEffect } from "react";
+import Homepage from "./components/Homepage/Homepage";
+import NavBar from "./components/Homepage/NavBar";
 
 function App() {
 	return (
 		<div>
+			<NavBar />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/about/this/site" element={<About />} />
 				{/* <Route path="/login" element={<GitHubLogin></GitHubLogin>} /> */}
 				<Route path="/callback" element={<GitHubCalllBack />} />
-				<Route path="/signin" element={<Login></Login>} />
+				<Route path="/signin" element={<Login />} />
+				<Route path="/homepage" element={<Homepage />} />
 			</Routes>
 		</div>
 	);

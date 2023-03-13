@@ -24,20 +24,7 @@ const Login = ({ onLogin }) => {
 		<div className="body">
 			<div className="login-form">
 				<div>
-					<img
-						className="App-logo"
-						src="https://syllabus.codeyourfuture.io/img/logo.png"
-						alt="cyf_logo"
-						// style={{width: ''}}
-					/>
-				</div>
-				<div>
-					<h3>
-						<span className="font-weight-bold">Welcome to CYF Classes!</span>
-					</h3>
-				</div>
-				<div>
-					<h3 className="first-line">Class Register</h3>
+					<h3 className="first-line">CLASS REGISTER</h3>
 				</div>
 				<div>
 					<div className="email">
@@ -63,6 +50,7 @@ const Login = ({ onLogin }) => {
 					<button className="button" onClick={onLogIn}>
 						Login
 					</button>
+					<p>or</p>
 				</div>
 				<GithubLogin />
 			</div>
