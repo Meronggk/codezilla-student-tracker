@@ -23,7 +23,6 @@ const Login = ({ onLogin }) => {
 	return (
 		<div className="body">
 			<div className="login-form">
-
 				<div>
 					<h3 className="first-line">CLASS REGISTER</h3>
 				</div>
