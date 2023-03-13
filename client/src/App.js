@@ -4,6 +4,7 @@ import GitHubCalllBack from "./components/GitHubCallBack";
 import Login from "./components/Login";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import Homepage from "./components/Homepage/Homepage";
 //import { useEffect } from "react";
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
 				<Route path="/about/this/site" element={<About />} />
 				{/* <Route path="/login" element={<GitHubLogin></GitHubLogin>} /> */}
 				<Route path="/callback" element={<GitHubCalllBack />} />
-				<Route path="/signin" element={<Login></Login>} />
+				<Route path="/signin" element={<Login />} />
+				<Route path="/homepage" element={<Homepage />} />
 			</Routes>
 		</div>
 	);

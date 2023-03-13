@@ -58,13 +58,13 @@ function GitHubLogin() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<a
+				<button className="gitbtn"><a
 					href={
 						"https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
 					}
 				>
 					Login with Github
-				</a>
+				</a></button>
 			</header>
 		</div>
 	);
