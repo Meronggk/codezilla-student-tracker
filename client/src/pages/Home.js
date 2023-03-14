@@ -38,10 +38,10 @@ export function Home() {
 				</h1>
 
 				<Link to="/about/this/site">About</Link>
-        <div>
-      <h1>Create a new session</h1>
-      <NewSession />
-    </div>
+				<div>
+					<h1>Create a new session</h1>
+					<NewSession />
+				</div>
 				<LogoutButton />
 			</div>
 		</main>
