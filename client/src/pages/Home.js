@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import LogoutButton from "../navbar/LogoutButton";
 import "./Home.css";
 import logo from "./logo.svg";
+import RegisterUser from "./RegisterPage";
+
 import NewSession from "./Session";
 
 export function Home() {
@@ -42,6 +44,9 @@ export function Home() {
 					<h1>Create a new session</h1>
 					<NewSession />
 				</div>
+        <div>
+          <RegisterUser />
+        </div>
 				<LogoutButton />
 			</div>
 		</main>
