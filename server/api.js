@@ -40,10 +40,17 @@ router.post("/callback", async (req, res) => {
 					req.session.githubid = data.data.id;
 
 					res.json(data.data);
-				});
-			// eslint-disable-next-line no-console
-			console.log(response.data);
-		});
+				})
+        .catch((error) => {
+          res.status(500).json({ error: error.message });
+        });
+        // eslint-disable-next-line no-console
+        console.log(response.data);
+
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error.message });
+    });
 });
 
 router.get("/getUserData", async function (req, res) {
@@ -116,5 +123,44 @@ router.post("/logout", (req, res) => {
 	res.clearCookie("session");
 	res.sendStatus(204); // No Content
 });
+
+// GET endpoint to retrieve cohorts
+router.get('/cohorts', (req, res) => {
+  // SQL query to fetch cohorts from cohorts table
+  const query = 'SELECT * FROM cohorts';
+
+  // Execute the SQL query
+  db.query(query, (err, results) => {
+    if (err) throw err;
+
+    // Return the results in JSON format
+    res.json(results.rows);
+  });
+});
+
+// POST request to create a new session
+router.post('/sessions', (req, res) => {
+  const { name, time, meetingUrl, cohortId } = req.body;
+console.log(req.body.name)
+  if (!name || !time || !meetingUrl || !cohortId) {
+    res.status(400).send('Missing required fields');
+    return;
+  }
+
+  const sql = 'INSERT INTO sessions (name, time, cohort_id, meeting_url) VALUES ($1, $2, $3, $4)';
+  const values = [name, time, cohortId ,meetingUrl ];
+
+  db.query(sql, values, (error, result) => {
+    console.log('Result :', result);
+    if (error) {
+      console.error('Error creating session:', error);
+      res.status(500).send('Error creating session');
+    } else {
+      console.log('Created session with ID:', result.insertId);
+      res.status(201).send('Session created');
+    }
+  });
+});
+
 
 export default router;
