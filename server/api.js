@@ -36,9 +36,10 @@ router.post("/callback", async (req, res) => {
 					},
 				})
 				.then((data) => {
-					req.session.user = data.data.login;
-					req.session.githubid = data.data.id;
-
+					req.session.user = data.data.login;    // github username
+					req.session.githubid = data.data.id;	// user id
+					req.session.avatar = data.data.avatar_url;   // avatar
+					req.session.cohortId = 4;  // NW5
 					res.json(data.data);
 				});
 			// eslint-disable-next-line no-console
@@ -117,7 +118,7 @@ router.post("/logout", (req, res) => {
 	res.sendStatus(204); // No Content
 });
 
-// Endpoint for getting user details
+// Endpoint for getting User details including name, cohort and github avatar url
 router.get("/users/:id", async (req, res) => {
 	const userId = req.params.id;
 	const query = "SELECT * FROM users WHERE id = $1";
@@ -127,15 +128,30 @@ router.get("/users/:id", async (req, res) => {
 			res.status(404).json({ message: "User not found" });
 		} else {
 			const user = result.rows[0];
+			const avatarUrl = req.session.avatar ? req.session.avatar : null; // retrieve avatar from session or set it to null
 			res.json({
 				id: user.id,
 				name: user.name,
-				email: user.email,
+				region: user.region,
+				role: user.role,
+				avatarUrl: avatarUrl,
 			});
 		}
 	} catch (error) {
 		res.status(500).json({ message: "Internal server error" });
 	}
 });
+
+router.get("/user/me", (req, res) => {
+	const user = req.session.user ? req.session.user : null;
+	const avatarUrl = req.session.avatar ? req.session.avatar : null;
+	const userId = req.session.githubid ? req.session.githubid : null;
+	res.json({
+		user: user,
+		avatarUrl: avatarUrl,
+		userId: userId,
+	});
+});
+
 
 export default router;
