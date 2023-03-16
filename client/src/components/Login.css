@@ -12,10 +12,6 @@
 	text-align: center;
 }
 
-.App-logo {
-	width: 100px;
-}
-
 .first-line {
 	margin-top: 1.5rem;
 }
@@ -50,6 +46,25 @@ button.button {
 
 button.button:hover {
 	background-color: #0069d9;
+}
+.gitbtn {
+	display: block;
+	width: 100%;
+	padding: 1rem;
+	margin-top: 1rem;
+	font-size: 1.2rem;
+	font-weight: bold;
+	background-color: #007bff;
+	border: none;
+	border-radius: 0.25rem;
+	cursor: pointer;
+}
+.gitbtn.gitbtn:hover {
+	background-color: #0069d9;
+}
+a {
+	text-decoration: none;
+	color: white;
 }
 
 @media screen and (min-width: 768px) {
