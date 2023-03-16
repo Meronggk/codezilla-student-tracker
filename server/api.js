@@ -64,6 +64,37 @@ router.get("/getUserData", async function (req, res) {
 		});
 });
 
+
+// allsessions//
+function fetchallsessions(callback) {
+	db.query("SELECT * FROM sessions", (err, data) => {
+		if (err) {
+			return callback(err);
+		}
+
+		return callback(undefined, data.rows);
+	});
+}
+
+router.get("/getAllSession", (req, res, next) => {
+	fetchallsessions((err, data) => {
+		if (err) {
+			return next(err);
+		}
+
+		res.status(200).send(data);
+	});
+});
+
+
+
+
+
+
+
+
+
+
 router.get("/getZoomMeeting/:id", function (req, res) {
 	const sessionid = parseInt(req.params.id);
 	let userid;

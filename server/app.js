@@ -2,6 +2,7 @@ import express from "express";
 import cookieSession from "cookie-session";
 import apiRouter from "./api";
 import config from "./utils/config";
+var bodyParser = require("body-parser");
 import {
 	clientRouter,
 	configuredHelmet,
@@ -13,6 +14,8 @@ import {
 const apiRoot = "/api";
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieSession({ name: "session", keys: ["hgkhghdhhhhhh"] }));
 app.use(express.json());
 app.use(configuredHelmet());
