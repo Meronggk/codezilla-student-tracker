@@ -125,6 +125,4 @@ router.post("/logout", (req, res) => {
 	res.sendStatus(204); // No Content
 });
 
-
-
 export default router;
