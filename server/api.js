@@ -101,7 +101,31 @@ router.get("/getSessionData", (req, response, next) => {
 	});
 });
 
+//upcomingsession//
+function fetchupcomingsessions(callback) {
+	let currentdate = new Date();
+	let datetime = currentdate.getFullYear() + "-" + currentdate.getMonth()
+		+ "-" + currentdate.getDay();
 
+	db.query(`select * from SESSIONS where time >= '${datetime}'`, (err, data) => {
+		if (err) {
+			return callback(err);
+		}
+
+		return callback(undefined, data.rows);
+	});
+}
+router.get("/getUpcomingSession", (req, res) => {
+	fetchupcomingsessions((err, data) => {
+		if (err) {
+			// return next(err);
+			res.status(500).send("error");
+		}
+
+		res.status(200).send(data);
+	});
+
+});
 
 
 
