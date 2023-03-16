@@ -36,9 +36,10 @@ router.post("/callback", async (req, res) => {
 					},
 				})
 				.then((data) => {
-					req.session.user = data.data.login; // github username
+					req.session.username = data.data.login; // github username
 					req.session.githubid = data.data.id; // user id
 					req.session.avatar = data.data.avatar_url; // avatar
+					req.session.githubUrl = data.data.html_url; // githubUrl
 					req.session.cohortId = 4; // NW5
 					res.json(data.data);
 				});
@@ -143,13 +144,15 @@ router.get("/users/:id", async (req, res) => {
 });
 
 router.get("/user/me", (req, res) => {
-	const user = req.session.user ? req.session.user : null;
+	const username = req.session.user ? req.session.user : null;
 	const avatarUrl = req.session.avatar ? req.session.avatar : null;
-	const userId = req.session.githubid ? req.session.githubid : null;
+	const userGithubId = req.session.githubid ? req.session.githubid : null;
+	const userGithubUrl = req.session.githubUrl ? req.session.githubUrl : null;
 	res.json({
-		user: user,
+		username: username,
 		avatarUrl: avatarUrl,
-		userId: userId,
+		userGithubId: userGithubId,
+		userGithubUrl: userGithubUrl,
 	});
 });
 
