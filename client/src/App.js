@@ -15,7 +15,7 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/about/this/site" element={<About />} />
 				{/* <Route path="/login" element={<GitHubLogin></GitHubLogin>} /> */}
-				<Route path="/callback" element={<GitHubCallBack />} />
+				<Route path="/callback" element={<GitHubCalllBack />} />
 				<Route path="/signin" element={<Login></Login>} />
 				<Route path="/profile" element={<Profile />} />
 			</Routes>
