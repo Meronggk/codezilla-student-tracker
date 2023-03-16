@@ -88,7 +88,18 @@ router.get("/getAllSession", (req, res, next) => {
 
 
 
-
+//find session//
+router.get("/getSessionData", (req, response, next) => {
+	// const id = parseInt(req.params.id);
+	const { id } = req.body;
+	db.query(`select * from SESSIONS where id = ${id}`, (err, res) => {
+		if (err) {
+			return next(err);
+		} else {
+			response.json(res.rows);
+		}
+	});
+});
 
 
 
