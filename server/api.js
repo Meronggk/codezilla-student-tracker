@@ -36,10 +36,10 @@ router.post("/callback", async (req, res) => {
 					},
 				})
 				.then((data) => {
-					req.session.user = data.data.login;    // github username
-					req.session.githubid = data.data.id;	// user id
-					req.session.avatar = data.data.avatar_url;   // avatar
-					req.session.cohortId = 4;  // NW5
+					req.session.user = data.data.login; // github username
+					req.session.githubid = data.data.id; // user id
+					req.session.avatar = data.data.avatar_url; // avatar
+					req.session.cohortId = 4; // NW5
 					res.json(data.data);
 				});
 			// eslint-disable-next-line no-console
@@ -155,28 +155,28 @@ router.get("/user/me", (req, res) => {
 
 // Endpoint for switching cohorts for signed-in user
 router.put("/switchCohort/:id", async (req, res) => {
-    const cohortId = +req.params.id;
-    const query = "SELECT * FROM cohorts WHERE id = $1";
-    // Check request body
-    if (!req.body || !req.body.cohortId) {
-        return res
-            .status(400)
-            .json({ message: "Missing cohortId property in request body" });
-    }
-    // Check if the cohort with the specified ID exists in the database
-    const result = await db.query(query, [cohortId]);
-    if (result.rows.length === 0) {
-        res.status(404).json({ message: "Cohort not found" });
-    } else {
-        const cohort = result.rows[0];
-        req.session.cohortId = req.body.cohortId;
-        res.json({
-            id: cohort.id,
-            name: cohort.name,
-            region: cohort.region,
-            message: "Switched to cohort with ID " + req.session.cohortId,
-        });
-    }
+	const cohortId = +req.params.id;
+	const query = "SELECT * FROM cohorts WHERE id = $1";
+	// Check request body
+	if (!req.body || !req.body.cohortId) {
+		return res
+			.status(400)
+			.json({ message: "Missing cohortId property in request body" });
+	}
+	// Check if the cohort with the specified ID exists in the database
+	const result = await db.query(query, [cohortId]);
+	if (result.rows.length === 0) {
+		res.status(404).json({ message: "Cohort not found" });
+	} else {
+		const cohort = result.rows[0];
+		req.session.cohortId = req.body.cohortId;
+		res.json({
+			id: cohort.id,
+			name: cohort.name,
+			region: cohort.region,
+			message: "Switched to cohort with ID " + req.session.cohortId,
+		});
+	}
 });
 
 export default router;
