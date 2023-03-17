@@ -13,6 +13,8 @@ import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
 import Profile from "./pages/Profile";
 
+import NavBar from "./components/Homepage/NavBar";
+import RegisterUser from "./components/RegisterUser";
 function App() {
 	return (
 		<div>
