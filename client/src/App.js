@@ -8,17 +8,13 @@ import Homepage from "./components/Homepage/Homepage";
 //import NavBar from "./components/Homepage/NavBar";
 import Form from "./components/Form";
 import SessionDash from "./components/SessionDash";
-// import AddClass from "./components/AddClass";
 import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
 import Profile from "./pages/Profile";
-
-import NavBar from "./components/Homepage/NavBar";
 import RegisterUser from "./components/RegisterUser";
 function App() {
 	return (
 		<div>
-			{/**<NavBar /> **/}
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/about/this/site" element={<About />} />
