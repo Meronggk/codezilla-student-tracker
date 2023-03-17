@@ -9,6 +9,26 @@ const router = Router();
 const CLIENT_ID = "438f9e1d00fa92021341";
 const CLIENT_SECRET = "8e75503a0524b30ab1f08e5ac547ef8202df0236";
 
+let users = [];
+
+//form backend begins
+router.get("/form/:id", (req, res) => {
+	//const sessionid = parseInt(req.params.id);
+	db.query
+		("Select * from users")
+		.then((result) => {
+			res.json(result.rows);
+		});
+	//res.json(users);
+});
+router.post("/form", (req, res) => {
+	const newUser = req.body;
+	users.push(newUser);
+	res.json(users);
+});
+//form back end ends
+
+
 router.get("/", async function (req, res) {
 	logger.debug("Welcoming everyone...");
 	res.json({ message: "Hello, world!" });

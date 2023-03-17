@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
-import './Form.css'
-
+import React, { useState } from "react";
+import "./Form.css";
 const Form = () => {
     const [users, setUsers] = useState([]);
-    const [name, setName] = useState('');
+    const [name, setName] = useState("");
     const [attending, setAttending] = useState(false);
-    const [notes, setNotes] = useState('');
-
-    const handleSubmit = (event) => {
+    const [notes, setNotes] = useState("");
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const newUser = { name, attending, notes };
-        setUsers([...users, newUser]);
-        setName('');
+        const response = await fetch("/api/form", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newUser),
+        });
+        const updatedUsers = await response.json();
+        setUsers(updatedUsers);
+        setName("");
         setAttending(false);
-        setNotes('');
+        setNotes("");
     };
-
     return (
         <div>
             <h2>List of Users</h2>
@@ -31,30 +36,43 @@ const Form = () => {
                     {users.map((user, index) => (
                         <tr key={index}>
                             <td>{user.name}</td>
-                            <td>{user.attending ? 'Yes' : 'No'}</td>
+                            <td>{user.attending ? "Yes" : "No"}</td>
                             <td>{user.notes}</td>
                         </tr>
                     ))}
+                    <tr>
+                        <td>
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(event) => setName(event.target.value)}
+                                placeholder="Enter name"
+                            />
+                        </td>
+                        <td>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    checked={attending}
+                                    onChange={(event) => setAttending(event.target.checked)}
+                                />
+                                Attendance
+                            </label>
+                        </td>
+                        <td>
+                            <textarea
+                                value={notes}
+                                onChange={(event) => setNotes(event.target.value)}
+                                placeholder="Enter notes"
+                            ></textarea>
+                        </td>
+                        <td>
+                            <button onClick={handleSubmit}>Save</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-            <h2>Add User</h2>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Name:
-                    <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
-                </label>
-                <label>
-                    Attendance
-                    <input type="checkbox" checked={attending} onChange={(event) => setAttending(event.target.checked)} />
-                </label>
-                <label>
-                    Notes:
-                    <textarea value={notes} onChange={(event) => setNotes(event.target.value)} />
-                </label>
-                <button type="submit">Add User</button>
-            </form>
         </div>
     );
 };
-
 export default Form;
