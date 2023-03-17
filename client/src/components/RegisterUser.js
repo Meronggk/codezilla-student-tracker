@@ -17,6 +17,7 @@ function RegisterUser() {
     if (response.ok) {
       const user = await response.json();
       alert(`User ${user.name} created!`);
+      
       setName('');
       setRole('');
       setRegion('');

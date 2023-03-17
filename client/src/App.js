@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
-
+import RegisterUser from "./components/RegisterUser";
 function App() {
 	return (
 		<div>
@@ -18,6 +18,7 @@ function App() {
 				<Route path="/callback" element={<GitHubCalllBack />} />
 				<Route path="/signin" element={<Login />} />
 				<Route path="/homepage" element={<Homepage />} />
+				<Route path="/register" element={<RegisterUser/>}/>
 			</Routes>
 		</div>
 	);
