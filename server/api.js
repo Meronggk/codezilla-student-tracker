@@ -49,6 +49,8 @@ router.get("/", async function (req, res) {
 	res.json({ message: "Hello, world!" });
 });
 
+// github login backend starts
+
 router.post("/callback", async (req, res) => {
 	const params =
 		"?client_id=" +
@@ -104,6 +106,8 @@ router.get("/getUserData", async function (req, res) {
 			res.json(data);
 		});
 });
+
+// github loging backend ends
 
 router.get("/getZoomMeeting/:id", function (req, res) {
 	const sessionid = parseInt(req.params.id);
@@ -175,7 +179,7 @@ router.get("/cohorts", (req, res) => {
 });
 
 // POST request to create a new session
-router.post("/sessions", (req, res) => {
+router.post("/newsession", (req, res) => {
 	const { name, time, meetingUrl, cohortId } = req.body;
 	if (!name || !time || !meetingUrl || !cohortId) {
 		res.status(400).send("Missing required fields");

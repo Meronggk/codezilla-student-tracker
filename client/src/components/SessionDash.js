@@ -6,11 +6,16 @@ import {
 	FormOutlined,
 	CalendarOutlined,
 } from "@ant-design/icons";
+import NewSession from "./NewSession";
+import Form from "./Form";
+//import LogoutButton from "./LogoutButton";
+
+
 
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
 
-const Sidebar = () => {
+const SessionDash = () => {
 	const screens = useBreakpoint();
 
 	const [selectedKey, setSelectedKey] = React.useState("user-profile");
@@ -118,14 +123,15 @@ const UserProfile = () => {
 const AddClasses = () => {
 	return (
 		<div>
-			<h2>Add Classes</h2>
+			<h2>Create Session</h2>
+<NewSession />
 			{/* Insert add classes form here */}
 		</div>
 	);
 };
 
 const AttendanceForm = () => {
-	return <div>{/* <h2>Attendance Form</h2> */}</div>;
+	return <div> <Form /></div>;
 };
 
 const UpcomingClasses = () => {
@@ -133,8 +139,9 @@ const UpcomingClasses = () => {
 		<div>
 			<h2>Upcoming Classes</h2>
 			{/* Insert upcoming classes content here */}
+
 		</div>
 	);
 };
 
-export default Sidebar;
+export default SessionDash;

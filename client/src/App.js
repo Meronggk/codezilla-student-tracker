@@ -7,6 +7,10 @@ import Home from "./pages/Home";
 import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
 import Form from "./components/Form";
+import SessionDash from "./components/SessionDash";
+// import AddClass from "./components/AddClass";
+import NewSession from "./components/NewSession";
+import LogoutButton from "./components/LogoutButton";
 
 function App() {
 	return (
@@ -20,6 +24,10 @@ function App() {
 				<Route path="/signin" element={<Login />} />
 				<Route path="/homepage" element={<Homepage />} />
 				<Route path="/form" element={<Form />} />
+				<Route path="/dashboard" element={<SessionDash />} />
+				{/* <Route path="/addclass" element={<AddClass />} /> */}
+				<Route path="newsession" element={<NewSession />} />
+				<Route path="/logout" element={<LogoutButton />} />
 			</Routes>
 		</div>
 	);

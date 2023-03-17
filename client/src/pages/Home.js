@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import LogoutButton from "../navbar/LogoutButton";
+
 import "./Home.css";
 import logo from "./logo.svg";
-import NewSession from "./Session";
 
 export function Home() {
 	const [message, setMessage] = useState("Loading...");
@@ -36,13 +35,7 @@ export function Home() {
 				<h1 className="message" data-qa="message">
 					{message}
 				</h1>
-
 				<Link to="/about/this/site">About</Link>
-				<div>
-					<h1>Create a new session</h1>
-					<NewSession />
-				</div>
-				<LogoutButton />
 			</div>
 		</main>
 	);
