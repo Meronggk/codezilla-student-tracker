@@ -1,13 +1,36 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-unexpected-multiline */
 import { Router } from "express";
 import axios from "axios";
 import logger from "./utils/logger";
-
 import db from "./db";
+//import Password from "antd/es/input/Password";
 
 const router = Router();
 
+
 const CLIENT_ID = "438f9e1d00fa92021341";
 const CLIENT_SECRET = "8e75503a0524b30ab1f08e5ac547ef8202df0236";
+
+let users = [];
+
+// login backend begins
+router.post("/signin", function (req, res) {
+	const email = req.body.email;
+	const password = req.body.password;
+
+	if (!email || !password) {
+		// eslint-disable-next-line no-undef
+		return res.status(400).send("email and password required");
+	}
+
+	db.query("SELECT * FROM users ", [users]).then((res) => {
+		// eslint-disable-next-line no-undef
+		return res.status(400).send("user not available");
+	});
+});
+
+// login backend ends
 
 router.get("/", async function (req, res) {
 	logger.debug("Welcoming everyone...");

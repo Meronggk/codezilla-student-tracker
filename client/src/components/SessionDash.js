@@ -1,78 +1,146 @@
+import React from "react";
+import { Layout, Menu, Grid } from "antd";
 import {
 	UserOutlined,
+	PlusOutlined,
+	FormOutlined,
+	CalendarOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
-import React from "react";
-import "./SessionDash.css";
 
 
+const { Sider } = Layout;
+const { useBreakpoint } = Grid;
 
-const { Header, Content, Footer, Sider } = Layout;
+const Sidebar = () => {
+	const screens = useBreakpoint();
 
-const SessionDash = () => {
-	const {
-		token: { colorBgContainer },
-	} = theme.useToken();
+	const [selectedKey, setSelectedKey] = React.useState("user-profile");
+
+	const handleMenuClick = (e) => {
+		setSelectedKey(e.key);
+	};
+
+	const getItemIcon = (item) => {
+		switch (item) {
+			case "user-profile":
+				return <UserOutlined />;
+			case "add-classes":
+				return <PlusOutlined />;
+			case "attendance-form":
+				return <FormOutlined />;
+			case "upcoming-classes":
+				return <CalendarOutlined />;
+			default:
+				return null;
+		}
+	};
+
+	const renderMenuItem = (item) => {
+		return (
+			<Menu.Item key={item} icon={getItemIcon(item)}>
+				{item.replace(/-/g, " ")}
+			</Menu.Item>
+		);
+	};
+
+	const contentStyle = {
+		flex: 1,
+		padding: "20px",
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "start",
+		justifyContent: "start",
+	};
+
+	const content = (
+		<div style={contentStyle}>
+			{selectedKey === "user-profile" && <UserProfile />}
+			{selectedKey === "add-classes" && <AddClasses />}
+			{selectedKey === "attendance-form" && <AttendanceForm />}
+			{selectedKey === "upcoming-classes" && <UpcomingClasses />}
+		</div>
+	);
+
+	const sidebarStyle = {
+		minHeight: "100vh",
+		display: "flex",
+		flexDirection: "column",
+	};
+
 	return (
-		<Layout>
+		<div style={{ display: "flex" }}>
 			<Sider
-				breakpoint="lg"
-				collapsedWidth="0"
-				onBreakpoint={(broken) => {
-					console.log(broken);
-				}}
-				onCollapse={(collapsed, type) => {
-					console.log(collapsed, type);
-				}}
+				width={200}
+				collapsedWidth={screens.xs ? 0 : 80}
+				style={sidebarStyle}
 			>
-				<div className="logo" />
-				<Menu
-					theme="dark"
-					mode="inline"
-					defaultSelectedKeys={["4"]}
-					items={[
-						UserOutlined,
-
-
-					].map((icon, index) => ({
-						key: String(index),
-						icon: React.createElement(icon),
-						label: `create classes ${index[0]}`,
-                        label1: `attendance form ${index[1]}`,
-					}))}
-				/>
-			</Sider>
-			<Layout>
-				<Header
-					style={{
-						padding: 0,
-						background: colorBgContainer,
-					}}
-				/>
-				<Content
-					style={{
-						margin: "24px 16px 0",
-					}}
-				>
-					<div
-						style={{
-							padding: 24,
-							minHeight: 360,
-							background: colorBgContainer,
-						}}
+				{screens.xs ? (
+					<Menu
+						mode="horizontal"
+						selectedKeys={[selectedKey]}
+						onClick={handleMenuClick}
 					>
-						content
-					</div>
-				</Content>
-				<Footer
-					style={{
-						textAlign: "center",
-					}}
-				>
- Created by codezilla
-				</Footer>
-			</Layout>
-		</Layout>
+						{[
+							"user-profile",
+							"add-classes",
+							"attendance-form",
+							"upcoming-classes",
+						].map(renderMenuItem)}
+					</Menu>
+				) : (
+					<Menu
+						mode="inline"
+						selectedKeys={[selectedKey]}
+						onClick={handleMenuClick}
+					>
+						{[
+							"user-profile",
+							"add-classes",
+							"attendance-form",
+							"upcoming-classes",
+						].map(renderMenuItem)}
+					</Menu>
+				)}
+			</Sider>
+			{content}
+		</div>
 	);
 };
-export default SessionDash;
+
+const UserProfile = () => {
+	return (
+		<div>
+			<h2>User Profile</h2>
+			{/* Insert user profile content here */}
+		</div>
+	);
+};
+
+const AddClasses = () => {
+	return (
+		<div>
+			<h2>Add Classes</h2>
+			{/* Insert add classes form here */}
+		</div>
+	);
+};
+
+const AttendanceForm = () => {
+	return (
+		<div>
+			{/* <h2>Attendance Form</h2> */}
+
+		</div>
+	);
+};
+
+const UpcomingClasses = () => {
+	return (
+		<div>
+			<h2>Upcoming Classes</h2>
+			{/* Insert upcoming classes content here */}
+		</div>
+	);
+};
+
+export default Sidebar;
