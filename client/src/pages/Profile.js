@@ -4,7 +4,7 @@ import "./Profile.css";
 const Profile = () => {
 	const [userData, setUserData] = useState({
 		avatarUrl: "",
-		username: "",
+		userName: "",
 		userGithubId: "",
 		userGithubUrl: "",
 	});
@@ -13,9 +13,10 @@ const Profile = () => {
 		fetch("/api/user/me")
 			.then((res) => res.json())
 			.then((body) => {
+				//console.log(body); // add this line
 				setUserData({
 					avatarUrl: body.avatarUrl,
-					username: body.username,
+					userName: body.userName,
 					userGithubId: body.userGithubId,
 					userGithubUrl: body.userGithubUrl,
 				});
@@ -23,9 +24,9 @@ const Profile = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className="profile-container">
 			<img src={userData.avatarUrl} alt="Avatar" className="profile-img" />
-			<h2>GitHub Username: {userData.username}</h2>
+			<h3>{userData.userName}</h3>
 			<a
 				href={userData.userGithubUrl}
 				target="_blank" // used to open the link in a new browser window
