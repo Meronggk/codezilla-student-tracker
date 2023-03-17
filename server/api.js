@@ -200,6 +200,66 @@ router.post("/newsession", (req, res) => {
 	});
 });
 
+// Endpoint for getting User details including name, cohort and github avatar url
+router.get("/users/:id", async (req, res) => {
+	const userId = req.params.id;
+	const query = "SELECT * FROM users WHERE id = $1";
+	try {
+		const result = await db.query(query, [userId]);
+		if (result.rows.length === 0) {
+			res.status(404).json({ message: "User not found" });
+		} else {
+			const user = result.rows[0];
+			const avatarUrl = req.session.avatar ? req.session.avatar : null; // retrieve avatar from session or set it to null
+			res.json({
+				id: user.id,
+				name: user.name,
+				region: user.region,
+				role: user.role,
+				avatarUrl: avatarUrl,
+			});
+		}
+	} catch (error) {
+		res.status(500).json({ message: "Internal server error" });
+	}
+});
+router.get("/user/me", (req, res) => {
+	const userName = req.session.userName ? req.session.userName : null;
+	const avatarUrl = req.session.avatar ? req.session.avatar : null;
+	const userGithubId = req.session.githubid ? req.session.githubid : null;
+	const userGithubUrl = req.session.githubUrl ? req.session.githubUrl : null;
+	res.json({
+		userName: userName,
+		avatarUrl: avatarUrl,
+		userGithubId: userGithubId,
+		userGithubUrl: userGithubUrl,
+	});
+});
+// Endpoint for switching cohorts for signed-in user
+router.put("/switchCohort/:id", async (req, res) => {
+	const cohortId = +req.params.id;
+	const query = "SELECT * FROM cohorts WHERE id = $1";
+	// Check request body
+	if (!req.body || !req.body.cohortId) {
+		return res
+			.status(400)
+			.json({ message: "Missing cohortId property in request body" });
+	}
+	// Check if the cohort with the specified ID exists in the database
+	const result = await db.query(query, [cohortId]);
+	if (result.rows.length === 0) {
+		res.status(404).json({ message: "Cohort not found" });
+	} else {
+		const cohort = result.rows[0];
+		req.session.cohortId = req.body.cohortId;
+		res.json({
+			id: cohort.id,
+			name: cohort.name,
+			region: cohort.region,
+			message: "Switched to cohort with ID " + req.session.cohortId,
+		});
+	}
+});
 router.post("/registerUsers", (req, res) => {
 	const { name, role, region } = req.body;
 	if (!name || !role || !region) {
