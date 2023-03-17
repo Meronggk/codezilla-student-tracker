@@ -65,7 +65,7 @@ router.get("/getUserData", async function (req, res) {
 });
 
 
-// allsessions//
+// allsessions inculidng toggle button//
 function fetchallsessions(callback) {
 	db.query("SELECT * FROM sessions", (err, data) => {
 		if (err) {
@@ -86,8 +86,6 @@ router.get("/getAllSession", (req, res, next) => {
 	});
 });
 
-
-
 //find session//
 router.get("/getSessionData", (req, response, next) => {
 	// const id = parseInt(req.params.id);
@@ -104,16 +102,23 @@ router.get("/getSessionData", (req, response, next) => {
 //upcomingsession//
 function fetchupcomingsessions(callback) {
 	let currentdate = new Date();
-	let datetime = currentdate.getFullYear() + "-" + currentdate.getMonth()
-		+ "-" + currentdate.getDay();
+	let datetime =
+		currentdate.getFullYear() +
+		"-" +
+		currentdate.getMonth() +
+		"-" +
+		currentdate.getDay();
 
-	db.query(`select * from SESSIONS where time >= '${datetime}'`, (err, data) => {
-		if (err) {
-			return callback(err);
+	db.query(
+		`select * from SESSIONS where time >= '${datetime}'`,
+		(err, data) => {
+			if (err) {
+				return callback(err);
+			}
+
+			return callback(undefined, data.rows);
 		}
-
-		return callback(undefined, data.rows);
-	});
+	);
 }
 router.get("/getUpcomingSession", (req, res) => {
 	fetchupcomingsessions((err, data) => {
@@ -124,11 +129,7 @@ router.get("/getUpcomingSession", (req, res) => {
 
 		res.status(200).send(data);
 	});
-
 });
-
-
-
 
 router.get("/getZoomMeeting/:id", function (req, res) {
 	const sessionid = parseInt(req.params.id);

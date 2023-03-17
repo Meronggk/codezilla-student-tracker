@@ -2,7 +2,7 @@ import express from "express";
 import cookieSession from "cookie-session";
 import apiRouter from "./api";
 import config from "./utils/config";
-var bodyParser = require("body-parser");
+let bodyParser = require("body-parser");
 import {
 	clientRouter,
 	configuredHelmet,
