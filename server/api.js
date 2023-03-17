@@ -14,7 +14,9 @@ let users = [];
 //form backend begins
 router.get("/form/:id", (req, res) => {
 	//const sessionid = parseInt(req.params.id);
-	db.query
+	db
+	.query
+		// eslint-disable-next-line no-unexpected-multiline
 		("Select * from users")
 		.then((result) => {
 			res.json(result.rows);
