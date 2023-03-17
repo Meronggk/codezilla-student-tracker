@@ -3,6 +3,7 @@ import React from "react";
 // import { GitHubLogin } from 'react-github-login'
 //import logo from './logo.svg';
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CLIENT_ID = "438f9e1d00fa92021341";
 
@@ -38,6 +39,10 @@ function GitHubLogin() {
 		}
 	}, [rerender]);
 
+	const navigate = useNavigate();
+	function handleEvent() {
+		navigate("/signin");
+	}
 	// eslint-disable-next-line no-unused-vars
 	async function getUserData() {
 		await fetch("/api/getUserData", {
@@ -58,7 +63,7 @@ function GitHubLogin() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<button className="gitbtn">
+				<button className="gitbtn" onClick={handleEvent}>
 					<a
 						href={
 							"https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
