@@ -8,7 +8,6 @@ import db from "./db";
 
 const router = Router();
 
-
 const CLIENT_ID = "438f9e1d00fa92021341";
 const CLIENT_SECRET = "8e75503a0524b30ab1f08e5ac547ef8202df0236";
 

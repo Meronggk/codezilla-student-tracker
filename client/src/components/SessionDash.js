@@ -7,7 +7,6 @@ import {
 	CalendarOutlined,
 } from "@ant-design/icons";
 
-
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
 
@@ -126,12 +125,7 @@ const AddClasses = () => {
 };
 
 const AttendanceForm = () => {
-	return (
-		<div>
-			{/* <h2>Attendance Form</h2> */}
-
-		</div>
-	);
+	return <div>{/* <h2>Attendance Form</h2> */}</div>;
 };
 
 const UpcomingClasses = () => {
