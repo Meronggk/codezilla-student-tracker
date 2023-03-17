@@ -5,7 +5,7 @@ import logger from "./utils/logger";
 import db from "./db";
 
 const router = Router();
-const users = [];
+// const users = [];
 const CLIENT_ID = "438f9e1d00fa92021341";
 const CLIENT_SECRET = "8e75503a0524b30ab1f08e5ac547ef8202df0236";
 
@@ -169,7 +169,7 @@ router.post("/registerUsers", (req, res) => {
 	const user = { name, role, region };
 	const sql = "INSERT INTO users (name, role, region) VALUES ($1, $2, $3)";
 	const values = [name, role, region];
-  
+
 	db.query(sql, values, (error) => {
 	  if (error) {
 		res.status(500).send("Error creating user");

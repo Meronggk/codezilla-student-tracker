@@ -18,7 +18,7 @@ function App() {
 				<Route path="/callback" element={<GitHubCalllBack />} />
 				<Route path="/signin" element={<Login />} />
 				<Route path="/homepage" element={<Homepage />} />
-				<Route path="/register" element={<RegisterUser/>}/>
+				<Route path="/register" element={<RegisterUser />} />
 			</Routes>
 		</div>
 	);

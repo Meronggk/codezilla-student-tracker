@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function RegisterUser() {
-  const [name, setName] = useState('');
-  const [role, setRole] = useState('');
-  const [region, setRegion] = useState('');
+  const [name, setName] = useState("");
+  const [role, setRole] = useState("");
+  const [region, setRegion] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch('/api/registerUsers', {
-      method: 'POST',
+    const response = await fetch("/api/registerUsers", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, role, region })
+      body: JSON.stringify({ name, role, region }),
     });
     if (response.ok) {
       const user = await response.json();
       alert(`User ${user.name} created!`);
-      
-      setName('');
-      setRole('');
-      setRegion('');
+
+      setName("");
+      setRole("");
+      setRegion("");
     } else {
-      alert('Error creating user.');
+      alert("Error creating user.");
     }
   };
 
