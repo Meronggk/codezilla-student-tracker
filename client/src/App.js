@@ -30,6 +30,7 @@ function App() {
 				<Route path="newsession" element={<NewSession />} />
 				<Route path="/logout" element={<LogoutButton />} />
 				<Route path="/profile" element={<Profile />} />
+				<Route path="/register" element={<RegisterUser />} />
 			</Routes>
 		</div>
 	);
