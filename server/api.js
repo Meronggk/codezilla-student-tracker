@@ -222,6 +222,16 @@ router.get("/users/:id", async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: "Internal server error" });
 	}
+	const user = { name, role, region };
+	const sql = "INSERT INTO users (name, role, region) VALUES ($1, $2, $3)";
+	const values = [name, role, region];
+
+	db.query(sql, values, (error) => {
+		if (error) {
+			res.status(500).send("Error creating user");
+		} else {
+			res.status(201).send(user);
+		}
 });
 router.get("/user/me", (req, res) => {
 	const userName = req.session.userName ? req.session.userName : null;
@@ -234,6 +244,8 @@ router.get("/user/me", (req, res) => {
 		userGithubId: userGithubId,
 		userGithubUrl: userGithubUrl,
 	});
+});
+
 });
 // Endpoint for switching cohorts for signed-in user
 router.put("/switchCohort/:id", async (req, res) => {
