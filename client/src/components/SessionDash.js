@@ -10,8 +10,6 @@ import NewSession from "./NewSession";
 import Form from "./Form";
 //import LogoutButton from "./LogoutButton";
 
-
-
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
 
@@ -124,14 +122,19 @@ const AddClasses = () => {
 	return (
 		<div>
 			<h2>Create Session</h2>
-<NewSession />
+			<NewSession />
 			{/* Insert add classes form here */}
 		</div>
 	);
 };
 
 const AttendanceForm = () => {
-	return <div> <Form /></div>;
+	return (
+		<div>
+			{" "}
+			<Form />
+		</div>
+	);
 };
 
 const UpcomingClasses = () => {
@@ -139,7 +142,6 @@ const UpcomingClasses = () => {
 		<div>
 			<h2>Upcoming Classes</h2>
 			{/* Insert upcoming classes content here */}
-
 		</div>
 	);
 };
