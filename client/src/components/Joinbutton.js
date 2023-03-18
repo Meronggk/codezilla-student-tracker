@@ -26,7 +26,7 @@ function JoinButton() {
 		// return () => clearInterval(intervalId);
 	}, []);
 	function handleClick() {
-		fetch("/api/getZoomMeeting/1")
+		fetch("/api/getZoomLink/1")
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data.meeting_url);
