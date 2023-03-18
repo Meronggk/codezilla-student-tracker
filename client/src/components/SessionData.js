@@ -21,7 +21,18 @@ const SessionData = () => {
                 console.log(error);
             });
     };
+const fetchUpcommingData = (e) => {
+    e.preventDefault();
+   api.getUpCommingSessionData()
 
+            .then((response) => {
+        setResponseData(response.data);
+        console.log(response);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+    };
 
 
     const handleChange = (event) => {
