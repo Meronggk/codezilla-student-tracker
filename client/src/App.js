@@ -5,7 +5,7 @@ import Login from "./components/Login";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import Homepage from "./components/Homepage/Homepage";
-import NavBar from "./components/Homepage/NavBar";
+// import NavBar from "./components/Homepage/NavBar";
 import Form from "./components/Form";
 import SessionDash from "./components/SessionDash";
 // import AddClass from "./components/AddClass";
@@ -16,7 +16,7 @@ import RegisterUser from "./components/RegisterUser";
 function App() {
 	return (
 		<div>
-			<NavBar /> 
+			{/* <NavBar />  */}
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/about/this/site" element={<About />} />
