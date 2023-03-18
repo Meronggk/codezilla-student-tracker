@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function NewSession() {
 	const [cohorts, setCohorts] = useState([]);
@@ -69,15 +71,31 @@ function NewSession() {
 				/>
 			</label>
 			<br />
-			<label>
+			<label htmlFor={"timepicker"}>
 				Time:
-				<input
-					type="text"
-					name="time"
-					value={formData.time}
-					onChange={handleChange}
-				/>
+				<div className="input-group date" id="timepicker">
+					<DatePicker
+						name="time"
+						selected={formData.time}
+						onChange={(date) =>
+							setFormData((prevFormData) => ({
+								...prevFormData,
+								time: date,
+							}))
+						}
+						showTimeSelect
+						timeFormat="HH:mm"
+						timeIntervals={15}
+						dateFormat="MMMM d, yyyy h:mm aa"
+						placeholderText="Select time"
+					/>
+
+					<span className="input-group-addon">
+						<i className="fa fa-calendar"></i>
+					</span>
+				</div>
 			</label>
+
 			<br />
 			<label>
 				Meeting URL:
