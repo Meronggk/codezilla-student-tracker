@@ -13,7 +13,6 @@ import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
 import JoinButton from "./components/Joinbutton";
 
-
 function App() {
 	return (
 		<div>

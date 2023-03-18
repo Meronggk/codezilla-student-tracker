@@ -111,7 +111,9 @@ router.get("/getUserData", async function (req, res) {
 //redirect link//
 router.get("/getZoomMeeting/:id", async function (req, res) {
 	const sessionid = parseInt(req.params.id);
-	const data = await db.query("SELECT * FROM sessions WHERE id = $1", [sessionid]).then((data) => data.rows[0]);
+	const data = await db
+		.query("SELECT * FROM sessions WHERE id = $1", [sessionid])
+		.then((data) => data.rows[0]);
 	res.json(data);
 });
 
