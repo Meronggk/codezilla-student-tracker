@@ -178,7 +178,7 @@ router.get("/cohorts", (req, res) => {
 });
 
 // POST request to create a new session
-router.post("/newsession", (req, res) => {
+router.post("/sessions", (req, res) => {
 	const { name, time, meetingUrl, cohortId } = req.body;
 	if (!name || !time || !meetingUrl || !cohortId) {
 		res.status(400).send("Missing required fields");
@@ -197,5 +197,6 @@ router.post("/newsession", (req, res) => {
 		}
 	});
 });
+
 
 export default router;

@@ -12,6 +12,7 @@ import SessionDash from "./components/SessionDash";
 import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
 
+
 function App() {
 	return (
 		<div>
@@ -26,8 +27,9 @@ function App() {
 				<Route path="/form" element={<Form />} />
 				<Route path="/dashboard" element={<SessionDash />} />
 				{/* <Route path="/addclass" element={<AddClass />} /> */}
-				<Route path="newsession" element={<NewSession />} />
+				<Route path="/sessions" element={<NewSession />} />
 				<Route path="/logout" element={<LogoutButton />} />
+
 			</Routes>
 		</div>
 	);
