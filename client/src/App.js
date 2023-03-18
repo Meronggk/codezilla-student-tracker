@@ -11,6 +11,8 @@ import SessionDash from "./components/SessionDash";
 // import AddClass from "./components/AddClass";
 import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
+import JoinButton from "./components/Joinbutton";
+
 
 function App() {
 	return (
@@ -28,6 +30,7 @@ function App() {
 				{/* <Route path="/addclass" element={<AddClass />} /> */}
 				<Route path="newsession" element={<NewSession />} />
 				<Route path="/logout" element={<LogoutButton />} />
+				<Route path="/join" element={<JoinButton />} />
 			</Routes>
 		</div>
 	);
