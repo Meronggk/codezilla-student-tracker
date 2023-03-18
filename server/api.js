@@ -7,7 +7,7 @@ import db from "./db";
 //import Password from "antd/es/input/Password";
 
 const router = Router();
-
+// const users = [];
 const CLIENT_ID = "438f9e1d00fa92021341";
 const CLIENT_SECRET = "8e75503a0524b30ab1f08e5ac547ef8202df0236";
 
@@ -72,9 +72,11 @@ router.post("/callback", async (req, res) => {
 					},
 				})
 				.then((data) => {
-					req.session.user = data.data.login;
-					req.session.githubid = data.data.id;
-
+					req.session.userName = data.data.login; // github username
+					req.session.githubid = data.data.id; // user id
+					req.session.avatar = data.data.avatar_url; // avatar
+					req.session.githubUrl = data.data.html_url; // githubUrl
+					req.session.cohortId = 4; // NW5
 					res.json(data.data);
 				})
 				.catch((error) => {
@@ -198,5 +200,83 @@ router.post("/sessions", (req, res) => {
 	});
 });
 
+// Endpoint for getting User details including name, cohort and github avatar url
+router.get("/users/:id", async (req, res) => {
+	const userId = req.params.id;
+	const query = "SELECT * FROM users WHERE id = $1";
+	try {
+		const result = await db.query(query, [userId]);
+		if (result.rows.length === 0) {
+			res.status(404).json({ message: "User not found" });
+		} else {
+			const user = result.rows[0];
+			const avatarUrl = req.session.avatar ? req.session.avatar : null; // retrieve avatar from session or set it to null
+			res.json({
+				id: user.id,
+				name: user.name,
+				region: user.region,
+				role: user.role,
+				avatarUrl: avatarUrl,
+			});
+		}
+	} catch (error) {
+		res.status(500).json({ message: "Internal server error" });
+	}
+});
+router.get("/user/me", (req, res) => {
+	const userName = req.session.userName ? req.session.userName : null;
+	const avatarUrl = req.session.avatar ? req.session.avatar : null;
+	const userGithubId = req.session.githubid ? req.session.githubid : null;
+	const userGithubUrl = req.session.githubUrl ? req.session.githubUrl : null;
+	res.json({
+		userName: userName,
+		avatarUrl: avatarUrl,
+		userGithubId: userGithubId,
+		userGithubUrl: userGithubUrl,
+	});
+});
+// Endpoint for switching cohorts for signed-in user
+router.put("/switchCohort/:id", async (req, res) => {
+	const cohortId = +req.params.id;
+	const query = "SELECT * FROM cohorts WHERE id = $1";
+	// Check request body
+	if (!req.body || !req.body.cohortId) {
+		return res
+			.status(400)
+			.json({ message: "Missing cohortId property in request body" });
+	}
+	// Check if the cohort with the specified ID exists in the database
+	const result = await db.query(query, [cohortId]);
+	if (result.rows.length === 0) {
+		res.status(404).json({ message: "Cohort not found" });
+	} else {
+		const cohort = result.rows[0];
+		req.session.cohortId = req.body.cohortId;
+		res.json({
+			id: cohort.id,
+			name: cohort.name,
+			region: cohort.region,
+			message: "Switched to cohort with ID " + req.session.cohortId,
+		});
+	}
+});
+router.post("/registerUsers", (req, res) => {
+	const { name, role, region } = req.body;
+	if (!name || !role || !region) {
+		res.status(400).send("Missing required fields");
+		return;
+	}
+	const user = { name, role, region };
+	const sql = "INSERT INTO users (name, role, region) VALUES ($1, $2, $3)";
+	const values = [name, role, region];
+
+	db.query(sql, values, (error) => {
+		if (error) {
+			res.status(500).send("Error creating user");
+		} else {
+			res.status(201).send(user);
+		}
+	});
+});
 
 export default router;
