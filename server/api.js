@@ -152,13 +152,13 @@ router.get("/fakelogin", async (req, res) => {
 	const user = await user.findById(req.session.userId);
 	req.session.role = user.role;
 	res.json({ message: "Login Successful!" });
-	});
-	
-	router.post("/changerole", (req, res) => {
+});
+
+router.post("/changerole", (req, res) => {
 	const { role } = req.body; // Get the new role from the request body
 	req.session.role = role; // Update the user's role in the session
 	res.json({ message: "Role updated successfully!" });
-	});
+});
 
 // Endpoint for debugging the session
 router.get("/debugsession", (req, res) => {
@@ -193,23 +193,22 @@ router.get("/cohorts", (req, res) => {
 router.post("/newsession", (req, res) => {
 	const { name, time, meetingUrl, cohortId } = req.body;
 	if (!name || !time || !meetingUrl || !cohortId) {
-	  res.status(400).send("Missing required fields");
-	  return;
+		res.status(400).send("Missing required fields");
+		return;
 	}
-  
+
 	const sql =
-	  "INSERT INTO sessions (name, time, cohort_id, meeting_url) VALUES ($1,$2, $3, $4)";
+		"INSERT INTO sessions (name, time, cohort_id, meeting_url) VALUES ($1,$2, $3, $4)";
 	const values = [name, time, cohortId, meetingUrl];
-  
+
 	db.query(sql, values, (error) => {
-	  if (error) {
-		res.status(500).send("Error creating session"+ error.message);
-	  } else {
-		res.status(201).send("Session created");
-	  }
+		if (error) {
+			res.status(500).send("Error creating session" + error.message);
+		} else {
+			res.status(201).send("Session created");
+		}
 	});
-  });
-  
+});
 
 // Endpoint for getting User details including name, cohort and github avatar url
 router.get("/users/:id", async (req, res) => {
