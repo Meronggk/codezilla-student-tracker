@@ -25,7 +25,6 @@ function App() {
 				<Route path="/homepage" element={<Homepage />} />
 				<Route path="/form" element={<Form />} />
 				<Route path="/dashboard" element={<SessionDash />} />
-				{/* <Route path="/addclass" element={<AddClass />} /> */}
 				<Route path="/sessions" element={<NewSession />} />
 				<Route path="/logout" element={<LogoutButton />} />
 				<Route path="/profile" element={<Profile />} />

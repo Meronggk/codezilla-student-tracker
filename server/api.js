@@ -236,30 +236,30 @@ router.get("/user/me", (req, res) => {
 	});
 });
 // Endpoint for switching cohorts for signed-in user
-router.put("/switchCohort/:id", async (req, res) => {
-	const cohortId = +req.params.id;
-	const query = "SELECT * FROM cohorts WHERE id = $1";
-	// Check request body
-	if (!req.body || !req.body.cohortId) {
-		return res
-			.status(400)
-			.json({ message: "Missing cohortId property in request body" });
-	}
-	// Check if the cohort with the specified ID exists in the database
-	const result = await db.query(query, [cohortId]);
-	if (result.rows.length === 0) {
-		res.status(404).json({ message: "Cohort not found" });
-	} else {
-		const cohort = result.rows[0];
-		req.session.cohortId = req.body.cohortId;
-		res.json({
-			id: cohort.id,
-			name: cohort.name,
-			region: cohort.region,
-			message: "Switched to cohort with ID " + req.session.cohortId,
-		});
-	}
-});
+// router.put("/switchCohort/:id", async (req, res) => {
+// 	const cohortId = +req.params.id;
+// 	const query = "SELECT * FROM cohorts WHERE id = $1";
+// 	// Check request body
+// 	if (!req.body || !req.body.cohortId) {
+// 		return res
+// 			.status(400)
+// 			.json({ message: "Missing cohortId property in request body" });
+// 	}
+// 	// Check if the cohort with the specified ID exists in the database
+// 	const result = await db.query(query, [cohortId]);
+// 	if (result.rows.length === 0) {
+// 		res.status(404).json({ message: "Cohort not found" });
+// 	} else {
+// 		const cohort = result.rows[0];
+// 		req.session.cohortId = req.body.cohortId;
+// 		res.json({
+// 			id: cohort.id,
+// 			name: cohort.name,
+// 			region: cohort.region,
+// 			message: "Switched to cohort with ID " + req.session.cohortId,
+// 		});
+// 	}
+// });
 router.post("/registerUsers", (req, res) => {
 	const { name, role, region } = req.body;
 	if (!name || !role || !region) {
