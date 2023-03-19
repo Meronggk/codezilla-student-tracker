@@ -24,7 +24,7 @@ const GitHubCalllBack = () => {
 		LoginUser();
 	});
 
-	return <Spinner animation="grow" />;
+	return  <Spinner animation="grow" />;
 };
 
 export default GitHubCalllBack;
