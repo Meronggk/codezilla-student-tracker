@@ -8,7 +8,6 @@ import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
 import SessionData from "./components/SessionData";
 
-
 function App() {
 	return (
 		<div>

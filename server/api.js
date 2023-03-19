@@ -64,7 +64,6 @@ router.get("/getUserData", async function (req, res) {
 		});
 });
 
-
 // allsessions inculidng toggle button//
 function fetchallsessions(callback) {
 	db.query("SELECT * FROM sessions", (err, data) => {
@@ -102,7 +101,7 @@ router.get("/getSessionData", (req, response, next) => {
 //upcomingsession//
 function fetchupcomingsessions(callback) {
 	let currentdate = new Date();
-	let datetime =
+	let datetime ="'"+
 		currentdate.getFullYear() +
 		"-" +
 		currentdate.getMonth() +
@@ -110,7 +109,7 @@ function fetchupcomingsessions(callback) {
 		currentdate.getDay();
 
 	db.query(
-		`select * from SESSIONS where time >= '${datetime}'`,
+		`select * from SESSIONS where time > now()`,
 		(err, data) => {
 			if (err) {
 				return callback(err);

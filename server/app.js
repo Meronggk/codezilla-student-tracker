@@ -21,9 +21,11 @@ app.use(cookieSession({ name: "session", keys: ["hgkhghdhhhhhh"] }));
 app.use(express.json());
 app.use(configuredHelmet());
 app.use(configuredMorgan());
-app.use(cors({
-	origin: "http://localhost:3000",
-}));
+app.use(
+	cors({
+		origin: "http://localhost:3000",
+	})
+);
 
 if (config.production) {
 	app.enable("trust proxy");
