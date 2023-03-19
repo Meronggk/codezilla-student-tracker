@@ -104,22 +104,19 @@ router.get("/getSessionData", (req, response, next) => {
 function fetchupcomingsessions(callback) {
 	let currentdate = new Date();
 	// let datetime ="'"+
-		currentdate.getFullYear() +
+	currentdate.getFullYear() +
 		"-" +
 		currentdate.getMonth() +
 		"-" +
 		currentdate.getDay();
 
-	db.query(
-		"select * from SESSIONS where time > now()",
-		(err, data) => {
-			if (err) {
-				return callback(err);
-			}
-
-			return callback(undefined, data.rows);
+	db.query("select * from SESSIONS where time > now()", (err, data) => {
+		if (err) {
+			return callback(err);
 		}
-	);
+
+		return callback(undefined, data.rows);
+	});
 }
 router.get("/getUpcomingSession", (req, res) => {
 	fetchupcomingsessions((err, data) => {
