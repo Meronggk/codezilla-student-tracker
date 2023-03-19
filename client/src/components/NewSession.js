@@ -42,7 +42,7 @@ function NewSession() {
 	// Handle form submissions
 	function handleSubmit(event) {
 		event.preventDefault();
-		fetch("/api/sessions", {
+		fetch("/api/newsession", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(formData),
@@ -86,7 +86,7 @@ function NewSession() {
 						showTimeSelect
 						timeFormat="HH:mm"
 						timeIntervals={15}
-						dateFormat="MMMM d, yyyy h:mm aa"
+						dateFormat="yyyy-MM-dd HH:mm:ss"
 						placeholderText="Select time"
 					/>
 
