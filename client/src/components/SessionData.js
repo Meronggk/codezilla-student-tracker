@@ -9,6 +9,7 @@ const SessionData = () => {
 	// Create state variables
 	let [responseData, setResponseData] = React.useState("");
 	const [checked, setChecked] = React.useState(true);
+
 	// fetches data
 	const fetchAllData = (e) => {
 		e.preventDefault();

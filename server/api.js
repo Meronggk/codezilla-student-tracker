@@ -87,8 +87,8 @@ router.get("/getAllSession", (req, res, next) => {
 });
 
 //find session//
+
 router.get("/getSessionData", (req, response, next) => {
-	// const id = parseInt(req.params.id);
 	const { id } = req.body;
 	db.query(`select * from SESSIONS where id = ${id}`, (err, res) => {
 		if (err) {
@@ -100,6 +100,7 @@ router.get("/getSessionData", (req, response, next) => {
 });
 
 //upcomingsession//
+
 function fetchupcomingsessions(callback) {
 	let currentdate = new Date();
 	let datetime ="'"+
