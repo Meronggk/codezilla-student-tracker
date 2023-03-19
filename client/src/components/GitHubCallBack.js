@@ -17,14 +17,14 @@ const GitHubCalllBack = () => {
 
 	function LoginUser() {
 		axios.post("/api/callback", { log: paramCode }).then(() => {
-		navigate("/dashboard");
+			navigate("/dashboard");
 		});
 	}
 	useEffect(() => {
 		LoginUser();
 	});
 
-	return  <Spinner animation="grow" />;
+	return <Spinner animation="grow" />;
 };
 
 export default GitHubCalllBack;

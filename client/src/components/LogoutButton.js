@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function LogoutButton() {
 	const navigate = useNavigate();
 	function handleEvent() {
-setTimeout(() => {
+		setTimeout(() => {
 			navigate("/signin");
 			console.log("You have been logged out.");
 		}, 2000);
@@ -21,9 +21,14 @@ setTimeout(() => {
 	};
 	return (
 		<div>
-			<button onClick={() => {
- handleLogout(); handleEvent();
-}}>Logout</button>
+			<button
+				onClick={() => {
+					handleLogout();
+					handleEvent();
+				}}
+			>
+				Logout
+			</button>
 		</div>
 	);
 }
