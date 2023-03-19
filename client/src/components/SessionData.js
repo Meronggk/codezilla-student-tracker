@@ -1,7 +1,9 @@
 import React from "react";
-import api from "../api/api";
+import axios from "axios";
 import Switch from "@mui/material/Switch";
 const label = { inputProps: { "aria-label": "Choose Session Data" } };
+const baseURL = "http://localhost:3100/api";
+
 
 const SessionData = () => {
 	// Create state variables
@@ -11,9 +13,7 @@ const SessionData = () => {
 	const fetchAllData = (e) => {
 		e.preventDefault();
 
-		api
-			.getAllSessionData()
-
+        axios.get(baseURL + "/getAllSession")
 			.then((response) => {
 				setResponseData(response.data);
 				console.log(response);
@@ -24,9 +24,7 @@ const SessionData = () => {
 	};
 	const fetchUpcommingData = (e) => {
 		e.preventDefault();
-		api
-			.getUpCommingSessionData()
-
+        axios.get(baseURL + "/getUpcomingSession")
 			.then((response) => {
 				setResponseData(response.data);
 				console.log(response);
