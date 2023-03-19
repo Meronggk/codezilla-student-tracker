@@ -103,7 +103,7 @@ router.get("/getSessionData", (req, response, next) => {
 
 function fetchupcomingsessions(callback) {
 	let currentdate = new Date();
-	let datetime ="'"+
+	// let datetime ="'"+
 		currentdate.getFullYear() +
 		"-" +
 		currentdate.getMonth() +
@@ -111,7 +111,7 @@ function fetchupcomingsessions(callback) {
 		currentdate.getDay();
 
 	db.query(
-		`select * from SESSIONS where time > now()`,
+		"select * from SESSIONS where time > now()",
 		(err, data) => {
 			if (err) {
 				return callback(err);
