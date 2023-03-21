@@ -109,11 +109,64 @@ router.get("/getUserData", async function (req, res) {
 // github loging backend ends
 
 //redirect link//
+
 router.get("/getZoomLink/:id", async function (req, res) {
 	const sessionid = parseInt(req.params.id);
-	const data = await db.query("SELECT * FROM sessions WHERE id = $1", [sessionid]).then((data) => data.rows[0]);
+
+	await db
+		.query("UPDATE attendance SET clockin_time = NOW() WHERE session_id = 1");
+
+	const data = await db
+		.query("SELECT * FROM sessions WHERE id = $1", [sessionid])
+		.then((data) => data.rows[0]);
 	res.json(data);
 });
+
+// attendence //
+
+// const express = require("express");
+// const router = express.Router();
+// const { Pool } = require("pg");
+
+// // Set up a connection pool
+// const pool = new Pool({
+// 	connectionString: process.env.DATABASE_URL,
+// 	ssl: {
+// 		rejectUnauthorized: false,
+// 	},
+// });
+
+// Endpoint to add clock-in data to the database
+// router.post("/clockin", async (req, res) => {
+// 	try {
+// 		const { user_id, session_id, clockin_time, notes } = req.body;
+
+// 		// Insert the data into the database
+// 		const result = await pool.query(
+// 			"INSERT INTO clockin (user_id, session_id, clockin_time, notes) VALUES ($1, $2, $3, $4) RETURNING *",
+// 			[user_id, session_id, clockin_time, notes]
+// 		);
+
+// 		res.json(result.rows[0]);
+// 	} catch (err) {
+// 		// console.error(err.message);
+// 		res.status(500).json({ message: "Server error" });
+// 	}
+// });
+
+// // Endpoint to get all clock-in data from the database
+// router.get("/clockin", async (req, res) => {
+// 	try {
+// 		const result = await db.query("SELECT * FROM clockin");
+// 		res.json(result.rows);
+// 	} catch (err) {
+// 		// console.error(err.message);
+// 		res.status(500).json({ message: "Server error" });
+// 	}
+// });
+
+
+
 
 router.get("/fakelogin", (req, res) => {
 	req.session.userId = 12;
