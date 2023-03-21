@@ -7,7 +7,7 @@ import {
 	CalendarOutlined,
 } from "@ant-design/icons";
 import NewSession from "./NewSession";
-import Form from "./Form";
+import Form from "./AttendanceForm";
 //import LogoutButton from "./LogoutButton";
 
 const { Sider } = Layout;
