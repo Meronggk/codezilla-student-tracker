@@ -26,20 +26,20 @@ router.post("/form", (req, res) => {
 //form back end ends
 
 // login backend begins
-router.post("/signin", function (req, res) {
-	const email = req.body.email;
-	const password = req.body.password;
+// router.post("/signin", function (req, res) {
+// 	const email = req.body.email;
+// 	const password = req.body.password;
 
-	if (!email || !password) {
-		// eslint-disable-next-line no-undef
-		return res.status(400).send("email and password required");
-	}
+// 	if (!email || !password) {
+// 		// eslint-disable-next-line no-undef
+// 		return res.status(400).send("email and password required");
+// 	}
 
-	db.query("SELECT * FROM users ", [users]).then((res) => {
-		// eslint-disable-next-line no-undef
-		return res.status(400).send("user not available");
-	});
-});
+// 	db.query("SELECT * FROM users ", [users]).then((res) => {
+// 		// eslint-disable-next-line no-undef
+// 		return res.status(400).send("user not available");
+// 	});
+// });
 
 // login backend ends
 
@@ -143,11 +143,21 @@ router.get("/getZoomMeeting/:id", function (req, res) {
 	res.json(data);
 });
 
-router.get("/fakelogin", (req, res) => {
+router.get("/fakelogin", async (req, res) => {
 	req.session.userId = 12;
 	req.session.username = "gghfgf";
 	req.session.count = 0;
+	// Retrieve the user's role from the database or other storage mechanism and set it in the session object
+	// For example, assuming the user's role is stored in a database table called "users":
+	const user = await user.findById(req.session.userId);
+	req.session.role = user.role;
 	res.json({ message: "Login Successful!" });
+});
+
+router.post("/changerole", (req, res) => {
+	const { role } = req.body; // Get the new role from the request body
+	req.session.role = role; // Update the user's role in the session
+	res.json({ message: "Role updated successfully!" });
 });
 
 // Endpoint for debugging the session
@@ -188,12 +198,12 @@ router.post("/sessions", (req, res) => {
 	}
 
 	const sql =
-		"INSERT INTO sessions (name, time, cohort_id, meeting_url) VALUES ($1, $2, $3, $4)";
+		"INSERT INTO sessions (name, time, cohort_id, meeting_url) VALUES ($1,$2, $3, $4)";
 	const values = [name, time, cohortId, meetingUrl];
 
 	db.query(sql, values, (error) => {
 		if (error) {
-			res.status(500).send("Error creating session");
+			res.status(500).send("Error creating session" + error.message);
 		} else {
 			res.status(201).send("Session created");
 		}
