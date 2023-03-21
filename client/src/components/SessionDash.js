@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import NewSession from "./NewSession";
 import Form from "./Form";
-//import LogoutButton from "./LogoutButton";
+import LogoutButton from "./LogoutButton";
 
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
@@ -101,6 +101,7 @@ const SessionDash = () => {
 							"attendance-form",
 							"upcoming-classes",
 						].map(renderMenuItem)}
+						<LogoutButton />
 					</Menu>
 				)}
 			</Sider>

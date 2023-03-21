@@ -6,14 +6,14 @@
 }
 
 .login-form {
-	width: 90%;
-	max-width: 600px;
+	width: 40%;
+	max-width: 400px;
 	margin: auto;
 	text-align: center;
 }
 
 .first-line {
-	margin-top: 1.5rem;
+	margin-top: 0.4rem;
 }
 
 .email {
@@ -23,10 +23,10 @@
 
 input[type="email"],
 input[type="Password"] {
-	width: 100%;
+	width: 90%;
 	padding: 1rem;
 	font-size: 1rem;
-	border: none;
+	border: groove;
 	border-bottom: 1px solid #ccc;
 }
 
@@ -38,14 +38,14 @@ button.button {
 	font-size: 1.2rem;
 	font-weight: bold;
 	color: #fff;
-	background-color: #007bff;
+	background-color: #1ea53f;
 	border: none;
 	border-radius: 0.25rem;
 	cursor: pointer;
 }
 
 button.button:hover {
-	background-color: #0069d9;
+	background-color: #0b7726;
 }
 .gitbtn {
 	display: block;
@@ -54,13 +54,13 @@ button.button:hover {
 	margin-top: 1rem;
 	font-size: 1.2rem;
 	font-weight: bold;
-	background-color: #007bff;
+	background-color: #1ea53f;
 	border: none;
 	border-radius: 0.25rem;
 	cursor: pointer;
 }
 .gitbtn.gitbtn:hover {
-	background-color: #0069d9;
+	background-color: #0b7726;
 }
 a {
 	text-decoration: none;
