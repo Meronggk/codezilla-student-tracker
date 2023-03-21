@@ -1,4 +1,3 @@
-const cors = require("cors");
 import express from "express";
 import cookieSession from "cookie-session";
 import apiRouter from "./api";
