@@ -15,29 +15,31 @@ let users = [];
 
 // //form backend begins
 router.get("/users/trainee", async (req, res) => {
-
-db.query("SELECT * FROM users WHERE role='Trainee' ")
-.then((data) => {
-res.json(data.rows);
-})
-.catch((err) => {
-	res.status(500).send(err);
-});
+	db.query("SELECT * FROM users WHERE role='Trainee' ")
+		.then((data) => {
+			res.json(data.rows);
+		})
+		.catch((err) => {
+			res.status(500).send(err);
+		});
 });
 
 router.post("/attendence", async (req, res) => {
 	// eslint-disable-next-line no-console
 	console.log(req.body);
-	for(let i=0 ; i<req.body.length; i++){
-	const { user_id, session_id, notes } = req.body[i];
-await db.query("INSERT INTO attendence(user_id, session_id, notes) VALUES($1, $2, $3)", [user_id, session_id, notes]);
+	for (let i = 0; i < req.body.length; i++) {
+		const { user_id, session_id, notes } = req.body[i];
+		await db.query(
+			"INSERT INTO attendence(user_id, session_id, notes) VALUES($1, $2, $3)",
+			[user_id, session_id, notes]
+		);
 	}
-// .then(() => {
-res.status(201).json({ mesg: "done" });
-// });
+	// .then(() => {
+	res.status(201).json({ mesg: "done" });
+	// });
 });
 
- //form back end ends
+//form back end ends
 
 // login backend begins
 router.post("/signin", function (req, res) {
@@ -237,9 +239,6 @@ router.get("/users/:id", async (req, res) => {
 		res.status(500).json({ message: "Internal server error" });
 	}
 });
-
-
-
 
 // router.get("/user/me", (req, res) => {
 // 	const userName = req.session.userName ? req.session.userName : null;
