@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import GithubLogin from "../components/GitHubLogin";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ onLogin }) => {
+	const navigate = useNavigate();
+	function handleEvent() {
+		if (email && password) {
+			navigate("/dashboard");
+		} else {
+			console.log("error");
+		}
+	}
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	const onLogIn = () => {
-		fetch(`${process.env.REACT_APP_BACK_END_URL}/signin`, {
+		fetch("/api/signin", {
 			method: "POST",
 			body: JSON.stringify({
 				email: email,
@@ -24,7 +33,7 @@ const Login = ({ onLogin }) => {
 		<div className="body">
 			<div className="login-form">
 				<div>
-					<h3 className="first-line">CLASS REGISTER</h3>
+					<h3 className="first-line">CLASS LOGIN</h3>
 				</div>
 				<div>
 					<div className="email">
@@ -47,7 +56,13 @@ const Login = ({ onLogin }) => {
 							required
 						></input>
 					</div>
-					<button className="button" onClick={onLogIn}>
+					<button
+						className="button"
+						onClick={() => {
+							onLogIn();
+							handleEvent();
+						}}
+					>
 						Login
 					</button>
 					<p>or</p>

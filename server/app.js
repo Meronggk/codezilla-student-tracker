@@ -39,8 +39,4 @@ app.use(clientRouter(apiRoot));
 
 app.use(logErrors());
 
-//coockei session and authenticate user
-/* eslint-disable no-undef */
-
-//----------------------------------------------------------------------
 export default app;

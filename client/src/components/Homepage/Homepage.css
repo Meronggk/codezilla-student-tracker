@@ -47,13 +47,13 @@
 
 .container .home-page {
 	position: absolute;
-	color: rgb(221, 221, 233);
+	color: rgb(244, 244, 248);
 	display: flex;
 	justify-content: center;
 	margin-top: 100px;
-	font-size: 250%;
+	font-size: 300%;
 	top: 30%;
-	left: 30%;
+	left: 25%;
 }
 .container .btn {
 	position: absolute;
@@ -61,10 +61,10 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
-	background-color: #3f409b;
+	background-color: #1e7738;
 	color: rgb(250, 244, 244);
-	font-size: 30px;
-	padding: 16px 30px;
+	font-size: 25px;
+	padding: 12px 17px;
 	border: none;
 	cursor: pointer;
 	border-radius: 5px;
@@ -72,7 +72,7 @@
 }
 
 .container .btn:hover {
-	background-color: rgb(37, 6, 124);
+	background-color: rgb(15, 65, 23);
 	color: rgb(207, 199, 226);
 }
 .nav-links {
@@ -88,5 +88,4 @@
 	margin-right: 50px;
 	font-size: 200%;
 	position: relative;
-	top: 1px;
 }
