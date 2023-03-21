@@ -6,7 +6,11 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
+
 import AttendanceForm from "./components/AttendanceForm";
+
+
+
 import SessionDash from "./components/SessionDash";
 import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
@@ -26,7 +30,11 @@ function App() {
 				<Route path="/homepage" element={<Homepage />} />
 				<Route path="/attendanceForm" element={<AttendanceForm />} />
 				<Route path="/dashboard" element={<SessionDash />} />
+
 				<Route path="newsession" element={<NewSession />} />
+
+				<Route path="/sessions" element={<NewSession />} />
+
 				<Route path="/logout" element={<LogoutButton />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/register" element={<RegisterUser />} />
