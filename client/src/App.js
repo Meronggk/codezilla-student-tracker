@@ -6,11 +6,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
-
-import AttendanceForm from "./components/AttendanceForm";
-
-
-
+import AttendenceForm from "./components/AttendenceForm";
 import SessionDash from "./components/SessionDash";
 import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
@@ -28,7 +24,7 @@ function App() {
 				<Route path="/callback" element={<GitHubCalllBack />} />
 				<Route path="/signin" element={<Login />} />
 				<Route path="/homepage" element={<Homepage />} />
-				<Route path="/attendanceForm" element={<AttendanceForm />} />
+				<Route path="/attendenceForm" element={<AttendenceForm />} />
 				<Route path="/dashboard" element={<SessionDash />} />
 
 				<Route path="newsession" element={<NewSession />} />

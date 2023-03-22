@@ -4,6 +4,7 @@ import "./NavBar.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import logoimage from "../Homepage/assets/images/logoimage.png";
 
 const NavBar = () => {
 	const [click, setClick] = useState(false);
@@ -14,7 +15,7 @@ const NavBar = () => {
 			<Link to={"/"}>
 				<img
 					className="nav-logo"
-					src="https://syllabus.codeyourfuture.io/img/logo.png"
+					src={logoimage}
 					alt="cyf_logo"
 				/>
 			</Link>
