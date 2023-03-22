@@ -16,7 +16,7 @@ function App() {
 		<div>
 			<NavBar />
 			<Routes>
-			<Route path="/" element={<Homepage />} />
+				<Route path="/" element={<Homepage />} />
 				<Route path="/login" element={<GitHubLogin></GitHubLogin>} />
 				<Route path="/callback" element={<GitHubCalllBack />} />
 				<Route path="/signin" element={<Login />} />

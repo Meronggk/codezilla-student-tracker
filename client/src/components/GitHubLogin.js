@@ -70,7 +70,11 @@ function GitHubLogin() {
 							"https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
 						}
 					>
-						<img className="git-img" src="/images/github_icon.png" alt="GitHub icon" />
+						<img
+							className="git-img"
+							src="/images/github_icon.png"
+							alt="GitHub icon"
+						/>
 						Login with Github
 					</a>
 				</button>
