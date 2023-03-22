@@ -50,7 +50,7 @@ button.button {
 }
 
 button.button:hover {
-	background-color: #64270b;
+	background-color: #ac3112;
 }
 
 .gitbtn {
@@ -67,7 +67,7 @@ button.button:hover {
 }
 
 .gitbtn.gitbtn:hover {
-	background-color: #64270b;
+	background-color: #ac3112;
 }
 
 .git-img {
