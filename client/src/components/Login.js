@@ -33,7 +33,7 @@ const Login = ({ onLogin }) => {
 		<div className="body">
 			<div className="login-form">
 				<div>
-					<h3 className="first-line">CLASS LOGIN</h3>
+					<h3 className="first-line">Log in</h3>
 				</div>
 				<div>
 					<div className="email">

@@ -115,8 +115,6 @@ const SessionDash = () => {
 const UserProfile = () => {
 	return (
 		<div>
-			<h2>User Profile</h2>
-			{/* Insert user profile content here */}
 			<Profile />
 		</div>
 	);
@@ -125,9 +123,8 @@ const UserProfile = () => {
 const AddClasses = () => {
 	return (
 		<div>
-			<h2>Create Session</h2>
 			<NewSession />
-			{/* Insert add classes form here */}
+
 		</div>
 	);
 };
@@ -135,7 +132,6 @@ const AddClasses = () => {
 const AttendanceForm = () => {
 	return (
 		<div>
-			{" "}
 			<AttendenceForm />
 		</div>
 	);
