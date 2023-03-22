@@ -109,7 +109,8 @@ router.get("/getUserData", async function (req, res) {
 
 // github loging backend ends
 
-//redirect link//
+//redirect link-clockin//
+
 router.get("/joinSession", async function (req, res) {
 	const sessionid = parseInt(req.query.id);
 	const userId=1;
@@ -117,24 +118,12 @@ router.get("/joinSession", async function (req, res) {
 	await db
 		.query(Query);
 
-	res.json(sessionid);
-
-});
-
-router.get("/getZoomLink/:id", async function (req, res) {
-	const sessionid = parseInt(req.params.id);
-
-	await db
-		.query("UPDATE attendance SET clockin_time = NOW() WHERE session_id = 1");
-
 	const data = await db
 		.query("SELECT * FROM sessions WHERE id = $1", [sessionid])
 		.then((data) => data.rows[0]);
 	res.json(data);
+
 });
-
-
-
 
 
 router.get("/fakelogin", (req, res) => {

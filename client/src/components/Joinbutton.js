@@ -8,7 +8,7 @@ function JoinButton() {
 	useEffect(() => {
 		const currentTime = new Date();
 		const targetTime = new Date();
-		targetTime.setHours(20, 50, 0); // set target time to 10:00 AM
+		targetTime.setHours(21, 50, 0); // set target time to 10:00 AM
 		const isAfterClass1Hour = add(targetTime, { hours: 1, minutes: 10 });
 		setIsClickable(
 			isWithinInterval(currentTime, {
@@ -23,11 +23,13 @@ function JoinButton() {
 			})
 		);
 	}, []);
+
 	function handleClick() {
-		fetch("/api/getZoomLink/1")
+		fetch("http://localhost:3100/api/joinSession/id=1")
 			.then((response) => response.json())
 			.then((data) => {
 				console.log(data.meeting_url);
+				window.location.replace(data.meeting_url);
 			});
 	}
 	if (isClickable) {
