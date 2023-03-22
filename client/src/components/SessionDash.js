@@ -7,8 +7,8 @@ import {
 	CalendarOutlined,
 } from "@ant-design/icons";
 import NewSession from "./NewSession";
-import Form from "./AttendanceForm";
-//import LogoutButton from "./LogoutButton";
+//import AttendanceForm from "./AttendanceForm";
+import LogoutButton from "./LogoutButton";
 
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
@@ -101,6 +101,7 @@ const SessionDash = () => {
 							"attendance-form",
 							"upcoming-classes",
 						].map(renderMenuItem)}
+						<LogoutButton />
 					</Menu>
 				)}
 			</Sider>
@@ -132,7 +133,7 @@ const AttendanceForm = () => {
 	return (
 		<div>
 			{" "}
-			<Form />
+
 		</div>
 	);
 };
@@ -142,6 +143,7 @@ const UpcomingClasses = () => {
 		<div>
 			<h2>Upcoming Classes</h2>
 			{/* Insert upcoming classes content here */}
+
 		</div>
 	);
 };

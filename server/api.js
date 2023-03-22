@@ -11,7 +11,7 @@ const router = Router();
 const CLIENT_ID = "438f9e1d00fa92021341";
 const CLIENT_SECRET = "8e75503a0524b30ab1f08e5ac547ef8202df0236";
 
-let users = [];
+//let users = [];
 
 // //form backend begins
 router.get("/users/trainee", async (req, res) => {
@@ -51,7 +51,7 @@ router.post("/signin", function (req, res) {
 		return res.status(400).send("email and password required");
 	}
 
-	db.query("SELECT * FROM users ", [users]).then((res) => {
+	db.query("SELECT * FROM users ", []).then((res) => {
 		// eslint-disable-next-line no-undef
 		return res.status(400).send("user not available");
 	});
