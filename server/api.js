@@ -42,20 +42,20 @@ router.post("/attendence", async (req, res) => {
 //form back end ends
 
 // login backend begins
-router.post("/signin", function (req, res) {
-	const email = req.body.email;
-	const password = req.body.password;
+// router.post("/signin", function (req, res) {
+// 	const email = req.body.email;
+// 	const password = req.body.password;
 
-	if (!email || !password) {
-		// eslint-disable-next-line no-undef
-		return res.status(400).send("email and password required");
-	}
+// 	if (!email || !password) {
+// 		// eslint-disable-next-line no-undef
+// 		return res.status(400).send("email and password required");
+// 	}
 
-	db.query("SELECT * FROM users ", []).then((res) => {
-		// eslint-disable-next-line no-undef
-		return res.status(400).send("user not available");
-	});
-});
+// 	db.query("SELECT * FROM users ", []).then((res) => {
+// 		// eslint-disable-next-line no-undef
+// 		return res.status(400).send("user not available");
+// 	});
+// });
 
 // login backend ends
 
@@ -159,11 +159,21 @@ router.get("/getZoomMeeting/:id", function (req, res) {
 	res.json(data);
 });
 
-router.get("/fakelogin", (req, res) => {
+router.get("/fakelogin", async (req, res) => {
 	req.session.userId = 12;
 	req.session.username = "gghfgf";
 	req.session.count = 0;
+	// Retrieve the user's role from the database or other storage mechanism and set it in the session object
+	// For example, assuming the user's role is stored in a database table called "users":
+	const user = await user.findById(req.session.userId);
+	req.session.role = user.role;
 	res.json({ message: "Login Successful!" });
+});
+
+router.post("/changerole", (req, res) => {
+	const { role } = req.body; // Get the new role from the request body
+	req.session.role = role; // Update the user's role in the session
+	res.json({ message: "Role updated successfully!" });
 });
 
 // Endpoint for debugging the session
@@ -196,7 +206,7 @@ router.get("/cohorts", (req, res) => {
 });
 
 // POST request to create a new session
-router.post("/newsession", (req, res) => {
+router.post("/sessions", (req, res) => {
 	const { name, time, meetingUrl, cohortId } = req.body;
 	if (!name || !time || !meetingUrl || !cohortId) {
 		res.status(400).send("Missing required fields");
@@ -204,12 +214,12 @@ router.post("/newsession", (req, res) => {
 	}
 
 	const sql =
-		"INSERT INTO sessions (name, time, cohort_id, meeting_url) VALUES ($1, $2, $3, $4)";
+		"INSERT INTO sessions (name, time, cohort_id, meeting_url) VALUES ($1,$2, $3, $4)";
 	const values = [name, time, cohortId, meetingUrl];
 
 	db.query(sql, values, (error) => {
 		if (error) {
-			res.status(500).send("Error creating session");
+			res.status(500).send("Error creating session" + error.message);
 		} else {
 			res.status(201).send("Session created");
 		}
@@ -240,6 +250,7 @@ router.get("/users/:id", async (req, res) => {
 	}
 });
 
+
 // router.get("/user/me", (req, res) => {
 // 	const userName = req.session.userName ? req.session.userName : null;
 // 	const avatarUrl = req.session.avatar ? req.session.avatar : null;
@@ -253,6 +264,21 @@ router.get("/users/:id", async (req, res) => {
 // 	});
 // });
 // // Endpoint for switching cohorts for signed-in user
+
+router.get("/user/me", (req, res) => {
+	const userName = req.session.userName ? req.session.userName : null;
+	const avatarUrl = req.session.avatar ? req.session.avatar : null;
+	const userGithubId = req.session.githubid ? req.session.githubid : null;
+	const userGithubUrl = req.session.githubUrl ? req.session.githubUrl : null;
+	res.json({
+		userName: userName,
+		avatarUrl: avatarUrl,
+		userGithubId: userGithubId,
+		userGithubUrl: userGithubUrl,
+	});
+});
+// Endpoint for switching cohorts for signed-in user
+
 // router.put("/switchCohort/:id", async (req, res) => {
 // 	const cohortId = +req.params.id;
 // 	const query = "SELECT * FROM cohorts WHERE id = $1";

@@ -4,6 +4,9 @@ import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import Spinner from "react-bootstrap/Spinner";
+
+
 const GitHubCalllBack = () => {
 	const navigate = useNavigate();
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -23,7 +26,7 @@ const GitHubCalllBack = () => {
 		LoginUser();
 	});
 
-	return <div>loading</div>;
+	return <Spinner animation="grow" />;
 };
 
 export default GitHubCalllBack;

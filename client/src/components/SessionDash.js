@@ -7,8 +7,13 @@ import {
 	CalendarOutlined,
 } from "@ant-design/icons";
 import NewSession from "./NewSession";
-//import AttendanceForm from "./AttendanceForm";
+
+import AttendenceForm from "./AttendenceForm";
+//import LogoutButton from "./LogoutButton";
+
+
 import LogoutButton from "./LogoutButton";
+
 
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
@@ -133,6 +138,7 @@ const AttendanceForm = () => {
 	return (
 		<div>
 			{" "}
+<AttendenceForm />
 
 		</div>
 	);
