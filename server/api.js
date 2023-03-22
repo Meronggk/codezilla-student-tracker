@@ -250,18 +250,6 @@ router.get("/users/:id", async (req, res) => {
 	}
 });
 
-// router.get("/user/me", (req, res) => {
-// 	const userName = req.session.userName ? req.session.userName : null;
-// 	const avatarUrl = req.session.avatar ? req.session.avatar : null;
-// 	const userGithubId = req.session.githubid ? req.session.githubid : null;
-// 	const userGithubUrl = req.session.githubUrl ? req.session.githubUrl : null;
-// 	res.json({
-// 		userName: userName,
-// 		avatarUrl: avatarUrl,
-// 		userGithubId: userGithubId,
-// 		userGithubUrl: userGithubUrl,
-// 	});
-// });
 // // Endpoint for switching cohorts for signed-in user
 
 router.get("/user/me", (req, res) => {
@@ -276,7 +264,6 @@ router.get("/user/me", (req, res) => {
 		userGithubUrl: userGithubUrl,
 	});
 });
-// Endpoint for switching cohorts for signed-in user
 
 // router.put("/switchCohort/:id", async (req, res) => {
 // 	const cohortId = +req.params.id;
