@@ -4,7 +4,6 @@ import img2 from "../Homepage/assets/images/img2.jpg";
 import img3 from "../Homepage/assets/images/img3.jpg";
 import { useNavigate } from "react-router-dom";
 
-
 const Homepage = () => {
 	const navigate = useNavigate();
 	function handleEvent() {
@@ -23,9 +22,7 @@ const Homepage = () => {
 					Get Started
 				</button>
 			</div>
-			<div>
-
-			</div>
+			<div></div>
 		</div>
 	);
 };

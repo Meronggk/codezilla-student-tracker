@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import Switch from "@mui/material/Switch";
 
-
 const label = { inputProps: { "aria-label": "Choose Session Data" } };
 
 const baseURL = "http://localhost:3100/api";
