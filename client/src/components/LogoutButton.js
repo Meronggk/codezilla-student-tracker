@@ -1,6 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function LogoutButton() {
+	const navigate = useNavigate();
+	function handleEvent() {
+		setTimeout(() => {
+			navigate("/");
+			console.log("You have been logged out.");
+		}, 2000);
+	}
 	const handleLogout = () => {
 		fetch("/api/logout", {
 			method: "POST",
@@ -13,7 +21,14 @@ function LogoutButton() {
 	};
 	return (
 		<div>
-			<button onClick={handleLogout}>Logout</button>
+			<button
+				onClick={() => {
+					handleLogout();
+					handleEvent();
+				}}
+			>
+				Logout
+			</button>
 		</div>
 	);
 }

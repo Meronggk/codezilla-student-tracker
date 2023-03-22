@@ -11,18 +11,34 @@ const router = Router();
 const CLIENT_ID = "438f9e1d00fa92021341";
 const CLIENT_SECRET = "8e75503a0524b30ab1f08e5ac547ef8202df0236";
 
-//form backend begins
-let users = [];
-router.get("/form/:id", (req, res) => {
-	db.query("Select * from users").then((result) => {
-		res.json(result.rows);
-	});
+//let users = [];
+
+// //form backend begins
+router.get("/users/trainee", async (req, res) => {
+	db.query("SELECT * FROM users WHERE role='Trainee' ")
+		.then((data) => {
+			res.json(data.rows);
+		})
+		.catch((err) => {
+			res.status(500).send(err);
+		});
 });
-router.post("/form", (req, res) => {
-	const newUser = req.body;
-	users.push(newUser);
-	res.json(users);
+
+router.post("/attendence", async (req, res) => {
+	// eslint-disable-next-line no-console
+	console.log(req.body);
+	for (let i = 0; i < req.body.length; i++) {
+		const { user_id, session_id, notes } = req.body[i];
+		await db.query(
+			"INSERT INTO attendence(user_id, session_id, notes) VALUES($1, $2, $3)",
+			[user_id, session_id, notes]
+		);
+	}
+	// .then(() => {
+	res.status(201).json({ mesg: "done" });
+	// });
 });
+
 //form back end ends
 
 // login backend begins
@@ -35,7 +51,7 @@ router.post("/form", (req, res) => {
 // 		return res.status(400).send("email and password required");
 // 	}
 
-// 	db.query("SELECT * FROM users ", [users]).then((res) => {
+// 	db.query("SELECT * FROM users ", []).then((res) => {
 // 		// eslint-disable-next-line no-undef
 // 		return res.status(400).send("user not available");
 // 	});
@@ -106,6 +122,71 @@ router.get("/getUserData", async function (req, res) {
 			console.log(data);
 			res.json(data);
 		});
+});
+
+// allsessions inculidng toggle button//
+
+function fetchallsessions(callback) {
+	db.query("SELECT * FROM sessions", (err, data) => {
+		if (err) {
+			return callback(err);
+		}
+
+		return callback(undefined, data.rows);
+	});
+}
+
+router.get("/getAllSession", (req, res, next) => {
+	fetchallsessions((err, data) => {
+		if (err) {
+			return next(err);
+		}
+
+		res.status(200).send(data);
+	});
+});
+
+//find session//
+
+router.get("/getSessionData", (req, response, next) => {
+	const { id } = req.body;
+	db.query(`select * from SESSIONS where id = ${id}`, (err, res) => {
+		if (err) {
+			return next(err);
+		} else {
+			response.json(res.rows);
+		}
+	});
+});
+
+//upcomingsession//
+
+function fetchupcomingsessions(callback) {
+	let currentdate = new Date();
+	// let datetime ="'"+
+	currentdate.getFullYear() +
+		"-" +
+		currentdate.getMonth() +
+		"-" +
+		currentdate.getDay();
+
+	db.query("select * from SESSIONS where time > now()", (err, data) => {
+		if (err) {
+			return callback(err);
+		}
+
+		return callback(undefined, data.rows);
+	});
+}
+router.get("/getUpcomingSession", (req, res) => {
+	fetchupcomingsessions((err, data) => {
+		if (err) {
+			// return next(err);
+			res.status(500).send("error");
+		}
+
+		res.status(200).send(data);
+	});
 });
 
 // github loging backend ends
@@ -190,7 +271,7 @@ router.get("/cohorts", (req, res) => {
 });
 
 // POST request to create a new session
-router.post("/newsession", (req, res) => {
+router.post("/sessions", (req, res) => {
 	const { name, time, meetingUrl, cohortId } = req.body;
 	if (!name || !time || !meetingUrl || !cohortId) {
 		res.status(400).send("Missing required fields");
@@ -233,6 +314,9 @@ router.get("/users/:id", async (req, res) => {
 		res.status(500).json({ message: "Internal server error" });
 	}
 });
+
+// // Endpoint for switching cohorts for signed-in user
+
 router.get("/user/me", (req, res) => {
 	const userName = req.session.userName ? req.session.userName : null;
 	const avatarUrl = req.session.avatar ? req.session.avatar : null;
@@ -245,31 +329,31 @@ router.get("/user/me", (req, res) => {
 		userGithubUrl: userGithubUrl,
 	});
 });
-// Endpoint for switching cohorts for signed-in user
-router.put("/switchCohort/:id", async (req, res) => {
-	const cohortId = +req.params.id;
-	const query = "SELECT * FROM cohorts WHERE id = $1";
-	// Check request body
-	if (!req.body || !req.body.cohortId) {
-		return res
-			.status(400)
-			.json({ message: "Missing cohortId property in request body" });
-	}
-	// Check if the cohort with the specified ID exists in the database
-	const result = await db.query(query, [cohortId]);
-	if (result.rows.length === 0) {
-		res.status(404).json({ message: "Cohort not found" });
-	} else {
-		const cohort = result.rows[0];
-		req.session.cohortId = req.body.cohortId;
-		res.json({
-			id: cohort.id,
-			name: cohort.name,
-			region: cohort.region,
-			message: "Switched to cohort with ID " + req.session.cohortId,
-		});
-	}
-});
+
+// router.put("/switchCohort/:id", async (req, res) => {
+// 	const cohortId = +req.params.id;
+// 	const query = "SELECT * FROM cohorts WHERE id = $1";
+// 	// Check request body
+// 	if (!req.body || !req.body.cohortId) {
+// 		return res
+// 			.status(400)
+// 			.json({ message: "Missing cohortId property in request body" });
+// 	}
+// 	// Check if the cohort with the specified ID exists in the database
+// 	const result = await db.query(query, [cohortId]);
+// 	if (result.rows.length === 0) {
+// 		res.status(404).json({ message: "Cohort not found" });
+// 	} else {
+// 		const cohort = result.rows[0];
+// 		req.session.cohortId = req.body.cohortId;
+// 		res.json({
+// 			id: cohort.id,
+// 			name: cohort.name,
+// 			region: cohort.region,
+// 			message: "Switched to cohort with ID " + req.session.cohortId,
+// 		});
+// 	}
+// });
 router.post("/registerUsers", (req, res) => {
 	const { name, role, region } = req.body;
 	if (!name || !role || !region) {
