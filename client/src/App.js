@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import GitHubCalllBack from "./components/GitHubCallBack";
 import GitHubLogin from "./components/GitHubLogin";
 import Login from "./components/Login";

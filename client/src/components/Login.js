@@ -2,75 +2,70 @@ import React, { useState } from "react";
 import GithubLogin from "../components/GitHubLogin";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import SwitchRoles from "./SwitchRoles";
 
 const Login = ({ onLogin }) => {
-	const navigate = useNavigate();
-	function handleEvent() {
-		if (email && password) {
-			navigate("/dashboard");
-		} else {
-			console.log("error");
-		}
-	}
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
 
-	const onLogIn = () => {
-		fetch("/api/signin", {
-			method: "POST",
-			body: JSON.stringify({
-				email: email,
-				password: password,
-			}),
-			headers: { "Content-Type": "application/json" },
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				onLogin(data);
-			});
-	};
-	return (
-		<div className="body">
-			<div className="login-form">
-				<div>
-					<h3 className="first-line">CLASS LOGIN</h3>
-				</div>
-				<div>
-					<div className="email">
-						<input
-							type="email"
-							placeholder="user name or email"
-							value={email}
-							name="email"
-							onChange={(event) => setEmail(event.target.value)}
-							required
-						></input>
-					</div>
-					<div className="email">
-						<input
-							type="Password"
-							placeholder="Password"
-							value={password}
-							name="password"
-							onChange={(event) => setPassword(event.target.value)}
-							required
-						></input>
-					</div>
-					<button
-						className="button"
-						onClick={() => {
-							onLogIn();
-							handleEvent();
-						}}
-					>
-						Login
-					</button>
-					<p>or</p>
-				</div>
-				<GithubLogin />
-			</div>
-		</div>
-	);
+  const handleLogin = () => {
+    fetch("/api/signin", {
+      method: "POST",
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        role: role,
+      }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        onLogin(data);
+        navigate("/dashboard"); // redirect to dashboard on successful login
+      })
+      .catch((error) => console.log(error));
+  };
+
+  return (
+    <div className="body">
+      <div className="login-form">
+        <div>
+          <h3 className="first-line">CLASS LOGIN</h3>
+        </div>
+        <div>
+          <div className="email">
+            <input
+              type="email"
+              placeholder="user name or email"
+              value={email}
+              name="email"
+              onChange={(event) => setEmail(event.target.value)}
+              required
+            ></input>
+          </div>
+          <div className="email">
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              name="password"
+              onChange={(event) => setPassword(event.target.value)}
+              required
+            ></input>
+          </div>
+          
+          <button className="button" onClick={handleLogin}>
+            Login
+          </button>
+          <p>or</p>
+        </div>
+        <GithubLogin />
+        <SwitchRoles role={role} setRole={setRole} />
+      </div>
+    </div>
+  );
 };
 
 export default Login;
