@@ -189,7 +189,7 @@ router.get("/getUpcomingSession", (req, res) => {
 	});
 });
 
-// github loging backend ends
+
 
 router.get("/getZoomMeeting/:id", function (req, res) {
 	const sessionid = parseInt(req.params.id);
