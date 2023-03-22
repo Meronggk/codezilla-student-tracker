@@ -11,18 +11,34 @@ const router = Router();
 const CLIENT_ID = "438f9e1d00fa92021341";
 const CLIENT_SECRET = "8e75503a0524b30ab1f08e5ac547ef8202df0236";
 
-//form backend begins
-let users = [];
-router.get("/form/:id", (req, res) => {
-	db.query("Select * from users").then((result) => {
-		res.json(result.rows);
-	});
+//let users = [];
+
+// //form backend begins
+router.get("/users/trainee", async (req, res) => {
+	db.query("SELECT * FROM users WHERE role='Trainee' ")
+		.then((data) => {
+			res.json(data.rows);
+		})
+		.catch((err) => {
+			res.status(500).send(err);
+		});
 });
-router.post("/form", (req, res) => {
-	const newUser = req.body;
-	users.push(newUser);
-	res.json(users);
+
+router.post("/attendence", async (req, res) => {
+	// eslint-disable-next-line no-console
+	console.log(req.body);
+	for (let i = 0; i < req.body.length; i++) {
+		const { user_id, session_id, notes } = req.body[i];
+		await db.query(
+			"INSERT INTO attendence(user_id, session_id, notes) VALUES($1, $2, $3)",
+			[user_id, session_id, notes]
+		);
+	}
+	// .then(() => {
+	res.status(201).json({ mesg: "done" });
+	// });
 });
+
 //form back end ends
 
 // login backend begins
@@ -35,7 +51,7 @@ router.post("/form", (req, res) => {
 // 		return res.status(400).send("email and password required");
 // 	}
 
-// 	db.query("SELECT * FROM users ", [users]).then((res) => {
+// 	db.query("SELECT * FROM users ", []).then((res) => {
 // 		// eslint-disable-next-line no-undef
 // 		return res.status(400).send("user not available");
 // 	});
@@ -298,6 +314,9 @@ router.get("/users/:id", async (req, res) => {
 		res.status(500).json({ message: "Internal server error" });
 	}
 });
+
+// // Endpoint for switching cohorts for signed-in user
+
 router.get("/user/me", (req, res) => {
 	const userName = req.session.userName ? req.session.userName : null;
 	const avatarUrl = req.session.avatar ? req.session.avatar : null;
@@ -310,7 +329,7 @@ router.get("/user/me", (req, res) => {
 		userGithubUrl: userGithubUrl,
 	});
 });
-// Endpoint for switching cohorts for signed-in user
+
 // router.put("/switchCohort/:id", async (req, res) => {
 // 	const cohortId = +req.params.id;
 // 	const query = "SELECT * FROM cohorts WHERE id = $1";
