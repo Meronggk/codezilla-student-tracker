@@ -6,12 +6,14 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
+import SessionData from "./components/SessionData";
 import Form from "./components/Form";
 import SessionDash from "./components/SessionDash";
 import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
 import Profile from "./pages/Profile";
 import RegisterUser from "./components/RegisterUser";
+
 function App() {
 	return (
 		<div>
@@ -23,6 +25,7 @@ function App() {
 				<Route path="/callback" element={<GitHubCalllBack />} />
 				<Route path="/signin" element={<Login />} />
 				<Route path="/homepage" element={<Homepage />} />
+				<Route path="/sessiondata" element={<SessionData />} />
 				<Route path="/form" element={<Form />} />
 				<Route path="/dashboard" element={<SessionDash />} />
 				<Route path="/sessions" element={<NewSession />} />

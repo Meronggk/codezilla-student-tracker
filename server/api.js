@@ -108,6 +108,71 @@ router.get("/getUserData", async function (req, res) {
 		});
 });
 
+// allsessions inculidng toggle button//
+
+function fetchallsessions(callback) {
+	db.query("SELECT * FROM sessions", (err, data) => {
+		if (err) {
+			return callback(err);
+		}
+
+		return callback(undefined, data.rows);
+	});
+}
+
+router.get("/getAllSession", (req, res, next) => {
+	fetchallsessions((err, data) => {
+		if (err) {
+			return next(err);
+		}
+
+		res.status(200).send(data);
+	});
+});
+
+//find session//
+
+router.get("/getSessionData", (req, response, next) => {
+	const { id } = req.body;
+	db.query(`select * from SESSIONS where id = ${id}`, (err, res) => {
+		if (err) {
+			return next(err);
+		} else {
+			response.json(res.rows);
+		}
+	});
+});
+
+//upcomingsession//
+
+function fetchupcomingsessions(callback) {
+	let currentdate = new Date();
+	// let datetime ="'"+
+	currentdate.getFullYear() +
+		"-" +
+		currentdate.getMonth() +
+		"-" +
+		currentdate.getDay();
+
+	db.query("select * from SESSIONS where time > now()", (err, data) => {
+		if (err) {
+			return callback(err);
+		}
+
+		return callback(undefined, data.rows);
+	});
+}
+router.get("/getUpcomingSession", (req, res) => {
+	fetchupcomingsessions((err, data) => {
+		if (err) {
+			// return next(err);
+			res.status(500).send("error");
+		}
+
+		res.status(200).send(data);
+	});
+});
+
 // github loging backend ends
 
 router.get("/getZoomMeeting/:id", function (req, res) {
