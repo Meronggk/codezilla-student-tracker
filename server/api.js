@@ -4,6 +4,7 @@ import { Router } from "express";
 import axios from "axios";
 import logger from "./utils/logger";
 import db from "./db";
+import { async } from "rxjs";
 //import Password from "antd/es/input/Password";
 
 const router = Router();
@@ -109,6 +110,16 @@ router.get("/getUserData", async function (req, res) {
 // github loging backend ends
 
 //redirect link//
+router.get("/joinSession", async function (req, res) {
+	const sessionid = parseInt(req.query.id);
+	const userId=1;
+	const Query = `insert into attendence  (session_id,user_id,clockin_time,notes)  values ('${sessionid}','${userId}',now(),'join');`;
+	await db
+		.query(Query);
+
+	res.json(sessionid);
+
+});
 
 router.get("/getZoomLink/:id", async function (req, res) {
 	const sessionid = parseInt(req.params.id);
@@ -122,48 +133,6 @@ router.get("/getZoomLink/:id", async function (req, res) {
 	res.json(data);
 });
 
-// attendence //
-
-// const express = require("express");
-// const router = express.Router();
-// const { Pool } = require("pg");
-
-// // Set up a connection pool
-// const pool = new Pool({
-// 	connectionString: process.env.DATABASE_URL,
-// 	ssl: {
-// 		rejectUnauthorized: false,
-// 	},
-// });
-
-// Endpoint to add clock-in data to the database
-// router.post("/clockin", async (req, res) => {
-// 	try {
-// 		const { user_id, session_id, clockin_time, notes } = req.body;
-
-// 		// Insert the data into the database
-// 		const result = await pool.query(
-// 			"INSERT INTO clockin (user_id, session_id, clockin_time, notes) VALUES ($1, $2, $3, $4) RETURNING *",
-// 			[user_id, session_id, clockin_time, notes]
-// 		);
-
-// 		res.json(result.rows[0]);
-// 	} catch (err) {
-// 		// console.error(err.message);
-// 		res.status(500).json({ message: "Server error" });
-// 	}
-// });
-
-// // Endpoint to get all clock-in data from the database
-// router.get("/clockin", async (req, res) => {
-// 	try {
-// 		const result = await db.query("SELECT * FROM clockin");
-// 		res.json(result.rows);
-// 	} catch (err) {
-// 		// console.error(err.message);
-// 		res.status(500).json({ message: "Server error" });
-// 	}
-// });
 
 
 

@@ -8,7 +8,7 @@ function JoinButton() {
 	useEffect(() => {
 		const currentTime = new Date();
 		const targetTime = new Date();
-		targetTime.setHours(17, 50, 0); // set target time to 10:00 AM
+		targetTime.setHours(20, 50, 0); // set target time to 10:00 AM
 		const isAfterClass1Hour = add(targetTime, { hours: 1, minutes: 10 });
 		setIsClickable(
 			isWithinInterval(currentTime, {
