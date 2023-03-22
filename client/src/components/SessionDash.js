@@ -9,9 +9,8 @@ import {
 import NewSession from "./NewSession";
 
 import AttendenceForm from "./AttendenceForm";
-//import LogoutButton from "./LogoutButton";
-
 import LogoutButton from "./LogoutButton";
+import Profile from "./Profile";
 
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
@@ -118,6 +117,7 @@ const UserProfile = () => {
 		<div>
 			<h2>User Profile</h2>
 			{/* Insert user profile content here */}
+			<Profile />
 		</div>
 	);
 };
