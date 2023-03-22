@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 import Spinner from "react-bootstrap/Spinner";
 
-
 const GitHubCalllBack = () => {
 	const navigate = useNavigate();
 	const [searchParams, setSearchParams] = useSearchParams();

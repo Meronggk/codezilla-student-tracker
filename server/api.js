@@ -250,7 +250,6 @@ router.get("/users/:id", async (req, res) => {
 	}
 });
 
-
 // router.get("/user/me", (req, res) => {
 // 	const userName = req.session.userName ? req.session.userName : null;
 // 	const avatarUrl = req.session.avatar ? req.session.avatar : null;

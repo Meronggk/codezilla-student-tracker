@@ -13,11 +13,7 @@ const NavBar = () => {
 	return (
 		<div className="header">
 			<Link to={"/"}>
-				<img
-					className="nav-logo"
-					src={logoimage}
-					alt="cyf_logo"
-				/>
+				<img className="nav-logo" src={logoimage} alt="cyf_logo" />
 			</Link>
 			<ul className={click ? "nav-menu active" : "nav-menu"}>
 				<li>
