@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-unexpected-multiline */
 import { Router } from "express";
@@ -72,12 +73,24 @@ router.post("/callback", async (req, res) => {
 					},
 				})
 				.then((data) => {
-					req.session.userName = data.data.login; // github username
-					req.session.githubid = data.data.id; // user id
-					req.session.avatar = data.data.avatar_url; // avatar
-					req.session.githubUrl = data.data.html_url; // githubUrl
-					req.session.cohortId = 4; // NW5
-					res.json(data.data);
+					const query = "SELECT * FROM users WHERE github_user_id = $1";
+					db.query(query, [data.data.id], (error, results) => {
+						if (error) {
+							console.log(error);
+							throw error;
+						}
+						if (results.rows <= 0) {
+							res.json({ error: "User not found" });
+						} else {
+							req.session.userId = results.rows[0].id;
+							req.session.userName = data.data.login; // github username
+							req.session.githubid = data.data.id; // user id
+							req.session.avatar = data.data.avatar_url; // avatar
+							req.session.githubUrl = data.data.html_url; // githubUrl
+							req.session.cohortId = 4; // NW5
+							res.json(data.data);
+						}
+					});
 				})
 				.catch((error) => {
 					res.status(500).json({ error: error.message });
@@ -228,11 +241,13 @@ router.get("/user/me", (req, res) => {
 	const avatarUrl = req.session.avatar ? req.session.avatar : null;
 	const userGithubId = req.session.githubid ? req.session.githubid : null;
 	const userGithubUrl = req.session.githubUrl ? req.session.githubUrl : null;
+	const userId = req.session.userId ? req.session.userId : null;
 	res.json({
 		userName: userName,
 		avatarUrl: avatarUrl,
 		userGithubId: userGithubId,
 		userGithubUrl: userGithubUrl,
+		userId: userId,
 	});
 });
 // Endpoint for switching cohorts for signed-in user
