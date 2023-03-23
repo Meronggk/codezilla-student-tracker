@@ -11,6 +11,7 @@ import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
 import Profile from "./components/Profile";
 import RegisterUser from "./components/RegisterUser";
+import Footer from "./components/Footer";
 
 function App() {
 	return (
@@ -30,7 +31,9 @@ function App() {
 				<Route path="/logout" element={<LogoutButton />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/register" element={<RegisterUser />} />
+				<Route path="/footer" element={<Footer />} />
 			</Routes>
+			<Footer />
 		</div>
 	);
 }
