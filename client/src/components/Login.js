@@ -2,33 +2,32 @@ import React, { useState } from "react";
 import GithubLogin from "../components/GitHubLogin";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import SwitchRoles from "./SwitchRoles";
 
 const Login = ({ onLogin }) => {
 	const navigate = useNavigate();
-	function handleEvent() {
-		if (email && password) {
-			navigate("/dashboard");
-		} else {
-			console.log("error");
-		}
-	}
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [role, setRole] = useState("");
 
-	const onLogIn = () => {
+	const handleLogin = () => {
 		fetch("/api/signin", {
 			method: "POST",
 			body: JSON.stringify({
 				email: email,
 				password: password,
+				role: role,
 			}),
 			headers: { "Content-Type": "application/json" },
 		})
 			.then((res) => res.json())
 			.then((data) => {
 				onLogin(data);
-			});
+				navigate("/dashboard"); // redirect to dashboard on successful login
+			})
+			.catch((error) => console.log(error));
 	};
+
 	return (
 		<div className="body">
 			<div className="login-form">
@@ -48,7 +47,7 @@ const Login = ({ onLogin }) => {
 					</div>
 					<div className="email">
 						<input
-							type="Password"
+							type="password"
 							placeholder="Password"
 							value={password}
 							name="password"
@@ -56,18 +55,14 @@ const Login = ({ onLogin }) => {
 							required
 						></input>
 					</div>
-					<button
-						className="button"
-						onClick={() => {
-							onLogIn();
-							handleEvent();
-						}}
-					>
+
+					<button className="button" onClick={handleLogin}>
 						Login
 					</button>
 					<p>or</p>
 				</div>
 				<GithubLogin />
+				<SwitchRoles role={role} setRole={setRole} />
 			</div>
 		</div>
 	);
