@@ -121,6 +121,118 @@ router.get("/joinSession", async function (req, res) {
 	const data = await db
 		.query("SELECT * FROM sessions WHERE id = $1", [sessionid])
 		.then((data) => data.rows[0]);
+	res.status(200).send(data);
+}
+);
+
+router.post("/joinSession", async function (req, res) {
+	const { id  } = req.body;
+	const userId = 1;
+	const Query = `insert into attendence  (session_id,user_id,clockin_time,notes)  values ('${id}','${userId}',now(),'join');`;
+	await db
+		.query(Query);
+
+	const data = await db
+		.query("SELECT * FROM sessions WHERE id = $1", [id])
+		.then((data) => data.rows[0]);
+	res.status(200).send(data);
+}
+);
+
+
+function fetchallsessions(callback) {
+
+	db.query("select * from SESSIONS", (err, data) => {
+		if (err) {
+			return callback(err);
+		}
+
+		return callback(undefined, data.rows);
+	});
+}
+router.get("/getAllSession", (req, res, next) => {
+	fetchallsessions((err, data) => {
+		if (err) {
+			return next(err);
+		}
+
+		res.status(200).send(data);
+	});
+});
+
+//find session//
+
+router.get("/getSessionData", (req, response, next) => {
+	const { id } = req.body;
+	db.query(`select * from SESSIONS where id = ${id}`, (err, res) => {
+		if (err) {
+			return next(err);
+		} else {
+			response.json(res.rows);
+		}
+	});
+});
+
+//upcomingsession//
+
+function fetchupcomingsessions(callback) {
+	let currentdate = new Date();
+	// let datetime ="'"+
+	currentdate.getFullYear() +
+		"-" +
+		currentdate.getMonth() +
+		"-" +
+		currentdate.getDay();
+
+	db.query("select * from SESSIONS where time > now()", (err, data) => {
+		if (err) {
+			return callback(err);
+		}
+
+		return callback(undefined, data.rows);
+	});
+}
+router.get("/getUpcomingSession", (req, res) => {
+	fetchupcomingsessions((err, data) => {
+		if (err) {
+			// return next(err);
+			res.status(500).send("error");
+		}
+
+		res.status(200).send(data);
+	});
+});
+
+router.get("/getZoomMeeting/:id", function (req, res) {
+	const sessionid = parseInt(req.params.id);
+	let userid;
+	let data = {};
+	db.query(
+		"SELECT * FROM sessions WHERE id = $1",
+		[sessionid],
+		(error, result) => {
+			if (error) {
+				throw error;
+			}
+			data.link = result[0].meeting_url;
+			data.name = result[0].name;
+			data.time = result[0].time;
+			userid = result[0].userid;
+		}
+	);
+
+	//insert student req date in attendance//
+	const clockintime = new Date();
+
+	db.query(
+		"INSERT INTO attendance (user_id, session_id, clockin_time) VALUES ($1, $2, $3) RETURNING *",
+		[userid, sessionid, clockintime],
+		(error) => {
+			if (error) {
+				throw error;
+			}
+		}
+	);
 	res.json(data);
 
 });

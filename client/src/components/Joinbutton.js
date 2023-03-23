@@ -5,6 +5,8 @@ import "./Joinbutton.css";
 
 function JoinButton() {
 	const [isClickable, setIsClickable] = useState(false);
+	const [jointime, setJoinTime] = useState("no data");
+	const [meetingurl, setMeetingUrl] = useState("no data");
 	useEffect(() => {
 		const currentTime = new Date();
 		const targetTime = new Date();
@@ -24,18 +26,23 @@ function JoinButton() {
 		);
 	}, []);
 
-	function handleClick() {
-		fetch("http://localhost:3100/api/joinSession/id=1")
-			.then((response) => response.json())
-			.then((data) => {
-				console.log(data.meeting_url);
-				window.location.replace(data.meeting_url);
-			});
+	async function handleClick() {
+		const requestOptions = {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ id: 1 }),
+		};
+
+		const response = await fetch("http://localhost:3100/api/joinSession", requestOptions);
+		const data = await response.json();
+		setMeetingUrl(data.meeting_url);
+
 	}
-	if (isClickable) {
-		return <button onClick={handleClick}> Join button </button>;
-	} else {
-		return <div> no class presently</div>;
-	}
+	// if (isClickable) {
+		return( <><button onClick={handleClick}> Join button </button><h1>{meetingurl}</h1><h1>{jointime}</h1></>
+		);
+	// } else {
+	// 	return <div> no class presently</div>;
+	// }
 }
 export default JoinButton;

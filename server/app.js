@@ -2,6 +2,7 @@ import express from "express";
 import cookieSession from "cookie-session";
 import apiRouter from "./api";
 import config from "./utils/config";
+const cors = require("cors");
 import {
 	clientRouter,
 	configuredHelmet,
@@ -17,6 +18,10 @@ app.use(cookieSession({ name: "session", keys: ["hgkhghdhhhhhh"] }));
 app.use(express.json());
 app.use(configuredHelmet());
 app.use(configuredMorgan());
+const clientURL ="http://localhost:3000";
+app.use(cors({
+	origin: clientURL,
+}));
 
 if (config.production) {
 	app.enable("trust proxy");
