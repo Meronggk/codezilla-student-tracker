@@ -42,20 +42,20 @@ router.post("/attendence", async (req, res) => {
 //form back end ends
 
 // login backend begins
-// router.post("/signin", function (req, res) {
-// 	const email = req.body.email;
-// 	const password = req.body.password;
+router.post("/signin", function (req, res) {
+	const email = req.body.email;
+	const password = req.body.password;
 
-// 	if (!email || !password) {
-// 		// eslint-disable-next-line no-undef
-// 		return res.status(400).send("email and password required");
-// 	}
+	if (!email || !password) {
+		// eslint-disable-next-line no-undef
+		return res.status(400).send("email and password required");
+	}
 
-// 	db.query("SELECT * FROM users ", []).then((res) => {
-// 		// eslint-disable-next-line no-undef
-// 		return res.status(400).send("user not available");
-// 	});
-// });
+	db.query("SELECT * FROM users ", []).then((res) => {
+		// eslint-disable-next-line no-undef
+		return res.status(400).send("user not available");
+	});
+});
 
 // login backend ends
 
@@ -188,8 +188,6 @@ router.get("/getUpcomingSession", (req, res) => {
 		res.status(200).send(data);
 	});
 });
-
-
 
 router.get("/getZoomMeeting/:id", function (req, res) {
 	const sessionid = parseInt(req.params.id);
