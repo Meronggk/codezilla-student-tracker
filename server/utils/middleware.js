@@ -13,7 +13,7 @@ export const clientRouter = (apiRoot) => {
 		if (req.method === "GET" && !req.url.startsWith(apiRoot)) {
 			res.header(
 				"Content-Security-Policy",
-				"script-src 'self'; img-src 'self' avatars.githubusercontent.com"
+				"script-src 'self' polyfill.io; img-src 'self' avatars.githubusercontent.com"
 			);
 			return res.sendFile(path.join(staticDir, "index.html"));
 		}
