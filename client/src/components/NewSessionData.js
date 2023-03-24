@@ -56,7 +56,7 @@ const NewSessionData = () => {
 						All Sessions
 					</ToggleButton>
 					<ToggleButton id="tbg-btn-2" value={2}>
-						UpComming Sessions
+						Upcoming Sessions
 					</ToggleButton>
 				</ToggleButtonGroup>
 			</div>
