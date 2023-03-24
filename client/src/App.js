@@ -7,7 +7,6 @@ import Home from "./pages/Home";
 import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
 import AttendenceForm from "./components/AttendenceForm";
-import Form from "./components/Form";
 
 import SessionDash from "./components/SessionDash";
 import NewSession from "./components/NewSession";
@@ -28,12 +27,13 @@ function App() {
 				<Route path="/signin" element={<Login />} />
 				<Route path="/homepage" element={<Homepage />} />
 				<Route path="/sessiondata" element={<NewSessionData />} />
-				<Route path="/form" element={<Form />} />
 				<Route path="/dashboard" element={<SessionDash />} />
 				<Route path="/sessions" element={<NewSession />} />
 				<Route path="/logout" element={<LogoutButton />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/register" element={<RegisterUser />} />
+				<Route path="/attendenceForm" element={<AttendenceForm />} />
+				<Route path="/footer" element={<Footer />} />
 			</Routes>
 		</div>
 	);

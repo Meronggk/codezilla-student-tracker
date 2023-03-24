@@ -27,22 +27,22 @@ router.post("/form", (req, res) => {
 //form back end ends
 
 // login backend begins
-router.post("/signin", function (req, res) {
-	const email = req.body.email;
-	const password = req.body.password;
+// router.post("/signin", function (req, res) {
+// 	const email = req.body.email;
+// 	const password = req.body.password;
 
-	if (!email || !password) {
-		// eslint-disable-next-line no-undef
-		return res.status(400).send("email and password required");
-	}
+// 	if (!email || !password) {
+// 		// eslint-disable-next-line no-undef
+// 		return res.status(400).send("email and password required");
+// 	}
 
-	db.query("SELECT * FROM users ", []).then((res) => {
+// 	db.query("SELECT * FROM users ", []).then((res) => {
 
-	db.query("SELECT * FROM users ", [users]).then((res) => {
-		// eslint-disable-next-line no-undef
-		return res.status(400).send("user not available");
-	});
-});
+// 	db.query("SELECT * FROM users ", [users]).then((res) => {
+// 		// eslint-disable-next-line no-undef
+// 		return res.status(400).send("user not available");
+// 	});
+// });
 
 // login backend ends
 
@@ -122,7 +122,6 @@ router.get("/getUserData", async function (req, res) {
 			res.json(data);
 		});
 });
-
 
 // allsessions inculidng toggle button//
 
