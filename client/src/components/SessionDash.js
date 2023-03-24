@@ -7,10 +7,8 @@ import {
 	CalendarOutlined,
 } from "@ant-design/icons";
 import NewSession from "./NewSession";
-
-import AttendenceForm from "./AttendenceForm";
+import Form from "./Form";
 import LogoutButton from "./LogoutButton";
-import Profile from "./Profile";
 
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
@@ -115,7 +113,8 @@ const SessionDash = () => {
 const UserProfile = () => {
 	return (
 		<div>
-			<Profile />
+			<h2>User Profile</h2>
+			{/* Insert user profile content here */}
 		</div>
 	);
 };
@@ -123,8 +122,9 @@ const UserProfile = () => {
 const AddClasses = () => {
 	return (
 		<div>
+			<h2>Create Session</h2>
 			<NewSession />
-
+			{/* Insert add classes form here */}
 		</div>
 	);
 };
@@ -132,7 +132,8 @@ const AddClasses = () => {
 const AttendanceForm = () => {
 	return (
 		<div>
-			<AttendenceForm />
+			{" "}
+			<Form />
 		</div>
 	);
 };
