@@ -14,8 +14,8 @@
 
 .github-btn {
 	align-items: center;
-	background-color: #fff;
-	color: #212529;
+	background-color: #dc3545;
+	color: white;
 	padding: 10px 20px;
 	border-radius: 5px;
 	text-decoration: none;
@@ -24,7 +24,7 @@
 }
 
 .github-btn:hover {
-	background-color: #9ba2a9;
+	background-color: #ac3112;
 }
 
 .github-btn img {
