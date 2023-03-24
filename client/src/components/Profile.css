@@ -14,13 +14,8 @@
 
 .github-btn {
 	align-items: center;
-<<<<<<< HEAD:client/src/components/Profile.css
 	background-color: rgb(31, 79, 236);
 	color: white;
-=======
-	background-color: #fff;
-	color: #212529;
->>>>>>> main:client/src/pages/Profile.css
 	padding: 10px 20px;
 	border-radius: 5px;
 	text-decoration: none;
@@ -29,11 +24,7 @@
 }
 
 .github-btn:hover {
-<<<<<<< HEAD:client/src/components/Profile.css
 	background-color: rgb(25, 80, 153);
-=======
-	background-color: #9ba2a9;
->>>>>>> main:client/src/pages/Profile.css
 }
 
 .github-btn img {
