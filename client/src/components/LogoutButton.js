@@ -5,7 +5,7 @@ function LogoutButton() {
 	const navigate = useNavigate();
 	function handleEvent() {
 		setTimeout(() => {
-			navigate("/");
+			navigate("/signin");
 			console.log("You have been logged out.");
 		}, 2000);
 	}
