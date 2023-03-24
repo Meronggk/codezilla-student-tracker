@@ -4,7 +4,7 @@ import "./NavBar.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import logoimage from "../Homepage/assets/images/logoimage.png";
+import logo from "../Homepage/assets/images/logo.png";
 import SwitchRoles from "../SwitchRoles";
 
 const NavBar = () => {
@@ -14,7 +14,7 @@ const NavBar = () => {
 	return (
 		<div className="header">
 			<Link to={"/"}>
-				<img className="nav-logo" src={logoimage} alt="cyf_logo" />
+				<img className="nav-logo" src={logo} alt="cyf_logo" />
 			</Link>
 			<ul className={click ? "nav-menu active" : "nav-menu"}>
 				<li>
