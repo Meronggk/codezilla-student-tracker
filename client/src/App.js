@@ -11,7 +11,7 @@ import LogoutButton from "./components/LogoutButton";
 import Profile from "./components/Profile";
 import RegisterUser from "./components/RegisterUser";
 import Footer from "./components/Footer";
-import About_us from "./components/About_us";
+// import About_us from "./components/About_us";
 import NewSessionData from "./components/NewSessionData";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
 			<NavBar />
 			<Routes>
 				<Route path="/" element={<Homepage />} />
-				<Route path="/about" element={<About_us />} />
+				{/* <Route path="/about" element={<About_us />} /> */}
 				<Route path="/login" element={<GitHubLogin />} />
 				<Route path="/callback" element={<GitHubCalllBack />} />
 				<Route path="/signin" element={<Login />} />
