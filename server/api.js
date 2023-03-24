@@ -109,23 +109,13 @@ router.get("/getUserData", async function (req, res) {
 
 // github loging backend ends
 
+
 //redirect link-clockin//
 
-router.get("/joinSession", async function (req, res) {
-	const sessionid = parseInt(req.query.id);
-	const userId=1;
-	const Query = `insert into attendence  (session_id,user_id,clockin_time,notes)  values ('${sessionid}','${userId}',now(),'join');`;
-	await db
-		.query(Query);
-
-	const data = await db
-		.query("SELECT * FROM sessions WHERE id = $1", [sessionid])
-		.then((data) => data.rows[0]);
-	res.status(200).send(data);
-}
-);
-
 router.post("/joinSession", async function (req, res) {
+	let currentdate = new Date();
+	let datetime = currentdate.getFullYear() + "-" + currentdate.getMonth()
+		+ "-" + currentdate.getDay() + "--" + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
 	const { id  } = req.body;
 	const userId = 1;
 	const Query = `insert into attendence  (session_id,user_id,clockin_time,notes)  values ('${id}','${userId}',now(),'join');`;
@@ -135,7 +125,10 @@ router.post("/joinSession", async function (req, res) {
 	const data = await db
 		.query("SELECT * FROM sessions WHERE id = $1", [id])
 		.then((data) => data.rows[0]);
-	res.status(200).send(data);
+	res.status(200).send({
+		jointime: datetime,
+		meetingurl: data.meeting_url,
+	});
 }
 );
 

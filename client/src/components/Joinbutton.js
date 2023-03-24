@@ -5,12 +5,12 @@ import "./Joinbutton.css";
 
 function JoinButton() {
 	const [isClickable, setIsClickable] = useState(false);
-	const [jointime, setJoinTime] = useState("no data");
-	const [meetingurl, setMeetingUrl] = useState("no data");
+	const [jointime, setJoinTime] = useState("there is no class at this time");
+	const [meetingurl, setMeetingUrl] = useState("there is no link");
 	useEffect(() => {
 		const currentTime = new Date();
 		const targetTime = new Date();
-		targetTime.setHours(21, 50, 0); // set target time to 10:00 AM
+		targetTime.setHours(9, 50, 0); // set target time to 10:00 AM
 		const isAfterClass1Hour = add(targetTime, { hours: 1, minutes: 10 });
 		setIsClickable(
 			isWithinInterval(currentTime, {
@@ -35,11 +35,12 @@ function JoinButton() {
 
 		const response = await fetch("http://localhost:3100/api/joinSession", requestOptions);
 		const data = await response.json();
-		setMeetingUrl(data.meeting_url);
+		setMeetingUrl(data.meetingurl);
+		setJoinTime(data.jointime);
 
 	}
 	// if (isClickable) {
-		return( <><button onClick={handleClick}> Join button </button><h1>{meetingurl}</h1><h1>{jointime}</h1></>
+	return (<><button onClick={handleClick}> Join button </button><h3><a href={meetingurl}> {meetingurl} </a></h3><h3>{jointime}</h3><h2>{meetingurl}</h2></>
 		);
 	// } else {
 	// 	return <div> no class presently</div>;
