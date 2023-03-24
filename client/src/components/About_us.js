@@ -30,7 +30,7 @@ const teamMembers = [
 		image: require("./Homepage/assets/images/Mohammed.png"),
 	},
 
-{
+	{
 		id: 5,
 		name: "Katie",
 		position: "Product Manager",
@@ -43,10 +43,10 @@ const teamMembers = [
 		image: require("./Homepage/assets/images/Raj.png"),
 	},
 	{
-   id: 7,
-  name: "Emily",
-   position: "TA",
-   image: require("./Homepage/assets/images/Emily.jpg"),
+		id: 7,
+		name: "Emily",
+		position: "TA",
+		image: require("./Homepage/assets/images/Emily.jpg"),
 	},
 ];
 
