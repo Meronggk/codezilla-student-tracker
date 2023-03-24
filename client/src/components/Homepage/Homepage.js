@@ -3,6 +3,7 @@ import "./Homepage.css";
 import img2 from "../Homepage/assets/images/img2.jpg";
 import img3 from "../Homepage/assets/images/img3.jpg";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Footer";
 
 const Homepage = () => {
 	const navigate = useNavigate();
@@ -22,6 +23,7 @@ const Homepage = () => {
 					Get Started
 				</button>
 			</div>
+			<Footer />
 		</div>
 	);
 };

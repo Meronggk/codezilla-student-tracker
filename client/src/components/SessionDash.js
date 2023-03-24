@@ -125,7 +125,7 @@ const UserProfile = () => {
 	return (
 		<div>
 			<h2>User Profile</h2>
-			{/* Insert user profile content here */}
+			<Profile />
 		</div>
 	);
 };
@@ -142,7 +142,7 @@ const AddClasses = () => {
 const AttendanceForm = () => {
 	return (
 		<div>
-			{" "}
+
 			<AttendenceForm />
 		</div>
 	);
