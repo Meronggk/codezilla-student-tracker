@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-unexpected-multiline */
 import { Router } from "express";
@@ -11,34 +12,18 @@ const router = Router();
 const CLIENT_ID = "438f9e1d00fa92021341";
 const CLIENT_SECRET = "8e75503a0524b30ab1f08e5ac547ef8202df0236";
 
-//let users = [];
-
-// //form backend begins
-router.get("/users/trainee", async (req, res) => {
-	db.query("SELECT * FROM users WHERE role='Trainee' ")
-		.then((data) => {
-			res.json(data.rows);
-		})
-		.catch((err) => {
-			res.status(500).send(err);
-		});
+//form backend begins
+let users = [];
+router.get("/form/:id", (req, res) => {
+	db.query("Select * from users").then((result) => {
+		res.json(result.rows);
+	});
 });
-
-router.post("/attendence", async (req, res) => {
-	// eslint-disable-next-line no-console
-	console.log(req.body);
-	for (let i = 0; i < req.body.length; i++) {
-		const { user_id, session_id, notes } = req.body[i];
-		await db.query(
-			"INSERT INTO attendence(user_id, session_id, notes) VALUES($1, $2, $3)",
-			[user_id, session_id, notes]
-		);
-	}
-	// .then(() => {
-	res.status(201).json({ mesg: "done" });
-	// });
+router.post("/form", (req, res) => {
+	const newUser = req.body;
+	users.push(newUser);
+	res.json(users);
 });
-
 //form back end ends
 
 // login backend begins
@@ -52,6 +37,8 @@ router.post("/signin", function (req, res) {
 	}
 
 	db.query("SELECT * FROM users ", []).then((res) => {
+
+	db.query("SELECT * FROM users ", [users]).then((res) => {
 		// eslint-disable-next-line no-undef
 		return res.status(400).send("user not available");
 	});
@@ -88,12 +75,24 @@ router.post("/callback", async (req, res) => {
 					},
 				})
 				.then((data) => {
-					req.session.userName = data.data.login; // github username
-					req.session.githubid = data.data.id; // user id
-					req.session.avatar = data.data.avatar_url; // avatar
-					req.session.githubUrl = data.data.html_url; // githubUrl
-					req.session.cohortId = 4; // NW5
-					res.json(data.data);
+					const query = "SELECT * FROM users WHERE github_user_id = $1";
+					db.query(query, [data.data.id], (error, results) => {
+						if (error) {
+							console.log(error);
+							throw error;
+						}
+						if (results.rows <= 0) {
+							res.json({ error: "User not found" });
+						} else {
+							req.session.userId = results.rows[0].id;
+							req.session.userName = data.data.login; // github username
+							req.session.githubid = data.data.id; // user id
+							req.session.avatar = data.data.avatar_url; // avatar
+							req.session.githubUrl = data.data.html_url; // githubUrl
+							req.session.cohortId = 4; // NW5
+							res.json(data.data);
+						}
+					});
 				})
 				.catch((error) => {
 					res.status(500).json({ error: error.message });
@@ -123,6 +122,7 @@ router.get("/getUserData", async function (req, res) {
 			res.json(data);
 		});
 });
+
 
 // allsessions inculidng toggle button//
 
@@ -188,6 +188,7 @@ router.get("/getUpcomingSession", (req, res) => {
 		res.status(200).send(data);
 	});
 });
+// github loging backend ends
 
 router.get("/getZoomMeeting/:id", function (req, res) {
 	const sessionid = parseInt(req.params.id);
@@ -222,21 +223,11 @@ router.get("/getZoomMeeting/:id", function (req, res) {
 	res.json(data);
 });
 
-router.get("/fakelogin", async (req, res) => {
+router.get("/fakelogin", (req, res) => {
 	req.session.userId = 12;
 	req.session.username = "gghfgf";
 	req.session.count = 0;
-	// Retrieve the user's role from the database or other storage mechanism and set it in the session object
-	// For example, assuming the user's role is stored in a database table called "users":
-	const user = await user.findById(req.session.userId);
-	req.session.role = user.role;
 	res.json({ message: "Login Successful!" });
-});
-
-router.post("/changerole", (req, res) => {
-	const { role } = req.body; // Get the new role from the request body
-	req.session.role = role; // Update the user's role in the session
-	res.json({ message: "Role updated successfully!" });
 });
 
 // Endpoint for debugging the session
@@ -277,12 +268,12 @@ router.post("/sessions", (req, res) => {
 	}
 
 	const sql =
-		"INSERT INTO sessions (name, time, cohort_id, meeting_url) VALUES ($1,$2, $3, $4)";
+		"INSERT INTO sessions (name, time, cohort_id, meeting_url) VALUES ($1, $2, $3, $4)";
 	const values = [name, time, cohortId, meetingUrl];
 
 	db.query(sql, values, (error) => {
 		if (error) {
-			res.status(500).send("Error creating session" + error.message);
+			res.status(500).send("Error creating session");
 		} else {
 			res.status(201).send("Session created");
 		}
@@ -312,22 +303,21 @@ router.get("/users/:id", async (req, res) => {
 		res.status(500).json({ message: "Internal server error" });
 	}
 });
-
-// // Endpoint for switching cohorts for signed-in user
-
 router.get("/user/me", (req, res) => {
 	const userName = req.session.userName ? req.session.userName : null;
 	const avatarUrl = req.session.avatar ? req.session.avatar : null;
 	const userGithubId = req.session.githubid ? req.session.githubid : null;
 	const userGithubUrl = req.session.githubUrl ? req.session.githubUrl : null;
+	const userId = req.session.userId ? req.session.userId : null;
 	res.json({
 		userName: userName,
 		avatarUrl: avatarUrl,
 		userGithubId: userGithubId,
 		userGithubUrl: userGithubUrl,
+		userId: userId,
 	});
 });
-
+// Endpoint for switching cohorts for signed-in user
 // router.put("/switchCohort/:id", async (req, res) => {
 // 	const cohortId = +req.params.id;
 // 	const query = "SELECT * FROM cohorts WHERE id = $1";
