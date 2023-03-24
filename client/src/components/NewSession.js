@@ -124,7 +124,9 @@ function NewSession() {
 				</select>
 			</label>
 			<br />
-			<button type="submit" style={{ backgroundColor: "rgb(31, 79, 236)" }}>Create session</button>
+			<button type="submit" style={{ backgroundColor: "rgb(31, 79, 236)" }}>
+				Create session
+			</button>
 		</form>
 	);
 }

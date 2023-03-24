@@ -61,7 +61,6 @@ const Login = ({ onLogin }) => {
 					<p>or</p>
 				</div>
 				<GithubLogin />
-
 			</div>
 		</div>
 	);

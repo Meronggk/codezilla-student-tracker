@@ -27,10 +27,19 @@ function LogoutButton() {
 					handleLogout();
 					handleEvent();
 				}}
-				style={{ width: "100%", backgroundColor: "rgb(31, 79, 236)", padding: "1rem", margintop: "1rem",
-			fontsize: "1.6rem", color: "fff", border: "none", borderRadius: "0.25rem", fontWeight: "bold",
-			cursor: "pointer", display: "block" }}
-
+				style={{
+					width: "100%",
+					backgroundColor: "rgb(31, 79, 236)",
+					padding: "1rem",
+					margintop: "1rem",
+					fontsize: "1.6rem",
+					color: "fff",
+					border: "none",
+					borderRadius: "0.25rem",
+					fontWeight: "bold",
+					cursor: "pointer",
+					display: "block",
+				}}
 			>
 				Logout
 			</button>
