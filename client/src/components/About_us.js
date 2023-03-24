@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./About_us.css";
 
 const teamMembers = [
 	{
@@ -30,7 +29,8 @@ const teamMembers = [
 		linkedin: "https://www.linkedin.com/in/mohammadreza-nafar-669507239/",
 		image: require("./Homepage/assets/images/Mohammed.png"),
 	},
-	{
+
+{
 		id: 5,
 		name: "Katie",
 		position: "Product Manager",
@@ -42,12 +42,12 @@ const teamMembers = [
 		position: "TA",
 		image: require("./Homepage/assets/images/Raj.png"),
 	},
-	// {
-	//     id: 7,
-	//     name: "Emily",
-	//     position: "TA",
-	//     // image: require(Emily),
-	// },
+	{
+   id: 7,
+  name: "Emily",
+   position: "TA",
+   image: require("./Homepage/assets/images/Emily.jpg"),
+	},
 ];
 
 function About_us() {
@@ -91,7 +91,7 @@ function About_us() {
 					{teamMembers.map((member) => (
 						<div
 							key={member.id}
-							style={{ textAlign: "center", margin: "20px", color: "black" }}
+							style={{ textAlign: "center", margin: "15px", color: "black" }}
 						>
 							<img
 								src={member.image.default}
@@ -99,7 +99,7 @@ function About_us() {
 								style={{
 									width: "150px",
 									height: "150px",
-									borderRadius: "10%",
+									borderRadius: "5%",
 									color: "black",
 								}}
 							/>
@@ -121,12 +121,12 @@ function About_us() {
 			{showProject && (
 				<>
 					<h2
-						style={{ textAlign: "center", marginTop: "100px", color: "black" }}
+						style={{ textAlign: "center", marginTop: "30px", color: "black" }}
 					>
 						OUR PROJECT
 					</h2>
 					<p style={{ textAlign: "center", color: "black", fontSize: "28px" }}>
-						Class Register for CYF
+						Class Register
 					</p>
 				</>
 			)}
