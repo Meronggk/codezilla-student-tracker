@@ -8,7 +8,7 @@ import AttendenceForm from "./components/AttendenceForm";
 import SessionDash from "./components/SessionDash";
 import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
-import Profile from "./pages/Profile";
+import Profile from "./components/Profile";
 import RegisterUser from "./components/RegisterUser";
 import Footer from "./components/Footer";
 import About_us from "./components/About_us";
