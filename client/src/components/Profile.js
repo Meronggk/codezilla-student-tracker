@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
+import github_icon from "../components/Homepage/assets/images/github_icon.png";
 
 const Profile = () => {
 	const [userData, setUserData] = useState({
@@ -13,7 +14,7 @@ const Profile = () => {
 		fetch("/api/user/me")
 			.then((res) => res.json())
 			.then((body) => {
-				//console.log(body); // add this line
+				console.log(body); // add this line
 				setUserData({
 					avatarUrl: body.avatarUrl,
 					userName: body.userName,
@@ -25,7 +26,12 @@ const Profile = () => {
 
 	return (
 		<div className="profile-container">
-			<img src={userData.avatarUrl} alt="Avatar" className="profile-img" />
+			<img
+				crossOrigin="anonymous"
+				src={userData.avatarUrl}
+				alt="Avatar"
+				className="profile-img"
+			/>
 			<h3>{userData.userName}</h3>
 			<a
 				href={userData.userGithubUrl}
@@ -33,7 +39,7 @@ const Profile = () => {
 				rel="noopener noreferrer" // added as a Lint fix, improving security
 				className="github-btn"
 			>
-				<img src="/images/github_icon.png" alt="GitHub icon" />
+				<img src={github_icon} alt="GitHub icon" />
 				View Github Profile
 			</a>
 		</div>

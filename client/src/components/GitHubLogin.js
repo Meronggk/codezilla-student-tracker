@@ -4,7 +4,6 @@ import React from "react";
 //import logo from './logo.svg';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import img4 from "../components/Homepage/assets/images/img4.jpg";
 
 const CLIENT_ID = "438f9e1d00fa92021341";
 

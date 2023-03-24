@@ -2,27 +2,26 @@ import { Route, Routes } from "react-router-dom";
 import GitHubCalllBack from "./components/GitHubCallBack";
 import GitHubLogin from "./components/GitHubLogin";
 import Login from "./components/Login";
-import About from "./pages/About";
-import Home from "./pages/Home";
 import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
 import AttendenceForm from "./components/AttendenceForm";
-
 import SessionDash from "./components/SessionDash";
 import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
 import Profile from "./pages/Profile";
 import RegisterUser from "./components/RegisterUser";
 import Footer from "./components/Footer";
+import About_us from "./components/About_us";
 import NewSessionData from "./components/NewSessionData";
+
 function App() {
 	return (
 		<div>
 			<NavBar />
 			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/about/this/site" element={<About />} />
-				<Route path="/login" element={<GitHubLogin></GitHubLogin>} />
+				<Route path="/" element={<Homepage />} />
+				<Route path="/about" element={<About_us />} />
+				<Route path="/login" element={<GitHubLogin />} />
 				<Route path="/callback" element={<GitHubCalllBack />} />
 				<Route path="/signin" element={<Login />} />
 				<Route path="/homepage" element={<Homepage />} />
