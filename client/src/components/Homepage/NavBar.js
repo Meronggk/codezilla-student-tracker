@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logoimage from "../Homepage/assets/images/logoimage.png";
+import SwitchRoles from "../SwitchRoles";
 
 const NavBar = () => {
 	const [click, setClick] = useState(false);
@@ -23,7 +24,8 @@ const NavBar = () => {
 					<Link to={"/about"}>About</Link>
 				</li>
 				<li>
-					<Link to={"/contact"}>Contact</Link>
+					{/* <Link to={"/roles"}> */}
+					<SwitchRoles />
 				</li>
 			</ul>
 			<div className="hamburger" onClick={handleClick}>

@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import GithubLogin from "../components/GitHubLogin";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
-import SwitchRoles from "./SwitchRoles";
+//import SwitchRoles from "./SwitchRoles";
 
 const Login = ({ onLogin }) => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [role, setRole] = useState("");
+	// const [role, setRole] = useState("");
 
 	const handleLogin = () => {
 		fetch("/api/signin", {
@@ -16,7 +16,6 @@ const Login = ({ onLogin }) => {
 			body: JSON.stringify({
 				email: email,
 				password: password,
-				role: role,
 			}),
 			headers: { "Content-Type": "application/json" },
 		})
@@ -62,7 +61,7 @@ const Login = ({ onLogin }) => {
 					<p>or</p>
 				</div>
 				<GithubLogin />
-				<SwitchRoles role={role} setRole={setRole} />
+
 			</div>
 		</div>
 	);

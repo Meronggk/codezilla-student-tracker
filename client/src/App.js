@@ -13,6 +13,7 @@ import LogoutButton from "./components/LogoutButton";
 import Profile from "./components/Profile";
 import RegisterUser from "./components/RegisterUser";
 import Footer from "./components/Footer";
+//import About_us from "./components/About_us";
 
 function App() {
 	return (
@@ -20,7 +21,8 @@ function App() {
 			<NavBar />
 			<Routes>
 				<Route path="/" element={<Homepage />} />
-				<Route path="/login" element={<GitHubLogin></GitHubLogin>} />
+				{/* <Route path="/aboutus" element={<About_us />} /> */}
+				<Route path="/login" element={<GitHubLogin />} />
 				<Route path="/callback" element={<GitHubCalllBack />} />
 				<Route path="/signin" element={<Login />} />
 				<Route path="/attendenceForm" element={<AttendenceForm />} />

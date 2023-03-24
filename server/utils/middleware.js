@@ -11,6 +11,10 @@ export const clientRouter = (apiRoot) => {
 	router.use(express.static(staticDir));
 	router.use((req, res, next) => {
 		if (req.method === "GET" && !req.url.startsWith(apiRoot)) {
+			res.header(
+				"Content-Security-Policy",
+				"script-src 'self'; img-src 'self' avatars.githubusercontent.com"
+			);
 			return res.sendFile(path.join(staticDir, "index.html"));
 		}
 		next();

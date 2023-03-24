@@ -26,11 +26,14 @@
 
 .nav-menu a {
 	text-decoration: none;
-	color: black;
+	color: rgb(31, 79, 236);
 	font-size: 25px;
 	font-weight: 500;
 	/* margin-left: 50px; */
 	margin-right: 40px;
+}
+.nav-menu a:hover {
+	color: rgb(25, 80, 153);
 }
 
 .hamburger {

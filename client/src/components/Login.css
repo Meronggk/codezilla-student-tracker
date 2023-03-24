@@ -43,14 +43,14 @@ button.button {
 	font-size: 1.2rem;
 	font-weight: bold;
 	color: #fff;
-	background-color: #dc3545;
+	background-color: rgb(31, 79, 236);
 	border: none;
 	border-radius: 0.25rem;
 	cursor: pointer;
 }
 
 button.button:hover {
-	background-color: #ac3112;
+	background-color: rgb(25, 80, 153);
 }
 
 .gitbtn {
@@ -60,14 +60,15 @@ button.button:hover {
 	margin-top: 1rem;
 	font-size: 1.2rem;
 	font-weight: bold;
-	background-color: #dc3545;
+	background-color: rgb(31, 79, 236);
 	border: none;
 	border-radius: 0.25rem;
 	cursor: pointer;
 }
 
 .gitbtn.gitbtn:hover {
-	background-color: #ac3112;
+	background-color: rgb(25, 80, 153);
+	color: white;
 }
 
 .git-img {

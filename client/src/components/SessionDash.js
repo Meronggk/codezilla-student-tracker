@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { Layout, Menu, Grid } from "antd";
 import {
@@ -7,10 +8,10 @@ import {
 	CalendarOutlined,
 } from "@ant-design/icons";
 import NewSession from "./NewSession";
-
 import AttendenceForm from "./AttendenceForm";
 import LogoutButton from "./LogoutButton";
 import Profile from "./Profile";
+import RegisterUser from "./RegisterUser";
 
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
@@ -19,6 +20,8 @@ const SessionDash = () => {
 	const screens = useBreakpoint();
 
 	const [selectedKey, setSelectedKey] = React.useState("user-profile");
+	// const [role, setRole] = useState("");
+	// role: role,
 
 	const handleMenuClick = (e) => {
 		setSelectedKey(e.key);
@@ -26,14 +29,16 @@ const SessionDash = () => {
 
 	const getItemIcon = (item) => {
 		switch (item) {
-			case "user-profile":
+			case "User-profile":
 				return <UserOutlined />;
-			case "add-classes":
+			case "Add-classes":
 				return <PlusOutlined />;
-			case "attendance-form":
+			case "Attendance-form":
 				return <FormOutlined />;
-			case "upcoming-classes":
+			case "Upcoming-classes":
 				return <CalendarOutlined />;
+			case "Register-user":
+				return <PlusOutlined />;
 			default:
 				return null;
 		}
@@ -52,16 +57,17 @@ const SessionDash = () => {
 		padding: "20px",
 		display: "flex",
 		flexDirection: "column",
-		alignItems: "start",
+		alignItems: "center",
 		justifyContent: "start",
 	};
 
 	const content = (
 		<div style={contentStyle}>
-			{selectedKey === "user-profile" && <UserProfile />}
-			{selectedKey === "add-classes" && <AddClasses />}
-			{selectedKey === "attendance-form" && <AttendanceForm />}
-			{selectedKey === "upcoming-classes" && <UpcomingClasses />}
+			{selectedKey === "User-profile" && <UserProfile />}
+			{selectedKey === "Add-classes" && <AddClasses />}
+			{selectedKey === "Attendance-form" && <AttendanceForm />}
+			{selectedKey === "Upcoming-classes" && <UpcomingClasses />}
+			{selectedKey === "Register-user" && <RegisterUser />}
 		</div>
 	);
 
@@ -85,10 +91,11 @@ const SessionDash = () => {
 						onClick={handleMenuClick}
 					>
 						{[
-							"user-profile",
-							"add-classes",
-							"attendance-form",
-							"upcoming-classes",
+							"User-profile",
+							"Add-classes",
+							"Attendance-form",
+							"Upcoming-classes",
+							"Register-user",
 						].map(renderMenuItem)}
 					</Menu>
 				) : (
@@ -98,10 +105,11 @@ const SessionDash = () => {
 						onClick={handleMenuClick}
 					>
 						{[
-							"user-profile",
-							"add-classes",
-							"attendance-form",
-							"upcoming-classes",
+							"User-profile",
+							"Add-classes",
+							"Attendance-form",
+							"Upcoming-classes",
+							"Register-user",
 						].map(renderMenuItem)}
 						<LogoutButton />
 					</Menu>
@@ -141,6 +149,14 @@ const UpcomingClasses = () => {
 		<div>
 			<h2>Upcoming Classes</h2>
 			{/* Insert upcoming classes content here */}
+		</div>
+	);
+};
+const Register_User = () => {
+	return (
+		<div>
+			<h2>RegisterUser</h2>
+			<RegisterUser />
 		</div>
 	);
 };

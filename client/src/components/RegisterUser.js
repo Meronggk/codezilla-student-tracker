@@ -57,7 +57,7 @@ function RegisterUser() {
 					/>
 				</label>
 				<br />
-				<button type="submit">Register New User</button>
+				<button type="submit" style={{ backgroundColor: "rgb(31, 79, 236)" }}>Register New User</button>
 			</form>
 		</div>
 	);

@@ -22,6 +22,7 @@ const SwitchRoles = ({ role, setRole }) => {
 				id="SwitchRoles-dropdown"
 				title={role || "selectRole"}
 				onSelect={handleRoleChange}
+				style={{ backgroundcolor: "red" }}
 			>
 				<Dropdown.Item eventKey="Trainee">Trainee</Dropdown.Item>
 				<Dropdown.Item eventKey="Volunteer">Volunteer</Dropdown.Item>

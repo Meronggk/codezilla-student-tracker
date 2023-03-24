@@ -1,12 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
+
 function LogoutButton() {
 	const navigate = useNavigate();
 	function handleEvent() {
 		setTimeout(() => {
 			navigate("/");
-			console.log("You have been logged out.");
 		}, 2000);
 	}
 	const handleLogout = () => {
@@ -26,6 +27,10 @@ function LogoutButton() {
 					handleLogout();
 					handleEvent();
 				}}
+				style={{ width: "100%", backgroundColor: "rgb(31, 79, 236)", padding: "1rem", margintop: "1rem",
+			fontsize: "1.6rem", color: "fff", border: "none", borderRadius: "0.25rem", fontWeight: "bold",
+			cursor: "pointer", display: "block" }}
+
 			>
 				Logout
 			</button>
