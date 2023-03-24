@@ -142,6 +142,60 @@ const sessions = [
 		cohort_name: "NW-5",
 		meeting_url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
 	},
+	{
+		name: "React Week-1",
+		time: "2023-05-20 10:00:00",
+		cohort_name: "NW-5",
+		meeting_url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+	},
+	{
+		name: "React Week-2",
+		time: "2023-05-27 10:00:00",
+		cohort_name: "NW-5",
+		meeting_url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+	},
+	{
+		name: "React Week-3",
+		time: "2023-06-03 10:00:00",
+		cohort_name: "NW-5",
+		meeting_url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+	},
+	{
+		name: "Node Week-1",
+		time: "2023-06-10 10:00:00",
+		cohort_name: "NW-5",
+		meeting_url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+	},
+	{
+		name: "Node Week-2",
+		time: "2023-06-17 10:00:00",
+		cohort_name: "NW-5",
+		meeting_url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+	},
+	{
+		name: "Node Week-3",
+		time: "2023-06-24 10:00:00",
+		cohort_name: "NW-5",
+		meeting_url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+	},
+	{
+		name: "SQL Week-1",
+		time: "2023-07-01 10:00:00",
+		cohort_name: "NW-5",
+		meeting_url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+	},
+	{
+		name: "SQL Week-2",
+		time: "2023-07-08 10:00:00",
+		cohort_name: "NW-5",
+		meeting_url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+	},
+	{
+		name: "SQL Week-3",
+		time: "2023-07-15 10:00:00",
+		cohort_name: "NW-5",
+		meeting_url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+	},
 ];
 
 const cohorts = [
