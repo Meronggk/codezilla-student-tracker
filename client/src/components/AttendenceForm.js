@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import { Form } from "react-router-dom";
 import "./AttendanceForm.css";
 
-const fakeUsers = [];
+// const fakeUsers = [];
 
 function AttendenceForm() {
-	const [users, setUsers] = useState(fakeUsers);
+	const [users, setUsers] = useState();
 	useEffect(() => {
 		const url = "/api/users/trainee";
 		const fetchData = () => {
