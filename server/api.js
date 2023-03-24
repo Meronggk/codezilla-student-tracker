@@ -202,8 +202,6 @@ router.get("/getUpcomingSession", (req, res) => {
 	});
 });
 
-
-
 router.get("/getZoomMeeting/:id", function (req, res) {
 	const sessionid = parseInt(req.params.id);
 	let userid;

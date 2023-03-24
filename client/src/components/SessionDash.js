@@ -124,7 +124,6 @@ const AddClasses = () => {
 	return (
 		<div>
 			<NewSession />
-
 		</div>
 	);
 };
