@@ -41,25 +41,6 @@ router.post("/attendence", async (req, res) => {
 });
 
 //form back end ends
-
-// login backend begins
-// router.post("/signin", function (req, res) {
-// 	const email = req.body.email;
-// 	const password = req.body.password;
-
-// 	if (!email || !password) {
-// 		// eslint-disable-next-line no-undef
-// 		return res.status(400).send("email and password required");
-// 	}
-
-// 	db.query("SELECT * FROM users ", []).then((res) => {
-// 		// eslint-disable-next-line no-undef
-// 		return res.status(400).send("user not available");
-// 	});
-// });
-
-// login backend ends
-
 router.get("/", async function (req, res) {
 	logger.debug("Welcoming everyone...");
 	res.json({ message: "Hello, world!" });
