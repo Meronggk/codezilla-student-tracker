@@ -14,7 +14,6 @@ import RegisterUser from "./components/RegisterUser";
 import Footer from "./components/Footer";
 // import About_us from "./components/About_us";
 import NewSessionData from "./components/NewSessionData";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 	return (
