@@ -186,8 +186,8 @@ router.get("/getUpcomingSession", (req, res) => {
 
 router.get("/joinSession/:session_id", async function (req, res) {
 	let currentdate = new Date();
-	let datetime =
-		currentdate.getFullYear() +
+
+	currentdate.getFullYear() +
 		"-" +
 		currentdate.getMonth() +
 		"-" +
@@ -198,7 +198,7 @@ router.get("/joinSession/:session_id", async function (req, res) {
 		currentdate.getMinutes() +
 		":" +
 		currentdate.getSeconds();
-	const id= req.params.session_id;
+	const id = req.params.session_id;
 	const userId = 1;
 	const Query = `insert into attendence  (session_id,user_id,clockin_time)  values ('${id}','${userId}',now(),'join',);`;
 	await db.query(Query);
