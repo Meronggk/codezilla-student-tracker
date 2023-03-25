@@ -1,149 +1,167 @@
-// import React from "react";
-// import { Layout, Menu, Grid } from "antd";
-// import {
-// 	UserOutlined,
-// 	PlusOutlined,
-// 	FormOutlined,
-// 	CalendarOutlined,
-// } from "@ant-design/icons";
-// import NewSession from "./NewSession";
-// import Form from "./Form";
-// //import LogoutButton from "./LogoutButton";
+/* eslint-disable no-unused-vars */
+import React from "react";
+import { Layout, Menu, Grid } from "antd";
+import {
+	UserOutlined,
+	PlusOutlined,
+	FormOutlined,
+	CalendarOutlined,
+} from "@ant-design/icons";
+import NewSession from "./NewSession";
 
-// const { Sider } = Layout;
-// const { useBreakpoint } = Grid;
+import AttendenceForm from "./AttendenceForm";
+import LogoutButton from "./LogoutButton";
+import Profile from "./Profile";
+import RegisterUser from "./RegisterUser";
 
-// const SessionDash = () => {
-// 	const screens = useBreakpoint();
+const { Sider } = Layout;
+const { useBreakpoint } = Grid;
 
-// 	const [selectedKey, setSelectedKey] = React.useState("user-profile");
+const SessionDash = () => {
+	const screens = useBreakpoint();
 
-// 	const handleMenuClick = (e) => {
-// 		setSelectedKey(e.key);
-// 	};
+	const [selectedKey, setSelectedKey] = React.useState("user-profile");
+	// const [role, setRole] = useState("");
+	// role: role,
 
-// 	const getItemIcon = (item) => {
-// 		switch (item) {
-// 			case "user-profile":
-// 				return <UserOutlined />;
-// 			case "add-classes":
-// 				return <PlusOutlined />;
-// 			case "attendance-form":
-// 				return <FormOutlined />;
-// 			case "upcoming-classes":
-// 				return <CalendarOutlined />;
-// 			default:
-// 				return null;
-// 		}
-// 	};
+	const handleMenuClick = (e) => {
+		setSelectedKey(e.key);
+	};
 
-// 	const renderMenuItem = (item) => {
-// 		return (
-// 			<Menu.Item key={item} icon={getItemIcon(item)}>
-// 				{item.replace(/-/g, " ")}
-// 			</Menu.Item>
-// 		);
-// 	};
+	const getItemIcon = (item) => {
+		switch (item) {
+			case "User-profile":
+				return <UserOutlined />;
+			case "Add-classes":
+				return <PlusOutlined />;
+			case "Attendance-form":
+				return <FormOutlined />;
+			case "Upcoming-classes":
+				return <CalendarOutlined />;
+			case "Register-user":
+				return <PlusOutlined />;
+			default:
+				return null;
+		}
+	};
 
-// 	const contentStyle = {
-// 		flex: 1,
-// 		padding: "20px",
-// 		display: "flex",
-// 		flexDirection: "column",
-// 		alignItems: "start",
-// 		justifyContent: "start",
-// 	};
+	const renderMenuItem = (item) => {
+		return (
+			<Menu.Item key={item} icon={getItemIcon(item)}>
+				{item.replace(/-/g, " ")}
+			</Menu.Item>
+		);
+	};
 
-// 	const content = (
-// 		<div style={contentStyle}>
-// 			{selectedKey === "user-profile" && <UserProfile />}
-// 			{selectedKey === "add-classes" && <AddClasses />}
-// 			{selectedKey === "attendance-form" && <AttendanceForm />}
-// 			{selectedKey === "upcoming-classes" && <UpcomingClasses />}
-// 		</div>
-// 	);
+	const contentStyle = {
+		flex: 1,
+		padding: "20px",
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		justifyContent: "start",
+	};
 
-// 	const sidebarStyle = {
-// 		minHeight: "100vh",
-// 		display: "flex",
-// 		flexDirection: "column",
-// 	};
+	const content = (
+		<div style={contentStyle}>
+			{selectedKey === "User-profile" && <UserProfile />}
+			{selectedKey === "Add-classes" && <AddClasses />}
+			{selectedKey === "Attendance-form" && <AttendanceForm />}
+			{selectedKey === "Upcoming-classes" && <UpcomingClasses />}
+			{selectedKey === "Register-user" && <RegisterUser />}
+		</div>
+	);
 
-// 	return (
-// 		<div style={{ display: "flex" }}>
-// 			<Sider
-// 				width={200}
-// 				collapsedWidth={screens.xs ? 0 : 80}
-// 				style={sidebarStyle}
-// 			>
-// 				{screens.xs ? (
-// 					<Menu
-// 						mode="horizontal"
-// 						selectedKeys={[selectedKey]}
-// 						onClick={handleMenuClick}
-// 					>
-// 						{[
-// 							"user-profile",
-// 							"add-classes",
-// 							"attendance-form",
-// 							"upcoming-classes",
-// 						].map(renderMenuItem)}
-// 					</Menu>
-// 				) : (
-// 					<Menu
-// 						mode="inline"
-// 						selectedKeys={[selectedKey]}
-// 						onClick={handleMenuClick}
-// 					>
-// 						{[
-// 							"user-profile",
-// 							"add-classes",
-// 							"attendance-form",
-// 							"upcoming-classes",
-// 						].map(renderMenuItem)}
-// 					</Menu>
-// 				)}
-// 			</Sider>
-// 			{content}
-// 		</div>
-// 	);
-// };
+	const sidebarStyle = {
+		minHeight: "100vh",
+		display: "flex",
+		flexDirection: "column",
+	};
 
-// const UserProfile = () => {
-// 	return (
-// 		<div>
-// 			<h2>User Profile</h2>
-// 			{/* Insert user profile content here */}
-// 		</div>
-// 	);
-// };
+	return (
+		<div style={{ display: "flex" }}>
+			<Sider
+				width={200}
+				collapsedWidth={screens.xs ? 0 : 80}
+				style={sidebarStyle}
+			>
+				{screens.xs ? (
+					<Menu
+						mode="horizontal"
+						selectedKeys={[selectedKey]}
+						onClick={handleMenuClick}
+					>
+						{[
+							"User-profile",
+							"Add-classes",
+							"Attendance-form",
+							"Upcoming-classes",
+							"Register-user",
+						].map(renderMenuItem)}
+					</Menu>
+				) : (
+					<Menu
+						mode="inline"
+						selectedKeys={[selectedKey]}
+						onClick={handleMenuClick}
+					>
+						{[
+							"User-profile",
+							"Add-classes",
+							"Attendance-form",
+							"Upcoming-classes",
+							"Register-user",
+						].map(renderMenuItem)}
+						<LogoutButton />
+					</Menu>
+				)}
+			</Sider>
+			{content}
+		</div>
+	);
+};
 
-// const AddClasses = () => {
-// 	return (
-// 		<div>
-// 			<h2>Create Session</h2>
-// 			<NewSession />
-// 			{/* Insert add classes form here */}
-// 		</div>
-// 	);
-// };
+const UserProfile = () => {
+	return (
+		<div>
+			<h2>User Profile</h2>
+			<Profile />
+		</div>
+	);
+};
 
-// const AttendanceForm = () => {
-// 	return (
-// 		<div>
-// 			{" "}
-// 			<Form />
-// 		</div>
-// 	);
-// };
+const AddClasses = () => {
+	return (
+		<div>
+			<h2>Create Session</h2>
+			<NewSession />
+		</div>
+	);
+};
 
-// const UpcomingClasses = () => {
-// 	return (
-// 		<div>
-// 			<h2>Upcoming Classes</h2>
-// 			{/* Insert upcoming classes content here */}
-// 		</div>
-// 	);
-// };
+const AttendanceForm = () => {
+	return (
+		<div>
+			<AttendenceForm />
+		</div>
+	);
+};
 
-// export default SessionDash;
+const UpcomingClasses = () => {
+	return (
+		<div>
+			<h2>Upcoming Classes</h2>
+			{/* Insert upcoming classes content here */}
+		</div>
+	);
+};
+const Register_User = () => {
+	return (
+		<div>
+			<h2>RegisterUser</h2>
+			<RegisterUser />
+		</div>
+	);
+};
+
+export default SessionDash;

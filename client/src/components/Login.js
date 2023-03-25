@@ -14,7 +14,6 @@ const Login = ({ onLogin }) => {
 	}
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-
 	const onLogIn = () => {
 		fetch("/api/signin", {
 			method: "POST",

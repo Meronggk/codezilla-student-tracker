@@ -4,6 +4,8 @@ import "./NavBar.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import logo from "../Homepage/assets/images/logo.png";
+import SwitchRoles from "../SwitchRoles";
 
 const NavBar = () => {
 	const [click, setClick] = useState(false);
@@ -12,21 +14,18 @@ const NavBar = () => {
 	return (
 		<div className="header">
 			<Link to={"/"}>
-				<img
-					className="nav-logo"
-					src="https://syllabus.codeyourfuture.io/img/logo.png"
-					alt="cyf_logo"
-				/>
+				<img className="nav-logo" src={logo} alt="cyf_logo" />
 			</Link>
 			<ul className={click ? "nav-menu active" : "nav-menu"}>
 				<li>
 					<Link to={"/"}>Home</Link>
 				</li>
+				{/* <li>
+					<Link to={"/about"}>About us</Link>
+				</li> */}
 				<li>
-					<Link to={"/about"}>About</Link>
-				</li>
-				<li>
-					<Link to={"/contact"}>Contact</Link>
+					{/* <Link to={"/roles"}> */}
+					<SwitchRoles />
 				</li>
 			</ul>
 			<div className="hamburger" onClick={handleClick}>
