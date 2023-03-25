@@ -1,14 +1,15 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+import SingleSession from "./SingleSession";
 // const label = { inputProps: { "aria-label": "Choose Session Data" } };
 
 const NewSessionData = () => {
 	// Create state variables
-	const [value, setValue] = React.useState(1);
-	let [responseData, setResponseData] = React.useState("");
-	// const [checked, setChecked] = React.useState(true);
+	const [value, setValue] = useState(1);
+	let [responseData, setResponseData] = useState([]);
+	const [filterData, setFilterData] = useState([]);
 
 	// fetches data
 	const fetchAllData = () => {
@@ -16,32 +17,38 @@ const NewSessionData = () => {
 			.get("api/getAllSession")
 			.then((response) => {
 				setResponseData(response.data);
+				handleFilterData(value, response.data);
+				// setFilterData(response.data);
 				console.log(response);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	};
-	const fetchUpcommingData = () => {
-		axios
-			.get("api/getUpcomingSession")
-			.then((response) => {
-				setResponseData(response.data);
-				console.log(response);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	};
+	useEffect(() => {
+		fetchAllData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-	const handleChange = (val) => {
-		setValue(val);
-		if (val === 1) {
-			fetchAllData();
+	const handleFilterData = (val, data) => {
+		if (val) {
+			setFilterData(data.filter((sessionData) => {
+				const time = new Date(sessionData.time);
+				return time > today;
+			}));
 		} else {
-			fetchUpcommingData();
+			setFilterData(data);
 		}
 	};
+	const handleChange = (val) => {
+		setValue(val);
+		handleFilterData(val, responseData);
+
+	};
+	const today = new Date().setHours(0, 0, 0, 0);
+
+
+
 
 	return (
 		<div>
@@ -52,22 +59,20 @@ const NewSessionData = () => {
 					value={value}
 					onChange={handleChange}
 				>
-					<ToggleButton id="tbg-btn-1" value={1}>
+					<ToggleButton id="tbg-btn-1" value={0}>
 						All Sessions
 					</ToggleButton>
-					<ToggleButton id="tbg-btn-2" value={2}>
+					<ToggleButton id="tbg-btn-2" value={1}>
 						Upcoming Sessions
 					</ToggleButton>
 				</ToggleButtonGroup>
 			</div>
 
-			{responseData &&
-				responseData.map((sessionData) => {
+			{
+				filterData.map((sessionData) => {
 					return (
-						<p key={sessionData.id}>
-							{sessionData.id}---{sessionData.name}--{sessionData.time}--
-							{sessionData.meeting_url}--{sessionData.cohort_id}
-						</p>
+						<SingleSession sessionData={sessionData} key={sessionData.id} />
+
 					);
 				})}
 		</div>
