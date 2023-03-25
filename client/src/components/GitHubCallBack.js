@@ -23,7 +23,6 @@ const GitHubCalllBack = () => {
 				// navigate("/signin");
 			} else {
 				console.log("You are logged in");
-
 			}
 			navigate("/dashboard");
 		});

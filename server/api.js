@@ -184,7 +184,7 @@ router.get("/getUpcomingSession", (req, res) => {
 
 //redirect link-clockin//
 
-router.post("/joinSession", async function (req, res) {
+router.get("/joinSession/:session_id", async function (req, res) {
 	let currentdate = new Date();
 	let datetime =
 		currentdate.getFullYear() +
@@ -198,18 +198,15 @@ router.post("/joinSession", async function (req, res) {
 		currentdate.getMinutes() +
 		":" +
 		currentdate.getSeconds();
-	const { id } = req.body;
+	const id= req.params.session_id;
 	const userId = 1;
-	const Query = `insert into attendence  (session_id,user_id,clockin_time,notes)  values ('${id}','${userId}',now(),'join');`;
+	const Query = `insert into attendence  (session_id,user_id,clockin_time)  values ('${id}','${userId}',now(),'join',);`;
 	await db.query(Query);
 
 	const data = await db
 		.query("SELECT * FROM sessions WHERE id = $1", [id])
 		.then((data) => data.rows[0]);
-	res.status(200).send({
-		jointime: datetime,
-		meetingurl: data.meeting_url,
-	});
+	res.redirect(data.meeting_url);
 });
 function fetchallsessions(callback) {
 	db.query("select * from SESSIONS", (err, data) => {
