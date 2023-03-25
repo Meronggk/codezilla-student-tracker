@@ -132,7 +132,6 @@ router.post("/joinSession", async function (req, res) {
 }
 );
 
-
 function fetchallsessions(callback) {
 
 	db.query("select * from SESSIONS", (err, data) => {

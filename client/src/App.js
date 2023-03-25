@@ -11,7 +11,7 @@ import SessionDash from "./components/SessionDash";
 // import AddClass from "./components/AddClass";
 import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
-import JoinButton from "./components/Joinbutton";
+import JoinButton from "./components/JoinButton";
 
 function App() {
 	return (

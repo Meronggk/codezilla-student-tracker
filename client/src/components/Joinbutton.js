@@ -63,7 +63,7 @@ function JoinButton() {
 	useEffect(() => {
 		const currentTime = new Date();
 		const targetTime = new Date();
-		targetTime.setHours(14, 50, 0); // set target time to 10:00 AM
+		targetTime.setHours(12, 50, 0); // set target time to 10:00 AM
 		const isAfterClass1Hour = add(targetTime, { hours: 1, minutes: 10 });
 		setIsClickable(
 			isWithinInterval(currentTime, {
@@ -93,15 +93,28 @@ function JoinButton() {
 		navigate("/joinSession");
 
 	}
-	// if (isClickable) {
-	return (<><button onClick={handleClick}> Join button </button><h3>
-		<div><a href={meetingurl}>{meetingurl}</a></div>
-		</h3>
-		<h3>{jointime}</h3>
-		<h2>{meetingurl}</h2></>
-	);
-	// } else {
-	// 	return <div> no class presently</div>;
-	// }
+// 	if (isClickable) {
+// 	return (<><button onClick={handleClick}> Join button </button><h3>
+// 		<div><a href={meetingurl}>{meetingurl}</a></div>
+// 		</h3>
+// 		<h3>{jointime}</h3>
+// 		<h2>{meetingurl}</h2></>
+// 	);
+
+
+// 	} else {
+// 		return <div> no class presently</div>;
+// 	}
+// }
+// export default JoinButton;
+		if (isClickable) {
+			return (
+				<div><a href={meetingurl}>join</a></div>
+			);
+
+		} else {
+			return <div> no class presently</div>;
+		}
 }
+
 export default JoinButton;
