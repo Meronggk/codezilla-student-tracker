@@ -142,6 +142,7 @@ const AddClasses = () => {
 const AttendanceForm = () => {
 	return (
 		<div>
+
 			<AttendenceForm />
 		</div>
 	);
