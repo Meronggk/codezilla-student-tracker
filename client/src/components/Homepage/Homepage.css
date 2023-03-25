@@ -68,10 +68,9 @@
 	cursor: pointer;
 	border-radius: 5px;
 	text-align: center;
-	
 }
-.container a{
-	color:white;
+.container a {
+	color: white;
 	text-decoration: none;
 }
 

@@ -324,8 +324,6 @@ router.get("/user/me", (req, res) => {
 	});
 });
 
-
-
 router.post("/registerUsers", (req, res) => {
 	const { name, role, region } = req.body;
 	if (!name || !role || !region) {

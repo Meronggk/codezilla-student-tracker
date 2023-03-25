@@ -120,11 +120,10 @@ function About_us() {
 					<h2
 						style={{ textAlign: "center", marginTop: "30px", color: "black" }}
 					>
- PROJECT - Class Register
+						PROJECT - Class Register
 					</h2>
 				</>
 			)}
-
 		</div>
 	);
 }

@@ -20,9 +20,8 @@ const Homepage = () => {
 			</div>
 			<div>
 				<h2 className="home-page">WELCOME TO CYF SESSIONS </h2>
-		<GitHubLogin />
+				<GitHubLogin />
 			</div>
-
 		</div>
 	);
 };
