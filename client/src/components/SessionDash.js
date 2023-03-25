@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+import { Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React from "react";
 import { Layout, Menu, Grid } from "antd";
 import {
@@ -48,7 +50,7 @@ const SessionDash = () => {
 	const renderMenuItem = (item) => {
 		return (
 			<Menu.Item key={item} icon={getItemIcon(item)}>
-				{item.replace(/-/g, " ")}
+				<Link to={item}> {item.replace(/-/g, " ")} </Link>
 			</Menu.Item>
 		);
 	};
@@ -61,16 +63,6 @@ const SessionDash = () => {
 		alignItems: "center",
 		justifyContent: "start",
 	};
-
-	const content = (
-		<div style={contentStyle}>
-			{selectedKey === "User-profile" && <UserProfile />}
-			{selectedKey === "Add-classes" && <AddClasses />}
-			{selectedKey === "Attendance-form" && <AttendanceForm />}
-			{selectedKey === "Upcoming-classes" && <UpcomingClasses />}
-			{selectedKey === "Register-user" && <RegisterUser />}
-		</div>
-	);
 
 	const sidebarStyle = {
 		minHeight: "100vh",
@@ -85,38 +77,28 @@ const SessionDash = () => {
 				collapsedWidth={screens.xs ? 0 : 80}
 				style={sidebarStyle}
 			>
-				{screens.xs ? (
-					<Menu
-						mode="horizontal"
-						selectedKeys={[selectedKey]}
-						onClick={handleMenuClick}
-					>
-						{[
-							"User-profile",
-							"Add-classes",
-							"Attendance-form",
-							"Upcoming-classes",
-							"Register-user",
-						].map(renderMenuItem)}
-					</Menu>
-				) : (
-					<Menu
-						mode="inline"
-						selectedKeys={[selectedKey]}
-						onClick={handleMenuClick}
-					>
-						{[
-							"User-profile",
-							"Add-classes",
-							"Attendance-form",
-							"Upcoming-classes",
-							"Register-user",
-						].map(renderMenuItem)}
-						<LogoutButton />
-					</Menu>
-				)}
+				<Menu
+					mode="inline"
+					selectedKeys={[selectedKey]}
+					onClick={handleMenuClick}
+				>
+					{[
+						"User-profile",
+						"Add-classes",
+						"Attendance-form",
+						"Upcoming-classes",
+						"Register-user",
+					].map(renderMenuItem)}
+					<LogoutButton />
+				</Menu>
 			</Sider>
-			{content}
+			<Routes>
+				<Route path="User-profile" element={<Profile />} />
+				<Route path="Add-classes" element={<AddClasses />} />
+				<Route path="Attendance-form" element={<AttendenceForm />} />
+				<Route path="Upcoming-classes" element={<UpcomingClasses />} />
+				<Route path="Register-user" element={<RegisterUser />} />
+			</Routes>
 		</div>
 	);
 };
@@ -142,7 +124,6 @@ const AddClasses = () => {
 const AttendanceForm = () => {
 	return (
 		<div>
-
 			<AttendenceForm />
 		</div>
 	);
