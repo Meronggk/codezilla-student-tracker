@@ -1,8 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 
-
-
 const SingleSession = ({ sessionData }) => {
     const todayEnd = new Date().setHours(23, 59, 59, 59);
     const todayStart = new Date().setHours(0, 0, 0, 0);
