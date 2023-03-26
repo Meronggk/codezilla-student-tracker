@@ -26,7 +26,7 @@ function App() {
 				<Route path="/signin" element={<Login />} />
 				<Route path="/homepage" element={<Homepage />} />
 				<Route path="/sessiondata" element={<NewSessionData />} />
-				<Route path="/dashboard" element={<SessionDash />} />
+				<Route path="/dashboard/*" element={<SessionDash />} />
 				<Route path="/sessions" element={<NewSession />} />
 				<Route path="/logout" element={<LogoutButton />} />
 				<Route path="/profile" element={<Profile />} />
