@@ -67,7 +67,6 @@
 
 // export default RegisterUser;
 
-
 import React, { useState } from "react";
 
 function RegisterUser() {
