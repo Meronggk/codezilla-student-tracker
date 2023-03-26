@@ -13,6 +13,8 @@ import RegisterUser from "./components/RegisterUser";
 import Footer from "./components/Footer";
 // import About_us from "./components/About_us";
 import NewSessionData from "./components/NewSessionData";
+import FindClass from "./components/FindClass";
+
 
 function App() {
 	return (
@@ -33,6 +35,7 @@ function App() {
 				<Route path="/register" element={<RegisterUser />} />
 				<Route path="/attendenceForm" element={<AttendenceForm />} />
 				<Route path="/footer" element={<Footer />} />
+				<Route path="/findclass" element={<FindClass />} />
 			</Routes>
 		</div>
 	);
