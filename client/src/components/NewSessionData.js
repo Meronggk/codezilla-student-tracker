@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ToggleButton from "react-bootstrap/ToggleButton";
@@ -14,7 +15,7 @@ const NewSessionData = () => {
 	// fetches data
 	const fetchAllData = () => {
 		axios
-			.get("api/getAllSession")
+			.get("/api/getAllSession")
 			.then((response) => {
 				setResponseData(response.data);
 				handleFilterData(value, response.data);
