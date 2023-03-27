@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ToggleButton from "react-bootstrap/ToggleButton";
@@ -33,10 +32,12 @@ const NewSessionData = () => {
 
 	const handleFilterData = (val, data) => {
 		if (val) {
-			setFilterData(data.filter((sessionData) => {
-				const time = new Date(sessionData.time);
-				return time > today;
-			}));
+			setFilterData(
+				data.filter((sessionData) => {
+					const time = new Date(sessionData.time);
+					return time > today;
+				})
+			);
 		} else {
 			setFilterData(data);
 		}
@@ -44,12 +45,8 @@ const NewSessionData = () => {
 	const handleChange = (val) => {
 		setValue(val);
 		handleFilterData(val, responseData);
-
 	};
 	const today = new Date().setHours(0, 0, 0, 0);
-
-
-
 
 	return (
 		<div>
@@ -69,13 +66,9 @@ const NewSessionData = () => {
 				</ToggleButtonGroup>
 			</div>
 
-			{
-				filterData.map((sessionData) => {
-					return (
-						<SingleSession sessionData={sessionData} key={sessionData.id} />
-
-					);
-				})}
+			{filterData.map((sessionData) => {
+				return <SingleSession sessionData={sessionData} key={sessionData.id} />;
+			})}
 		</div>
 	);
 };

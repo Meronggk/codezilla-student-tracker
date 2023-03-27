@@ -133,7 +133,6 @@ const UpcomingClasses = () => {
 	return (
 		<div>
 			<NewSessionData />
-
 		</div>
 	);
 };
