@@ -132,10 +132,11 @@ function RegisterUser() {
 					Region:
 					<select value={region} onChange={(e) => setRegion(e.target.value)}>
 						<option value="">Select a region</option>
-						<option value="North">West Midlands</option>
-						<option value="South">Scotland</option>
-						<option value="East">London</option>
-						<option value="West">North West</option>
+						<option value="West">West Midlands</option>
+						<option value="North">Scotland</option>
+						<option value="South">London</option>
+						<option value="North">North West</option>
+						<option value="South">Cape Town</option>
 					</select>
 				</label>
 				<br />
