@@ -95,7 +95,7 @@ const SessionDash = () => {
 			<Routes>
 				<Route path="User-profile" element={<Profile />} />
 				<Route path="Add-classes" element={<AddClasses />} />
-				<Route path="Attendance-form" element={<AttendenceForm />} />
+				<Route path="Attendance-form/:sessionId" element={<AttendenceForm />} />
 				<Route path="Upcoming-classes" element={<UpcomingClasses />} />
 				<Route path="Register-user" element={<RegisterUser />} />
 			</Routes>

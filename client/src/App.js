@@ -4,7 +4,7 @@ import GitHubLogin from "./components/GitHubLogin";
 import Login from "./components/Login";
 import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
-import AttendenceForm from "./components/AttendenceForm";
+import AttandanceForm from "./components/AttendenceForm";
 import SessionDash from "./components/SessionDash";
 import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
@@ -31,11 +31,11 @@ function App() {
 				<Route path="/logout" element={<LogoutButton />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/register" element={<RegisterUser />} />
-				<Route path="/attendenceForm" element={<AttendenceForm />} />
+				<Route path="/attendenceForm/:sessionId" element={<AttandanceForm />} />
 				<Route path="/footer" element={<Footer />} />
 			</Routes>
 		</div>
-	);
+	)
 }
 
 export default App;

@@ -25,21 +25,26 @@ router.get("/users/trainee", async (req, res) => {
 		});
 });
 
-router.post("/attendence", async (req, res) => {
-	// eslint-disable-next-line no-console
-	console.log(req.body);
-	for (let i = 0; i < req.body.length; i++) {
-		const { user_id, session_id, notes } = req.body[i];
-		await db.query(
-			"INSERT INTO attendence(user_id, session_id, notes) VALUES($1, $2, $3)",
-			[user_id, session_id, notes]
-		);
+router.post("/attendance/:session_id", async (req, res) => {
+	try {
+		const session_id = req.params.session_id;
+		if (!session_id) {
+			return res.status(400).json({ message: "Session ID is required" });
+		  }
+		const attendees = req.body;
+		for (let i = 0; i < attendees.length; i++) {
+			const { user_id, notes } = attendees[i];
+			await db.query(
+				"INSERT INTO attendence(user_id, session_id, notes) VALUES($1, $2, $3)",
+				[user_id, session_id, notes]
+			);
+		}
+		res.status(201).json({ message: "Attendance recorded successfully" });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "Server Error" });
 	}
-	// .then(() => {
-	res.status(201).json({ mesg: "done" });
-	// });
 });
-
 //form back end ends
 
 // login backend begins
