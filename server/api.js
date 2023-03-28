@@ -30,7 +30,7 @@ router.post("/attendance/:session_id", async (req, res) => {
 		const session_id = req.params.session_id;
 		if (!session_id) {
 			return res.status(400).json({ message: "Session ID is required" });
-		  }
+		}
 		const attendees = req.body;
 		for (let i = 0; i < attendees.length; i++) {
 			const { user_id, notes } = attendees[i];

@@ -35,7 +35,7 @@ function App() {
 				<Route path="/footer" element={<Footer />} />
 			</Routes>
 		</div>
-	)
+	);
 }
 
 export default App;
