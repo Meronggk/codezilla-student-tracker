@@ -8,6 +8,7 @@ import AttendenceForm from "./components/AttendenceForm";
 import SessionDash from "./components/SessionDash";
 import NewSession from "./components/NewSession";
 import LogoutButton from "./components/LogoutButton";
+import JoinButton from "./components/JoinButton";
 import Profile from "./components/Profile";
 import RegisterUser from "./components/RegisterUser";
 import Footer from "./components/Footer";
@@ -29,6 +30,7 @@ function App() {
 				<Route path="/dashboard/*" element={<SessionDash />} />
 				<Route path="/sessions" element={<NewSession />} />
 				<Route path="/logout" element={<LogoutButton />} />
+				<Route path="/join" element={<JoinButton />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/register" element={<RegisterUser />} />
 				<Route path="/attendenceForm" element={<AttendenceForm />} />
