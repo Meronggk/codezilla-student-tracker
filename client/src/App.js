@@ -34,7 +34,6 @@ function App() {
 				<Route path="/register" element={<RegisterUser />} />
 				<Route path="/attendenceForm/:sessionId" element={<AttandanceForm />} />
 				<Route path="/footer" element={<Footer />} />
-				<Route path="/attendenceForm" element={<AttendenceForm />} />
 			</Routes>
 			<Footer />
 		</div>
