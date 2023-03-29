@@ -15,10 +15,8 @@ import Profile from "./Profile";
 import RegisterUser from "./RegisterUser";
 import RoleContext from "./RoleContext";
 
-
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
-
 
 const SessionDash = () => {
 	const [role] = useContext(RoleContext);
@@ -26,7 +24,6 @@ const SessionDash = () => {
 	const screens = useBreakpoint();
 
 	const [selectedKey, setSelectedKey] = React.useState("user-profile");
-
 
 	const handleMenuClick = (e) => {
 		setSelectedKey(e.key);
@@ -90,10 +87,7 @@ const SessionDash = () => {
 				selectedKeys={[selectedKey]}
 				onClick={handleMenuClick}
 			>
-				{[
-					"User-profile",
-					"Upcoming-classes",
-				].map(renderMenuItem)}
+				{["User-profile", "Upcoming-classes"].map(renderMenuItem)}
 				<LogoutButton />
 			</Menu>
 		);
@@ -119,7 +113,6 @@ const SessionDash = () => {
 
 	return (
 		<div style={{ display: "flex" }}>
-
 			<Sider
 				width={200}
 				collapsedWidth={screens.xs ? 0 : 80}
@@ -127,20 +120,15 @@ const SessionDash = () => {
 			>
 				<h1 style={{ fontFamily: "serif" }}>{role}</h1>
 				{siderContent}
-
-
-		</Sider>
+			</Sider>
 			{content}
-	</div>
+		</div>
 	);
 };
-
-
 
 const UserProfile = () => {
 	return (
 		<div>
-
 			<Profile />
 		</div>
 	);
@@ -164,11 +152,7 @@ const AttendanceForm = () => {
 };
 
 const UpcomingClasses = () => {
-	return (
-		<div>
-
-		</div>
-	);
+	return <div></div>;
 };
 const Register_User = () => {
 	return (

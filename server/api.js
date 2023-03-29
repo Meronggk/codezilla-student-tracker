@@ -47,18 +47,15 @@ router.post("/attendence", async (req, res) => {
 router.get("/getSessionData", (req, res, next) => {
 	const { id } = req.query;
 	db.query(`SELECT * FROM sessions WHERE id = ${id}`, (err, result) => {
-	  if (err) {
-		return next(err);
-	  } else {
-		res.status(200).json(result.rows);
-	  }
+		if (err) {
+			return next(err);
+		} else {
+			res.status(200).json(result.rows);
+		}
 	});
-  });
-
-
+});
 
 // search backend ends
-
 
 // github login backend starts
 

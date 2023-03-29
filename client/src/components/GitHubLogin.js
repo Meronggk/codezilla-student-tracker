@@ -67,9 +67,11 @@ function GitHubLogin() {
 							"https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
 						}
 					>
-						<img src={github_icon} alt="GitHub icon"
-						style={{ width: "20px", height: "20px", marginRight: "10px",
-}} />
+						<img
+							src={github_icon}
+							alt="GitHub icon"
+							style={{ width: "20px", height: "20px", marginRight: "10px" }}
+						/>
 						Login with Github
 					</a>
 				</button>

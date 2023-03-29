@@ -1,9 +1,5 @@
 import { createContext } from "react";
 
-
-const RoleContext = createContext ([]);
-
-
-
+const RoleContext = createContext([]);
 
 export default RoleContext;

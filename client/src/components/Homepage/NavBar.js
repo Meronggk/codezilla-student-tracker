@@ -24,8 +24,7 @@ const NavBar = () => {
 					<Link to={"/about"}>About us</Link>
 				</li>
 				<li>
-				<SwitchRoles />
-
+					<SwitchRoles />
 				</li>
 			</ul>
 			<div className="hamburger" onClick={handleClick}>
