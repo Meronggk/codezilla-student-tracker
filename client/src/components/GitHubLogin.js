@@ -1,9 +1,7 @@
 import React from "react";
-//import "./App.css";
-// import { GitHubLogin } from 'react-github-login'
-//import logo from './logo.svg';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import github_icon from "../components/Homepage/assets/images/github_icon.png";
 
 const CLIENT_ID = "438f9e1d00fa92021341";
 
@@ -69,6 +67,9 @@ function GitHubLogin() {
 							"https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
 						}
 					>
+						<img src={github_icon} alt="GitHub icon"
+						style={{ width: "20px", height: "20px", marginRight: "10px",
+}} />
 						Login with Github
 					</a>
 				</button>

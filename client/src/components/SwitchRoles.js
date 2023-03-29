@@ -1,7 +1,14 @@
+import { useContext } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import RoleContext from "./RoleContext";
 
-const SwitchRoles = ({ role, setRole }) => {
+
+const SwitchRoles = () => {
+	//const [role, setRole] = useState("Trainee");
+	const [role, setRole] = useContext(RoleContext);
+
+
 	const handleRoleChange = (eventKey) => {
 		setRole(eventKey);
 		fetch("/api/changerole", {
@@ -18,7 +25,8 @@ const SwitchRoles = ({ role, setRole }) => {
 
 	return (
 		<div>
-			<DropdownButton
+
+	<DropdownButton
 				id="SwitchRoles-dropdown"
 				title={role || "selectRole"}
 				onSelect={handleRoleChange}
@@ -26,7 +34,9 @@ const SwitchRoles = ({ role, setRole }) => {
 				<Dropdown.Item eventKey="Trainee">Trainee</Dropdown.Item>
 				<Dropdown.Item eventKey="Volunteer">Volunteer</Dropdown.Item>
 			</DropdownButton>
+
 		</div>
+
 	);
 };
 

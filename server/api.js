@@ -3,7 +3,7 @@
 /* eslint-disable no-unexpected-multiline */
 import { Router } from "express";
 import axios from "axios";
-import logger from "./utils/logger";
+//import logger from "./utils/logger";
 import db from "./db";
 //import Password from "antd/es/input/Password";
 
@@ -42,28 +42,23 @@ router.post("/attendence", async (req, res) => {
 
 //form back end ends
 
-// login backend begins
-// router.post("/signin", function (req, res) {
-// 	const email = req.body.email;
-// 	const password = req.body.password;
+// search backend begins
 
-// 	if (!email || !password) {
-// 		// eslint-disable-next-line no-undef
-// 		return res.status(400).send("email and password required");
-// 	}
+router.get("/getSessionData", (req, res, next) => {
+	const { id } = req.query;
+	db.query(`SELECT * FROM sessions WHERE id = ${id}`, (err, result) => {
+	  if (err) {
+		return next(err);
+	  } else {
+		res.status(200).json(result.rows);
+	  }
+	});
+  });
 
-// 	db.query("SELECT * FROM users ", []).then((res) => {
-// 		// eslint-disable-next-line no-undef
-// 		return res.status(400).send("user not available");
-// 	});
-// });
 
-// login backend ends
 
-router.get("/", async function (req, res) {
-	logger.debug("Welcoming everyone...");
-	res.json({ message: "Hello, world!" });
-});
+// search backend ends
+
 
 // github login backend starts
 
@@ -342,8 +337,6 @@ router.get("/user/me", (req, res) => {
 		userId: userId,
 	});
 });
-
-
 
 router.post("/registerUsers", (req, res) => {
 	const { name, role, region } = req.body;
