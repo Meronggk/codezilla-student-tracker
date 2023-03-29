@@ -55,20 +55,23 @@
 	top: 30%;
 	left: 25%;
 }
-.container .btn {
+.container .gitbtn {
 	position: absolute;
 	top: 65%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
 	background-color: rgb(31, 79, 236);
-	color: rgb(250, 244, 244);
 	font-size: 25px;
 	padding: 12px 17px;
 	border: none;
 	cursor: pointer;
 	border-radius: 5px;
 	text-align: center;
+}
+.container a {
+	color: white;
+	text-decoration: none;
 }
 
 .container .btn:hover {

@@ -46,25 +46,6 @@ router.post("/attendance/:session_id", async (req, res) => {
 	}
 });
 //form back end ends
-
-// login backend begins
-// router.post("/signin", function (req, res) {
-// 	const email = req.body.email;
-// 	const password = req.body.password;
-
-// 	if (!email || !password) {
-// 		// eslint-disable-next-line no-undef
-// 		return res.status(400).send("email and password required");
-// 	}
-
-// 	db.query("SELECT * FROM users ", []).then((res) => {
-// 		// eslint-disable-next-line no-undef
-// 		return res.status(400).send("user not available");
-// 	});
-// });
-
-// login backend ends
-
 router.get("/", async function (req, res) {
 	logger.debug("Welcoming everyone...");
 	res.json({ message: "Hello, world!" });
@@ -144,26 +125,6 @@ router.get("/getUserData", async function (req, res) {
 
 // allsessions inculidng toggle button//
 
-function fetchallsessions(callback) {
-	db.query("SELECT * FROM sessions", (err, data) => {
-		if (err) {
-			return callback(err);
-		}
-
-		return callback(undefined, data.rows);
-	});
-}
-
-router.get("/getAllSession", (req, res, next) => {
-	fetchallsessions((err, data) => {
-		if (err) {
-			return next(err);
-		}
-
-		res.status(200).send(data);
-	});
-});
-
 //find session//
 
 router.get("/getSessionData", (req, response, next) => {
@@ -204,6 +165,64 @@ router.get("/getUpcomingSession", (req, res) => {
 		}
 
 		res.status(200).send(data);
+	});
+});
+
+//redirect link-clockin//
+
+router.get("/joinSession/:session_id", async function (req, res) {
+	let currentdate = new Date();
+
+	currentdate.getFullYear() +
+		"-" +
+		currentdate.getMonth() +
+		"-" +
+		currentdate.getDay() +
+		"--" +
+		currentdate.getHours() +
+		":" +
+		currentdate.getMinutes() +
+		":" +
+		currentdate.getSeconds();
+	const id = req.params.session_id;
+	const userId = 1;
+	const Query = `insert into attendence  (session_id,user_id,clockin_time)  values ('${id}','${userId}',now(),'join',);`;
+	await db.query(Query);
+
+	const data = await db
+		.query("SELECT * FROM sessions WHERE id = $1", [id])
+		.then((data) => data.rows[0]);
+	res.redirect(data.meeting_url);
+});
+function fetchallsessions(callback) {
+	db.query("select * from SESSIONS", (err, data) => {
+		if (err) {
+			return callback(err);
+		}
+
+		return callback(undefined, data.rows);
+	});
+}
+router.get("/getAllSession", (req, res, next) => {
+	fetchallsessions((err, data) => {
+		if (err) {
+			return next(err);
+		}
+
+		res.status(200).send(data);
+	});
+});
+
+//find session//
+
+router.get("/getSessionData", (req, response, next) => {
+	const { id } = req.body;
+	db.query(`select * from SESSIONS where id = ${id}`, (err, res) => {
+		if (err) {
+			return next(err);
+		} else {
+			response.json(res.rows);
+		}
 	});
 });
 

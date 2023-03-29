@@ -20,9 +20,9 @@ const NavBar = () => {
 				<li>
 					<Link to={"/"}>Home</Link>
 				</li>
-				{/* <li>
+				<li>
 					<Link to={"/about"}>About us</Link>
-				</li> */}
+				</li>
 				<li>
 					{/* <Link to={"/roles"}> */}
 					<SwitchRoles />

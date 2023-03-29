@@ -1,5 +1,5 @@
 import React from "react";
-//import "./App.css";
+
 // import { GitHubLogin } from 'react-github-login'
 //import logo from './logo.svg';
 import { useEffect, useState } from "react";
@@ -41,7 +41,7 @@ function GitHubLogin() {
 
 	const navigate = useNavigate();
 	function handleEvent() {
-		navigate("/signin");
+		navigate("/dashboard");
 	}
 	// eslint-disable-next-line no-unused-vars
 	async function getUserData() {
