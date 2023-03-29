@@ -10,7 +10,7 @@ import {
 	CalendarOutlined,
 } from "@ant-design/icons";
 import NewSession from "./NewSession";
-
+import NewSessionData from "./NewSessionData";
 import AttendenceForm from "./AttendenceForm";
 import LogoutButton from "./LogoutButton";
 import Profile from "./Profile";
@@ -96,7 +96,7 @@ const SessionDash = () => {
 				<Route path="User-profile" element={<Profile />} />
 				<Route path="Add-classes" element={<AddClasses />} />
 				<Route path="Attendance-form" element={<AttendenceForm />} />
-				<Route path="Upcoming-classes" element={<UpcomingClasses />} />
+				<Route path="Upcoming-classes" element={<NewSessionData />} />
 				<Route path="Register-user" element={<RegisterUser />} />
 			</Routes>
 		</div>
@@ -132,8 +132,7 @@ const AttendanceForm = () => {
 const UpcomingClasses = () => {
 	return (
 		<div>
-			<h2>Upcoming Classes</h2>
-			{/* Insert upcoming classes content here */}
+			<NewSessionData />
 		</div>
 	);
 };
