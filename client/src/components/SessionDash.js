@@ -84,9 +84,9 @@ const SessionDash = () => {
 				>
 					{[
 						"User-profile",
-						"Add-classes",
+						"Add-Session",
 						"Attendance-form",
-						"Upcoming-classes",
+						"Upcoming-Sessions",
 						"Register-user",
 					].map(renderMenuItem)}
 					<LogoutButton />
@@ -94,12 +94,16 @@ const SessionDash = () => {
 			</Sider>
 			<Routes>
 				<Route path="User-profile" element={<Profile />} />
+
 				<Route path="Add-classes" element={<AddClasses />} />
 
 				<Route path="Attendance-form/:sessionId" element={<AttendenceForm />} />
 				<Route path="Upcoming-classes" element={<UpcomingClasses />} />
+
+				<Route path="Add-Session" element={<AddClasses />} />
+
 				<Route path="Attendance-form" element={<AttendenceForm />} />
-				<Route path="Upcoming-classes" element={<NewSessionData />} />
+				<Route path="Upcoming-Sessions" element={<NewSessionData />} />
 				<Route path="Register-user" element={<RegisterUser />} />
 			</Routes>
 		</div>
