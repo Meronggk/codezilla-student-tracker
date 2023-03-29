@@ -1,5 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const SingleSession = ({ sessionData }) => {
 	const todayEnd = new Date().setHours(23, 59, 59, 59);
@@ -17,6 +19,10 @@ const SingleSession = ({ sessionData }) => {
 				) : (
 					<span>Link not available yet</span>
 				)}
+				<br />
+				<Link to={`/dashboard/${sessionData.id}/attendanceform`}>
+					<Button variant="primary">Attendance Form</Button>
+				</Link>
 			</Card.Body>
 		</Card>
 	);

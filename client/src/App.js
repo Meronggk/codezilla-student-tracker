@@ -32,7 +32,7 @@ function App() {
 				<Route path="/join" element={<JoinButton />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/register" element={<RegisterUser />} />
-				<Route path="/attendenceForm/:sessionId" element={<AttandanceForm />} />
+				<Route path="/dashboard/:sessionId/attendanceform" element={<AttandanceForm />} />
 				<Route path="/footer" element={<Footer />} />
 			</Routes>
 			<Footer />
