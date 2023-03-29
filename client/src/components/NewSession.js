@@ -42,7 +42,7 @@ function NewSession() {
 	// Handle form submissions
 	function handleSubmit(event) {
 		event.preventDefault();
-		fetch("/api/newsession", {
+		fetch("/api/sessions", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(formData),
