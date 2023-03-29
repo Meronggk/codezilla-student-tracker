@@ -3,6 +3,9 @@ import axios from "axios";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import SingleSession from "./SingleSession";
+// import Search from "antd/es/transfer/search";
+// import e from "express";
+// import session from "express-session";
 // const label = { inputProps: { "aria-label": "Choose Session Data" } };
 
 const NewSessionData = () => {
@@ -10,6 +13,16 @@ const NewSessionData = () => {
 	const [value, setValue] = useState(1);
 	let [responseData, setResponseData] = useState([]);
 	const [filterData, setFilterData] = useState([]);
+	const [, setSearchText] = useState("");
+
+	const handleSearch = (text) => {
+		setSearchText(text);
+
+		const filtered = responseData.filter((session) =>
+			session.name.toLowerCase().includes(text.toLowerCase())
+		);
+		setFilterData(filtered);
+	};
 
 	// fetches data
 	const fetchAllData = () => {
@@ -64,6 +77,22 @@ const NewSessionData = () => {
 						Upcoming Sessions
 					</ToggleButton>
 				</ToggleButtonGroup>
+			</div>
+			<div>
+				<input
+					type="text"
+					placeholder="Search"
+					onChange={(e) => handleSearch(e.target.value)}
+				/>
+
+				{/* <button
+
+         // eslint-disable-next-line react/no-unknown-property
+         allowClearonSearch={
+             (value) => handleSearch (searchText, value)
+         }
+         value={searchText}
+             onChange={(e) => setSearchText(e.target.value)}>Search</button> */}
 			</div>
 
 			{filterData.map((sessionData) => {
