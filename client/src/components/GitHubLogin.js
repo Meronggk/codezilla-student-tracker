@@ -39,7 +39,7 @@ function GitHubLogin() {
 
 	const navigate = useNavigate();
 	function handleEvent() {
-		navigate("/signin");
+		navigate("/dashboard");
 	}
 	// eslint-disable-next-line no-unused-vars
 	async function getUserData() {

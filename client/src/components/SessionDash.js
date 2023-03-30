@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
+
 import React, { useContext } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Layout, Menu, Grid } from "antd";
 import {
 	UserOutlined,
@@ -8,7 +11,7 @@ import {
 	CalendarOutlined,
 } from "@ant-design/icons";
 import NewSession from "./NewSession";
-
+import NewSessionData from "./NewSessionData";
 import AttendenceForm from "./AttendenceForm";
 import LogoutButton from "./LogoutButton";
 import Profile from "./Profile";
@@ -49,7 +52,7 @@ const SessionDash = () => {
 	const renderMenuItem = (item) => {
 		return (
 			<Menu.Item key={item} icon={getItemIcon(item)}>
-				{item.replace(/-/g, " ")}
+				<Link to={item}> {item.replace(/-/g, " ")} </Link>
 			</Menu.Item>
 		);
 	};
@@ -62,16 +65,6 @@ const SessionDash = () => {
 		alignItems: "center",
 		justifyContent: "start",
 	};
-
-	const content = (
-		<div style={contentStyle}>
-			{selectedKey === "User-profile" && <UserProfile />}
-			{selectedKey === "Add-classes" && <AddClasses />}
-			{selectedKey === "Attendance-form" && <AttendanceForm />}
-			{selectedKey === "Upcoming-classes" && <UpcomingClasses />}
-			{selectedKey === "Register-user" && <RegisterUser />}
-		</div>
-	);
 
 	const sidebarStyle = {
 		minHeight: "100vh",
@@ -118,10 +111,18 @@ const SessionDash = () => {
 				collapsedWidth={screens.xs ? 0 : 80}
 				style={sidebarStyle}
 			>
+
 				<h1 style={{ fontFamily: "serif" }}>{role}</h1>
 				{siderContent}
+
 			</Sider>
-			{content}
+			<Routes>
+				<Route path="User-profile" element={<Profile />} />
+				<Route path="Add-Session" element={<AddClasses />} />
+				<Route path="Attendance-form" element={<AttendenceForm />} />
+				<Route path="Upcoming-Sessions" element={<NewSessionData />} />
+				<Route path="Register-user" element={<RegisterUser />} />
+			</Routes>
 		</div>
 	);
 };
@@ -152,12 +153,17 @@ const AttendanceForm = () => {
 };
 
 const UpcomingClasses = () => {
-	return <div></div>;
+
+	return (
+		<div>
+			<NewSessionData />
+		</div>
+	);
+
 };
 const Register_User = () => {
 	return (
 		<div>
-			<h2>RegisterUser</h2>
 			<RegisterUser />
 		</div>
 	);
