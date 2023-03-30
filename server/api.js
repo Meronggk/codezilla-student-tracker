@@ -26,19 +26,22 @@ router.get("/users/trainee", async (req, res) => {
 // attendanace clockin
 router.get("/attendance/:session_id", async (req, res) => {
 	const session_id = req.params.session_id;
-	db.query(`select  u.name, u.id as user_id, a.clockin_time, a.notes from users u 
+	db.query(
+		`select  u.name, u.id as user_id, a.clockin_time, a.notes from users u 
 	LEFT JOIN (
 	select clockin_time, user_id, notes
 		from attendence
 		where session_id=$1	
 	) a 
-	on u.id = a.user_id;`, [session_id])
-	.then((data) => {
-		res.json(data.rows);
-	})
-	.catch((err) => {
-		res.status(500).send(err);
-	});
+	on u.id = a.user_id;`,
+		[session_id]
+	)
+		.then((data) => {
+			res.json(data.rows);
+		})
+		.catch((err) => {
+			res.status(500).send(err);
+		});
 });
 
 router.post("/attendance/:session_id", async (req, res) => {
@@ -211,7 +214,8 @@ router.get("/joinSession/:session_id", async function (req, res) {
 		currentdate.getSeconds();
 	const id = req.params.session_id;
 	const userId = req.session.userId;
-	const Query = "insert into attendence  (session_id,user_id,clockin_time)  values ($1, $2, now())";
+	const Query =
+		"insert into attendence  (session_id,user_id,clockin_time)  values ($1, $2, now())";
 	await db.query(Query, [id, userId]);
 
 	const data = await db

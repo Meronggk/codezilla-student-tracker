@@ -14,9 +14,7 @@ function AttendanceForm() {
 			fetch(url)
 				.then((res) => res.json())
 				.then((data) =>
-					setUsers(
-						data.map((user) => ({ ...user, attendance: "In Person" }))
-					)
+					setUsers(data.map((user) => ({ ...user, attendance: "In Person" })))
 				);
 		};
 		fetchData();
@@ -73,7 +71,6 @@ function AttendanceForm() {
 						<tr key={index}>
 							<td>{user.name}</td>
 							<td>
-
 								<label>
 									<input
 										type="radio"
@@ -122,7 +119,6 @@ function AttendanceForm() {
 									/>
 									Left Early
 								</label>
-
 							</td>
 							<td>
 								<input
@@ -132,9 +128,7 @@ function AttendanceForm() {
 								/>
 							</td>
 							<td>
-								<span>
-									{user.clockin_time}
-								</span>
+								<span>{user.clockin_time}</span>
 							</td>
 						</tr>
 					))}
