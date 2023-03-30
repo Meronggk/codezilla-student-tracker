@@ -5,6 +5,8 @@ import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import SingleSession from "./SingleSession";
 import "./NewSessionData.css";
 
+
+
 const NewSessionData = () => {
 	// Create state variables
 	const [value, setValue] = useState(1);
@@ -84,14 +86,6 @@ const NewSessionData = () => {
 					onChange={(e) => handleSearch(e.target.value)}
 				/>
 
-				{/* <button
-
-         // eslint-disable-next-line react/no-unknown-property
-         allowClearonSearch={
-             (value) => handleSearch (searchText, value)
-         }
-         value={searchText}
-             onChange={(e) => setSearchText(e.target.value)}>Search</button> */}
 			</div>
 
 			{filterData.map((sessionData) => {

@@ -6,7 +6,6 @@ import NavBar from "./components/Homepage/NavBar";
 import SessionDash from "./components/SessionDash";
 import JoinButton from "./components/JoinButton";
 import Footer from "./components/Footer";
-
 import About_us from "./components/About_us";
 import "bootstrap/dist/css/bootstrap.min.css";
 import RoleContext from "./components/RoleContext";
@@ -16,11 +15,11 @@ import { useState } from "react";
 function App() {
 	const [role, setRole] = useState("Trainee");
 	const context = [role, setRole];
+
 	return (
 		<div>
 
 			<NavBar />
-
 			<RoleContext.Provider value={context}>
 				<NavBar />
 				<Routes>

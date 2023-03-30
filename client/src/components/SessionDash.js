@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
+
+import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
-import React, { useContext } from "react";
 import { Layout, Menu, Grid } from "antd";
 import {
 	UserOutlined,
@@ -26,8 +27,6 @@ const SessionDash = () => {
 	const screens = useBreakpoint();
 
 	const [selectedKey, setSelectedKey] = React.useState("user-profile");
-	// const [role, setRole] = useState("");
-	// role: role,
 
 	const handleMenuClick = (e) => {
 		setSelectedKey(e.key);
@@ -72,8 +71,6 @@ const SessionDash = () => {
 		display: "flex",
 		flexDirection: "column",
 	};
-
-
 	let siderContent;
 	if (role === "Trainee") {
 		siderContent = (
@@ -106,7 +103,6 @@ const SessionDash = () => {
 		);
 	}
 
-
 	return (
 		<div style={{ display: "flex" }}>
 			<Sider
@@ -114,8 +110,8 @@ const SessionDash = () => {
 				collapsedWidth={screens.xs ? 0 : 80}
 				style={sidebarStyle}
 			>
-<h1 style={{ fontFamily: "serif" }}>{role}</h1>
-				{siderContent}
+				<h1 style={{ fontFamily: "serif" }}>{role}</h1>
+	{siderContent}
 			</Sider>
 			<Routes>
 				<Route path="User-profile" element={<Profile />} />
@@ -132,7 +128,6 @@ const SessionDash = () => {
 const UserProfile = () => {
 	return (
 		<div>
-			<h2>User Profile</h2>
 			<Profile />
 		</div>
 	);
@@ -141,7 +136,6 @@ const UserProfile = () => {
 const AddClasses = () => {
 	return (
 		<div>
-			<h2>Create Session</h2>
 			<NewSession />
 		</div>
 	);
@@ -165,7 +159,6 @@ const UpcomingClasses = () => {
 const Register_User = () => {
 	return (
 		<div>
-			<h2>RegisterUser</h2>
 			<RegisterUser />
 		</div>
 	);
