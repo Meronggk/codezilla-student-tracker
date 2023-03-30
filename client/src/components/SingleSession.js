@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import JoinButton from "./JoinButton";
 
 const SingleSession = ({ sessionData }) => {
 	const todayEnd = new Date().setHours(23, 59, 59, 59);
@@ -18,6 +19,7 @@ const SingleSession = ({ sessionData }) => {
 					<span>Link not available yet</span>
 				)}
 			</Card.Body>
+			<JoinButton />
 		</Card>
 	);
 };
