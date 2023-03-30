@@ -17,6 +17,7 @@ import LogoutButton from "./LogoutButton";
 import Profile from "./Profile";
 import RegisterUser from "./RegisterUser";
 import RoleContext from "./RoleContext";
+import "./SessionDash.css";
 
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
@@ -36,11 +37,9 @@ const SessionDash = () => {
 		switch (item) {
 			case "User-profile":
 				return <UserOutlined />;
-			case "Add-classes":
+			case "Add-Session":
 				return <PlusOutlined />;
-			case "Attendance-form":
-				return <FormOutlined />;
-			case "Upcoming-classes":
+			case "Upcoming-sessions":
 				return <CalendarOutlined />;
 			case "Register-user":
 				return <PlusOutlined />;
@@ -70,6 +69,7 @@ const SessionDash = () => {
 		minHeight: "100vh",
 		display: "flex",
 		flexDirection: "column",
+		textDecoration: "none",
 	};
 	let siderContent;
 	if (role === "Trainee") {
@@ -79,7 +79,7 @@ const SessionDash = () => {
 				selectedKeys={[selectedKey]}
 				onClick={handleMenuClick}
 			>
-				{["User-profile", "Upcoming-classes"].map(renderMenuItem)}
+				{["User-profile", "Upcoming-sessions"].map(renderMenuItem)}
 				<LogoutButton />
 			</Menu>
 		);
@@ -92,8 +92,7 @@ const SessionDash = () => {
 			>
 				{[
 					"User-profile",
-					"Add-classes",
-					"Attendance-form",
+					"Add-Session",
 					"Upcoming-sessions",
 					"Register-user",
 				].map(renderMenuItem)}
@@ -110,56 +109,17 @@ const SessionDash = () => {
 				collapsedWidth={screens.xs ? 0 : 80}
 				style={sidebarStyle}
 			>
-				<h1 style={{ fontFamily: "serif" }}>{role}</h1>
+				{/* <h1 style={{ fontFamily: "serif" }}>{role}</h1> */}
 	{siderContent}
 			</Sider>
 			<Routes>
 				<Route path="User-profile" element={<Profile />} />
-				<Route path="Add-Session" element={<AddClasses />} />
+				<Route path="Add-Session" element={<NewSession />} />
 				<Route path="Attendance-form" element={<AttendenceForm />} />
 				<Route path="Upcoming-Sessions" element={<NewSessionData />} />
 				<Route path="Register-user" element={<RegisterUser />} />
 				<Route path="*" element={<NewSessionData />} />
 			</Routes>
-		</div>
-	);
-};
-
-const UserProfile = () => {
-	return (
-		<div>
-			<Profile />
-		</div>
-	);
-};
-
-const AddClasses = () => {
-	return (
-		<div>
-			<NewSession />
-		</div>
-	);
-};
-
-const AttendanceForm = () => {
-	return (
-		<div>
-			<AttendenceForm />
-		</div>
-	);
-};
-
-const UpcomingClasses = () => {
-	return (
-		<div>
-			<NewSessionData />
-		</div>
-	);
-};
-const Register_User = () => {
-	return (
-		<div>
-			<RegisterUser />
 		</div>
 	);
 };

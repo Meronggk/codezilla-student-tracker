@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useEffect, useState } from "react";
 //import GitHubLogin from "../components/GitHubLogin";
 import { useSearchParams } from "react-router-dom";
@@ -21,7 +22,7 @@ const GitHubCalllBack = () => {
 				console.log("You can`t login, access to your manager");
 				setLoginError("You can`t log in please contact your admin"); // callback
 
-				// navigate("/");
+
 
 			} else {
 				console.log("You are logged in");

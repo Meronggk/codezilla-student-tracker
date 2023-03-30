@@ -36,11 +36,10 @@ function LogoutButton() {
 					color: "fff",
 					border: "none",
 					borderRadius: "0.25rem",
-					fontWeight: "bold",
 					cursor: "pointer",
 					display: "block",
 					fontFamily: "serif",
-					fontSize: "20px",
+					fontSize: "25px",
 				}}
 			>
 				Logout

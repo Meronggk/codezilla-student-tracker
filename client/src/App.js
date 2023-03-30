@@ -18,8 +18,6 @@ function App() {
 
 	return (
 		<div>
-
-			<NavBar />
 			<RoleContext.Provider value={context}>
 				<NavBar />
 				<Routes>
@@ -28,7 +26,7 @@ function App() {
 					<Route path="/login" element={<GitHubLogin />} />
 					<Route path="/callback" element={<GitHubCalllBack />} />
 					<Route path="/homepage" element={<Homepage />} />
-					<Route path="/dashboard" element={<SessionDash />} />
+					<Route path="/dashboard/*" element={<SessionDash />} />
 					<Route path="/footer" element={<Footer />} />
 					<Route path="/join" element={<JoinButton />} />
 				</Routes>

@@ -29,7 +29,7 @@ const NewSessionData = () => {
 			.get("/api/getAllSession")
 			.then((response) => {
 				// eslint-disable-next-line no-unused-vars
-				let data = response.data.sort((a, b) => new Date(b.time) - new Date(a.time));
+				let data = response.data.sort((a, b) => new Date(a.time) - new Date(b.time));
 				setResponseData(response.data);
 				handleFilterData(value, response.data);
 				// setFilterData(response.data);

@@ -298,26 +298,6 @@ router.get("/cohorts", (req, res) => {
 	});
 });
 
-// save clockin time in attendance by the give sessionId
-
-router.get("/sessions/:id", (req, res) => {
-	const sessionId = req.params.id;
-	const sql = "SELECT time FROM sessions WHERE id = $1";
-	const values = [sessionId];
-
-	db.query(sql, values, (error, result) => {
-		if (error) {
-			res.status(500).send("Error retrieving session");
-		} else if (result.rows.length === 0) {
-			res.status(404).send("Session not found");
-		} else {
-			const startTime = result.rows[0].time;
-			res.status(200).json({ startTime });
-		}
-	});
-});
-
-
 
 // POST request to create a new session
 router.post("/sessions", (req, res) => {
