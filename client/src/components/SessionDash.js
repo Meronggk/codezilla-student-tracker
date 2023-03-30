@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useContext } from "react";
 import { Layout, Menu, Grid } from "antd";
 import {
 	UserOutlined,
@@ -15,11 +15,14 @@ import AttendenceForm from "./AttendenceForm";
 import LogoutButton from "./LogoutButton";
 import Profile from "./Profile";
 import RegisterUser from "./RegisterUser";
+import RoleContext from "./RoleContext";
 
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
 
 const SessionDash = () => {
+	const [role] = useContext(RoleContext);
+	console.log(role);
 	const screens = useBreakpoint();
 
 	const [selectedKey, setSelectedKey] = React.useState("user-profile");
@@ -70,6 +73,40 @@ const SessionDash = () => {
 		flexDirection: "column",
 	};
 
+
+	let siderContent;
+	if (role === "Trainee") {
+		siderContent = (
+			<Menu
+				mode="inline"
+				selectedKeys={[selectedKey]}
+				onClick={handleMenuClick}
+			>
+				{["User-profile", "Upcoming-classes"].map(renderMenuItem)}
+				<LogoutButton />
+			</Menu>
+		);
+	} else {
+		siderContent = (
+			<Menu
+				mode="inline"
+				selectedKeys={[selectedKey]}
+				onClick={handleMenuClick}
+			>
+				{[
+					"User-profile",
+					"Add-classes",
+					"Attendance-form",
+					"Upcoming-sessions",
+					"Register-user",
+				].map(renderMenuItem)}
+
+				<LogoutButton />
+			</Menu>
+		);
+	}
+
+
 	return (
 		<div style={{ display: "flex" }}>
 			<Sider
@@ -77,20 +114,8 @@ const SessionDash = () => {
 				collapsedWidth={screens.xs ? 0 : 80}
 				style={sidebarStyle}
 			>
-				<Menu
-					mode="inline"
-					selectedKeys={[selectedKey]}
-					onClick={handleMenuClick}
-				>
-					{[
-						"User-profile",
-						"Add-Session",
-						"Attendance-form",
-						"Upcoming-Sessions",
-						"Register-user",
-					].map(renderMenuItem)}
-					<LogoutButton />
-				</Menu>
+<h1 style={{ fontFamily: "serif" }}>{role}</h1>
+				{siderContent}
 			</Sider>
 			<Routes>
 				<Route path="User-profile" element={<Profile />} />
@@ -98,6 +123,7 @@ const SessionDash = () => {
 				<Route path="Attendance-form" element={<AttendenceForm />} />
 				<Route path="Upcoming-Sessions" element={<NewSessionData />} />
 				<Route path="Register-user" element={<RegisterUser />} />
+				<Route path="*" element={<NewSessionData />} />
 			</Routes>
 		</div>
 	);
