@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -7,7 +6,6 @@ import { Layout, Menu, Grid } from "antd";
 import {
 	UserOutlined,
 	PlusOutlined,
-	FormOutlined,
 	CalendarOutlined,
 } from "@ant-design/icons";
 import NewSession from "./NewSession";
@@ -37,7 +35,9 @@ const SessionDash = () => {
 		switch (item) {
 			case "User-profile":
 				return <UserOutlined />;
-			case "Add-Session":
+
+			case "Add-session":
+
 				return <PlusOutlined />;
 			case "Upcoming-sessions":
 				return <CalendarOutlined />;
@@ -92,7 +92,8 @@ const SessionDash = () => {
 			>
 				{[
 					"User-profile",
-					"Add-Session",
+					"Add-session",
+					"Attendance-form",
 					"Upcoming-sessions",
 					"Register-user",
 				].map(renderMenuItem)}
@@ -114,8 +115,8 @@ const SessionDash = () => {
 			</Sider>
 			<Routes>
 				<Route path="User-profile" element={<Profile />} />
-				<Route path="Add-Session" element={<NewSession />} />
-				<Route path="Attendance-form" element={<AttendenceForm />} />
+				<Route path="Add-session" element={<NewSession />} />
+				<Route path=":sessionId/attendanceform" element={<AttendenceForm />} />
 				<Route path="Upcoming-Sessions" element={<NewSessionData />} />
 				<Route path="Register-user" element={<RegisterUser />} />
 				<Route path="*" element={<NewSessionData />} />

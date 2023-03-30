@@ -3,7 +3,6 @@
 /* eslint-disable no-unexpected-multiline */
 import { Router } from "express";
 import axios from "axios";
-//import logger from "./utils/logger";
 import db from "./db";
 //import Password from "antd/es/input/Password";
 
@@ -24,22 +23,47 @@ router.get("/users/trainee", async (req, res) => {
 			res.status(500).send(err);
 		});
 });
-
-router.post("/attendence", async (req, res) => {
-	// eslint-disable-next-line no-console
-	console.log(req.body);
-	for (let i = 0; i < req.body.length; i++) {
-		const { user_id, session_id, notes } = req.body[i];
-		await db.query(
-			"INSERT INTO attendence(user_id, session_id, notes) VALUES($1, $2, $3)",
-			[user_id, session_id, notes]
-		);
-	}
-	// .then(() => {
-	res.status(201).json({ mesg: "done" });
-	// });
+// attendanace clockin
+router.get("/attendance/:session_id", async (req, res) => {
+	const session_id = req.params.session_id;
+	db.query(
+		`select  u.name, u.id as user_id, a.clockin_time, a.notes from users u 
+	LEFT JOIN (
+	select clockin_time, user_id, notes
+		from attendence
+		where session_id=$1	
+	) a 
+	on u.id = a.user_id;`,
+		[session_id]
+	)
+		.then((data) => {
+			res.json(data.rows);
+		})
+		.catch((err) => {
+			res.status(500).send(err);
+		});
 });
 
+router.post("/attendance/:session_id", async (req, res) => {
+	try {
+		const session_id = req.params.session_id;
+		if (!session_id) {
+			return res.status(400).json({ message: "Session ID is required" });
+		}
+		const attendees = req.body;
+		for (let i = 0; i < attendees.length; i++) {
+			const { user_id, notes } = attendees[i];
+			await db.query(
+				"INSERT INTO attendence(user_id, session_id, notes) VALUES($1, $2, $3)",
+				[user_id, session_id, notes]
+			);
+		}
+		res.status(201).json({ message: "Attendance recorded successfully" });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "Server Error" });
+	}
+});
 //form back end ends
 
 // search backend begins
@@ -189,9 +213,10 @@ router.get("/joinSession/:session_id", async function (req, res) {
 		":" +
 		currentdate.getSeconds();
 	const id = req.params.session_id;
-	const userId = 1;
-	const Query = `insert into attendence  (session_id,user_id,clockin_time)  values ('${id}','${userId}',now(),'join',);`;
-	await db.query(Query);
+	const userId = req.session.userId;
+	const Query =
+		"insert into attendence  (session_id,user_id,clockin_time)  values ($1, $2, now())";
+	await db.query(Query, [id, userId]);
 
 	const data = await db
 		.query("SELECT * FROM sessions WHERE id = $1", [id])

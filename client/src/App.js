@@ -4,7 +4,7 @@ import GitHubLogin from "./components/GitHubLogin";
 import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
 import SessionDash from "./components/SessionDash";
-import JoinButton from "./components/JoinButton";
+
 import Footer from "./components/Footer";
 import About_us from "./components/About_us";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -28,7 +28,6 @@ function App() {
 					<Route path="/homepage" element={<Homepage />} />
 					<Route path="/dashboard/*" element={<SessionDash />} />
 					<Route path="/footer" element={<Footer />} />
-					<Route path="/join" element={<JoinButton />} />
 				</Routes>
 				<Footer />
 			</RoleContext.Provider>
