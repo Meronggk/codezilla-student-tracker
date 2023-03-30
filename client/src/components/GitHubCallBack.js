@@ -46,7 +46,7 @@ const GitHubCalllBack = () => {
 					</button>
 				</div>
 			) : (
-				<Spinner animation="grow" />
+				<Spinner animation="grow" style={{ justifySelf: "center" }} />
 			)}
 		</div>
 	);

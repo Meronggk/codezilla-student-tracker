@@ -7,9 +7,13 @@ import Shimen from "./Homepage/assets/images/Shimen.png";
 import Raj from "./Homepage/assets/images/Raj.png";
 import Katie from "./Homepage/assets/images/Katie.png";
 import Emily from "./Homepage/assets/images/Emily.jpg";
+//import Group from "./Homepage/assets/images/Group.png";
+
 const About_us = () => {
   return (
     <div className="row">
+
+			{/* <img src={Group} alt="group" /> */}
         <h1>Meet the team</h1>
         <h2>Codezilla</h2>
       <div className="column">
@@ -20,9 +24,9 @@ const About_us = () => {
             className="primary"
           ><h3>Fatih</h3>
           </a>
-          <p>
+          <h5>
 FullStack Developer
-          </p>
+          </h5>
         </div>
       </div>
       <div className="column">
@@ -33,9 +37,9 @@ FullStack Developer
             className="primary"
           ><h3>Meron</h3>
           </a>
-          <p>
-            FullStack Developer
-          </p>
+          <h5>
+FullStack Developer
+          </h5>
         </div>
       </div>
       <div className="column">
@@ -46,9 +50,9 @@ FullStack Developer
             className="primary"
           ><h3>Mohammad</h3>
           </a>
-          <p>
-            FullStack Developer
-          </p>
+          <h5>
+FullStack Developer
+          </h5>
         </div>
       </div>
       <div className="column">
@@ -57,38 +61,38 @@ FullStack Developer
           <a
             href="https://www.linkedin.com/in/shimenafshar/"
             className="primary"
-          >Shimen
+          ><h3>Shimen</h3>
           </a>
-          <p>
-            FullStack Developer
-          </p>
+          <h5>
+FullStack Developer
+          </h5>
         </div>
       </div>
       <div className="column">
         <div className="card">
           <img src={Raj} alt="raj" />
           <h3>Raj</h3>
-          <p>
-            TA
-          </p>
+          <h5>
+TA
+          </h5>
         </div>
       </div>
       <div className="column">
         <div className="card">
           <img src={Katie} alt="raj" />
           <h3>Katie</h3>
-          <p>
-            Product Manager
-          </p>
+          <h5>
+Product Manager
+          </h5>
         </div>
       </div>
       <div className="column">
         <div className="card">
           <img src={Emily} alt="emily" />
           <h3>Emily</h3>
-          <p>
-            TA
-          </p>
+          <h5>
+TA
+          </h5>
         </div>
       </div>
     </div>
