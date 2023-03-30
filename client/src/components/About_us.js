@@ -1,131 +1,97 @@
-// import React, { useState, useEffect } from "react";
-
-// const teamMembers = [
-// 	{
-// 		id: 1,
-// 		name: "Fatih",
-// 		position: "Full-Stack Developer",
-// 		linkedin: "https://www.linkedin.com/in/fatih-celebi-5460a4229/",
-// 		image: require("./Homepage/assets/images/Fatih.png"),
-// 	},
-// 	{
-// 		id: 2,
-// 		name: "Shimen",
-// 		position: "Full-Stack Developer",
-// 		linkedin: "https://www.linkedin.com/in/shimenafshar/",
-// 		image: require("./Homepage/assets/images/Shimen.png"),
-// 	},
-// 	{
-// 		id: 3,
-// 		name: "Meron",
-// 		position: "Full-Stack Developer",
-// 		linkedin: "https://www.linkedin.com/in/meron-gebremichael-8531b2243/",
-// 		image: require("./Homepage/assets/images/Meron.png"),
-// 	},
-// 	{
-// 		id: 4,
-// 		name: "Mohammad",
-// 		position: "Full-Stack Developer",
-// 		linkedin: "https://www.linkedin.com/in/mohammadreza-nafar-669507239/",
-// 		image: require("./Homepage/assets/images/Mohammed.png"),
-// 	},
-
-// 	{
-// 		id: 5,
-// 		name: "Katie",
-// 		position: "Product Manager",
-// 		image: require("./Homepage/assets/images/Katie.png"),
-// 	},
-// 	{
-// 		id: 6,
-// 		name: "Raj",
-// 		position: "TA",
-// 		image: require("./Homepage/assets/images/Raj.png"),
-// 	},
-// 	{
-// 		id: 7,
-// 		name: "Emily",
-// 		position: "TA",
-// 		image: require("./Homepage/assets/images/Emily.jpg"),
-// 	},
-// ];
-
-// function About_us() {
-// 	const [showMembers, setShowMembers] = useState(false);
-// 	const [showProject, setShowProject] = useState(false);
-
-// 	useEffect(() => {
-// 		setTimeout(() => {
-// 			setShowMembers(true);
-// 		}, 2000);
-// 	}, []);
-
-// 	useEffect(() => {
-// 		if (showMembers) {
-// 			setTimeout(() => {
-// 				setShowProject(true);
-// 			}, 2000);
-// 		}
-// 	}, [showMembers]);
-
-// 	return (
-// 		<div
-// 			style={{
-// 				backgroundColor: "rgba(216, 215, 221, 0.884)",
-// 				minHeight: "100vh",
-// 				color: "black",
-// 			}}
-// 			className="about_cont"
-// 		>
-// 			<div style={{ padding: "20px", color: "black" }}>
-// 				<h1 style={{ textAlign: "center", color: "black" }}>Group-Codezilla</h1>
-// 			</div>
-
-// 			{showMembers && (
-// 				<div
-// 					style={{ display: "flex", justifyContent: "center", color: "black" }}
-// 				>
-// 					{teamMembers.map((member) => (
-// 						<div
-// 							key={member.id}
-// 							style={{ textAlign: "center", margin: "15px", color: "black" }}
-// 						>
-// 							<img
-// 								src={member.image.default}
-// 								alt={member.name}
-// 								style={{
-// 									width: "150px",
-// 									height: "150px",
-// 									borderRadius: "5%",
-// 									color: "black",
-// 								}}
-// 							/>
-// 							<h3>
-// 								<a
-// 									href={member.linkedin}
-// 									target="_blank"
-// 									rel="noopener noreferrer"
-// 								>
-// 									{member.name}
-// 								</a>
-// 							</h3>
-// 							<p style={{ color: "black" }}>{member.position}</p>
-// 						</div>
-// 					))}
-// 				</div>
-// 			)}
-
-// 			{showProject && (
-// 				<>
-// 					<h2
-// 						style={{ textAlign: "center", marginTop: "30px", color: "black" }}
-// 					>
-// 						PROJECT - Class Register
-// 					</h2>
-// 				</>
-// 			)}
-// 		</div>
-// 	);
-// }
-
-// export default About_us;
+import React from "react";
+import "./About_us.css";
+import Fatih from "./Homepage/assets/images/Fatih.png";
+import Meron from "./Homepage/assets/images/Meron.png";
+import Mohammed from "./Homepage/assets/images/Mohammed.png";
+import Shimen from "./Homepage/assets/images/Shimen.png";
+import Raj from "./Homepage/assets/images/Raj.png";
+import Katie from "./Homepage/assets/images/Katie.png";
+import Emily from "./Homepage/assets/images/Emily.jpg";
+const About_us = () => {
+  return (
+    <div className="row">
+        <h1>Meet the team</h1>
+        <h2>Codezilla</h2>
+      <div className="column">
+        <div className="card">
+          <img src={Fatih} alt="fatih" />
+          <a
+            href="https://www.linkedin.com/in/fatih-celebi-5460a4229/"
+            className="primary"
+          ><h3>Fatih</h3>
+          </a>
+          <p>
+FullStack Developer
+          </p>
+        </div>
+      </div>
+      <div className="column">
+        <div className="card">
+          <img src={Meron} alt="meron" />
+          <a
+            href="https://www.linkedin.com/in/meron-gebremichael-8531b2243/"
+            className="primary"
+          ><h3>Meron</h3>
+          </a>
+          <p>
+            FullStack Developer
+          </p>
+        </div>
+      </div>
+      <div className="column">
+        <div className="card">
+          <img src={Mohammed} alt="mohammad" />
+          <a
+            href="https://www.linkedin.com/in/mohammadreza-nafar-669507239/"
+            className="primary"
+          ><h3>Mohammad</h3>
+          </a>
+          <p>
+            FullStack Developer
+          </p>
+        </div>
+      </div>
+      <div className="column">
+        <div className="card">
+          <img src={Shimen} alt="shimen" />
+          <a
+            href="https://www.linkedin.com/in/shimenafshar/"
+            className="primary"
+          >Shimen
+          </a>
+          <p>
+            FullStack Developer
+          </p>
+        </div>
+      </div>
+      <div className="column">
+        <div className="card">
+          <img src={Raj} alt="raj" />
+          <h3>Raj</h3>
+          <p>
+            TA
+          </p>
+        </div>
+      </div>
+      <div className="column">
+        <div className="card">
+          <img src={Katie} alt="raj" />
+          <h3>Katie</h3>
+          <p>
+            Product Manager
+          </p>
+        </div>
+      </div>
+      <div className="column">
+        <div className="card">
+          <img src={Emily} alt="emily" />
+          <h3>Emily</h3>
+          <p>
+            TA
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default About_us;

@@ -1,0 +1,55 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 150px;
+    padding-right: 100px;
+   
+
+  }
+  .row h1, h2 {
+    text-align: center;
+    font-family: serif;
+    font-size: 50px;
+    margin-top: 30px;
+  }
+  
+  .column {
+    flex-basis: 25%;
+    margin-bottom: 1rem;
+    padding-right: -25px;
+    font-family: serif;
+
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    text-align: center;
+    background-color: #f7f0f0;
+    height: 90%;
+    width: 75%;
+
+  }
+    
+  .card img {
+    max-width: 250%;
+    
+  }
+  
+  .primary {
+    background-color: #f4f5fd;
+    color: rgb(12, 11, 11);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 1rem 1rem;
+    cursor: pointer;
+    font-family: 50px;
+  }
+  
+  .primary:hover {
+    background-color: #e2e4f1;
+  }
+   
