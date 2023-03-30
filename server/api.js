@@ -3,7 +3,7 @@
 /* eslint-disable no-unexpected-multiline */
 import { Router } from "express";
 import axios from "axios";
-import logger from "./utils/logger";
+//import logger from "./utils/logger";
 import db from "./db";
 //import Password from "antd/es/input/Password";
 
@@ -41,9 +41,18 @@ router.post("/attendence", async (req, res) => {
 });
 
 //form back end ends
-router.get("/", async function (req, res) {
-	logger.debug("Welcoming everyone...");
-	res.json({ message: "Hello, world!" });
+
+// search backend begins
+
+router.get("/getSessionData", (req, res, next) => {
+	const { id } = req.query;
+	db.query(`SELECT * FROM sessions WHERE id = ${id}`, (err, result) => {
+		if (err) {
+			return next(err);
+		} else {
+			res.status(200).json(result.rows);
+		}
+	});
 });
 
 // github login backend starts
@@ -209,17 +218,6 @@ router.get("/getAllSession", (req, res, next) => {
 });
 
 //find session//
-
-router.get("/getSessionData", (req, response, next) => {
-	const { id } = req.body;
-	db.query(`select * from SESSIONS where id = ${id}`, (err, res) => {
-		if (err) {
-			return next(err);
-		} else {
-			response.json(res.rows);
-		}
-	});
-});
 
 router.get("/getZoomMeeting/:id", function (req, res) {
 	const sessionid = parseInt(req.params.id);

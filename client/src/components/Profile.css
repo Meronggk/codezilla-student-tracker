@@ -2,8 +2,10 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: start;
 	height: 100vh;
+	margin-left: -600px;
+	font-family: serif;
 }
 
 @media screen and (max-width: 600px) {
@@ -21,6 +23,7 @@
 	text-decoration: none;
 	font-size: 22px;
 	font-weight: bold;
+	font-family: serif;
 }
 
 .github-btn:hover {
