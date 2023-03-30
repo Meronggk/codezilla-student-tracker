@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState, useEffect } from "react";
 // eslint-disable-next-line no-unused-vars
 import { Form } from "react-router-dom";
@@ -24,6 +25,15 @@ function AttendenceForm() {
 	const handleAttendanceChange = (index, value) => {
 		const updatedUsers = [...users];
 		updatedUsers[index].attendance = value;
+		if (value === "in person") {
+			const now = new Date();
+			const startTime = new Date(sessionStartTime);
+			const minutesLate = Math.max(0, Math.floor((now - startTime) / (1000 * 60)));
+			const clockInTime = new Date(startTime.getTime() + minutesLate * 60 * 1000);
+			updatedUsers[index].clockInTime = clockInTime.toISOString();
+		} else {
+			updatedUsers[index].clockInTime = null;
+		}
 		setUsers(updatedUsers);
 	};
 
