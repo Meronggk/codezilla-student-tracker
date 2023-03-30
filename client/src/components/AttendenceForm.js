@@ -74,8 +74,6 @@ function AttendanceForm() {
 							<td>{user.name}</td>
 							<td>
 
-
-
 								<label>
 									<input
 										type="radio"
