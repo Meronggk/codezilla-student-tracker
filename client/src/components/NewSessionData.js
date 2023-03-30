@@ -3,7 +3,7 @@ import axios from "axios";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import SingleSession from "./SingleSession";
-
+import "./NewSessionData.css";
 
 const NewSessionData = () => {
 	// Create state variables
