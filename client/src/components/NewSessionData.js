@@ -4,7 +4,6 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import SingleSession from "./SingleSession";
 
-
 const NewSessionData = () => {
 	// Create state variables
 	const [value, setValue] = useState(1);

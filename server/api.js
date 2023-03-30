@@ -42,7 +42,6 @@ router.post("/attendence", async (req, res) => {
 
 //form back end ends
 
-
 // search backend begins
 
 router.get("/getSessionData", (req, res, next) => {
@@ -55,8 +54,6 @@ router.get("/getSessionData", (req, res, next) => {
 		}
 	});
 });
-
-
 
 // github login backend starts
 
@@ -221,7 +218,6 @@ router.get("/getAllSession", (req, res, next) => {
 });
 
 //find session//
-
 
 router.get("/getZoomMeeting/:id", function (req, res) {
 	const sessionid = parseInt(req.params.id);

@@ -111,10 +111,8 @@ const SessionDash = () => {
 				collapsedWidth={screens.xs ? 0 : 80}
 				style={sidebarStyle}
 			>
-
 				<h1 style={{ fontFamily: "serif" }}>{role}</h1>
 				{siderContent}
-
 			</Sider>
 			<Routes>
 				<Route path="User-profile" element={<Profile />} />
@@ -153,13 +151,11 @@ const AttendanceForm = () => {
 };
 
 const UpcomingClasses = () => {
-
 	return (
 		<div>
 			<NewSessionData />
 		</div>
 	);
-
 };
 const Register_User = () => {
 	return (

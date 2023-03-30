@@ -16,14 +16,12 @@ import RoleContext from "./components/RoleContext";
 import { useState } from "react";
 import NewSessionData from "./components/NewSessionData";
 
-
 function App() {
 	const [role, setRole] = useState("Trainee");
 	const context = [role, setRole];
 
 	return (
 		<div>
-
 			<RoleContext.Provider value={context}>
 				<NavBar />
 				<Routes>
@@ -39,7 +37,7 @@ function App() {
 					<Route path="/attendenceForm" element={<AttendenceForm />} />
 					<Route path="/footer" element={<Footer />} />
 					<Route path="/sessiondata" element={<NewSessionData />} />
-				<Route path="/join" element={<JoinButton />} />
+					<Route path="/join" element={<JoinButton />} />
 				</Routes>
 				<Footer />
 			</RoleContext.Provider>
