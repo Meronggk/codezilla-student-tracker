@@ -4,7 +4,7 @@
     justify-content: center;
     padding-left: 150px;
     padding-right: 100px;
-    background-color: rgba(204, 204, 219, 0.986);
+    /* background-color: rgba(236, 236, 245, 0.986); */
   
 
   }
@@ -12,13 +12,15 @@
   .row h1, h2 {
     text-align: center;
     font-family: serif;
-    font-size: 50px;
+    font-size: 60px;
     margin-top: 40px;
+   
     
     
   }
   .row h2{
     margin-bottom: 50px;
+    font-size: 50px;
   }
   
   .column {

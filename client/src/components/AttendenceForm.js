@@ -70,17 +70,54 @@ function AttendenceForm() {
 						<tr key={index}>
 							<td>{user.name}</td>
 							<td>
-								<select
-									value={user.attendance}
-									onChange={(e) =>
-										handleAttendanceChange(index, e.target.value)
-									}
-								>
-									<option value="in person">In Person</option>
-									<option value="remote">Remote</option>
-									<option value="camera off">Camera Off</option>
-									<option value="left early">Left Early</option>
-								</select>
+								<label>
+									<input
+										type="radio"
+										name={`attendance-${index}`}
+										value="In Person"
+										checked={user.attendance === "In Person"}
+										onChange={(e) =>
+											handleAttendanceChange(index, e.target.value)
+										}
+									/>
+									In Person
+								</label>
+								<label>
+									<input
+										type="radio"
+										name={`attendance-${index}`}
+										value="Remote"
+										checked={user.attendance === "Remote"}
+										onChange={(e) =>
+											handleAttendanceChange(index, e.target.value)
+										}
+									/>
+									Remote
+								</label>
+								<label>
+									<input
+										type="radio"
+										name={`attendance-${index}`}
+										value="Camera Off"
+										checked={user.attendance === "Camera Off"}
+										onChange={(e) =>
+											handleAttendanceChange(index, e.target.value)
+										}
+									/>
+									Camera Off
+								</label>
+								<label>
+									<input
+										type="radio"
+										name={`attendance-${index}`}
+										value="Left Early"
+										checked={user.attendance === "Left Early"}
+										onChange={(e) =>
+											handleAttendanceChange(index, e.target.value)
+										}
+									/>
+									Left Early
+								</label>
 							</td>
 							<td>
 								<input
