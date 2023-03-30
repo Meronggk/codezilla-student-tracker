@@ -20,11 +20,12 @@ const NavBar = () => {
 				<li>
 					<Link to={"/"}>Home</Link>
 				</li>
+
 				<li>
 					<Link to={"/about"}>About us</Link>
 				</li>
+
 				<li>
-					{/* <Link to={"/roles"}> */}
 					<SwitchRoles />
 				</li>
 			</ul>

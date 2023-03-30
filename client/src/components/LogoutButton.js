@@ -39,6 +39,8 @@ function LogoutButton() {
 					fontWeight: "bold",
 					cursor: "pointer",
 					display: "block",
+					fontFamily: "serif",
+					fontSize: "20px",
 				}}
 			>
 				Logout
