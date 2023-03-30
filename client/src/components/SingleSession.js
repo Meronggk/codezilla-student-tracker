@@ -1,7 +1,11 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+
+//import JoinButton from "./JoinButton";
+
 
 const SingleSession = ({ sessionData }) => {
 	const todayEnd = new Date().setHours(23, 59, 59, 59);
@@ -24,6 +28,7 @@ const SingleSession = ({ sessionData }) => {
 					<Button variant="primary">Attendance Form</Button>
 				</Link>
 			</Card.Body>
+			{/* <JoinButton /> */}
 		</Card>
 	);
 };

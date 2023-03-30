@@ -3,10 +3,7 @@ import axios from "axios";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import SingleSession from "./SingleSession";
-// import Search from "antd/es/transfer/search";
-// import e from "express";
-// import session from "express-session";
-// const label = { inputProps: { "aria-label": "Choose Session Data" } };
+
 
 const NewSessionData = () => {
 	// Create state variables
