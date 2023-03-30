@@ -13,7 +13,7 @@ const About_us = () => {
     <div className="row">
         <h1>About us</h1>
         <p>Our class register web app project is designed to simplify the task of
-          keeping track of student attendance and sessions. With its user-friendly interface,
+          keeping track of cohort attendance and sessions. With its user-friendly interface,
           volunteers can easily create and manage class schedules and track attendance for each student.</p>
           <h2>Meet the team</h2>
           <h3>Codezilla</h3>
