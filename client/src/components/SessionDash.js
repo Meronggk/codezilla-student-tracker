@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -7,7 +6,6 @@ import { Layout, Menu, Grid } from "antd";
 import {
 	UserOutlined,
 	PlusOutlined,
-	FormOutlined,
 	CalendarOutlined,
 } from "@ant-design/icons";
 import NewSession from "./NewSession";
@@ -36,11 +34,9 @@ const SessionDash = () => {
 		switch (item) {
 			case "User-profile":
 				return <UserOutlined />;
-			case "Add-classes":
+			case "Add-session":
 				return <PlusOutlined />;
-			case "Attendance-form":
-				return <FormOutlined />;
-			case "Upcoming-classes":
+			case "Upcoming-sessions":
 				return <CalendarOutlined />;
 			case "Register-user":
 				return <PlusOutlined />;
@@ -80,7 +76,7 @@ const SessionDash = () => {
 				selectedKeys={[selectedKey]}
 				onClick={handleMenuClick}
 			>
-				{["User-profile", "Upcoming-classes"].map(renderMenuItem)}
+				{["User-profile", "Upcoming-sessions"].map(renderMenuItem)}
 				<LogoutButton />
 			</Menu>
 		);
@@ -93,9 +89,9 @@ const SessionDash = () => {
 			>
 				{[
 					"User-profile",
-					"Add-classes",
+					"Add-session",
 					"Attendance-form",
-					"Upcoming-classes",
+					"Upcoming-sessions",
 					"Register-user",
 				].map(renderMenuItem)}
 
@@ -116,51 +112,12 @@ const SessionDash = () => {
 			</Sider>
 			<Routes>
 				<Route path="User-profile" element={<Profile />} />
-				<Route path="Add-Session" element={<AddClasses />} />
-				<Route path="Attendance-form" element={<AttendenceForm />} />
+				<Route path="Add-session" element={<NewSession />} />
+				<Route path="Attendance-form/:sessionId" element={<AttendenceForm />} />
+				<Route path=":sessionId/attendanceform" element={<AttendenceForm />} />
 				<Route path="Upcoming-Sessions" element={<NewSessionData />} />
 				<Route path="Register-user" element={<RegisterUser />} />
 			</Routes>
-		</div>
-	);
-};
-
-const UserProfile = () => {
-	return (
-		<div>
-			<Profile />
-		</div>
-	);
-};
-
-const AddClasses = () => {
-	return (
-		<div>
-			<h2>Create Session</h2>
-			<NewSession />
-		</div>
-	);
-};
-
-const AttendanceForm = () => {
-	return (
-		<div>
-			<AttendenceForm />
-		</div>
-	);
-};
-
-const UpcomingClasses = () => {
-	return (
-		<div>
-			<NewSessionData />
-		</div>
-	);
-};
-const Register_User = () => {
-	return (
-		<div>
-			<RegisterUser />
 		</div>
 	);
 };
