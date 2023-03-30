@@ -9,13 +9,13 @@ function AttendanceForm() {
 	const [users, setUsers] = useState(fakeUsers);
 
 	useEffect(() => {
-		const url = `/api/users/trainee?session_id=${sessionId}`;
+		const url = `/api/attendance/${sessionId}`;
 		const fetchData = () => {
 			fetch(url)
 				.then((res) => res.json())
 				.then((data) =>
 					setUsers(
-						data.map((user) => ({ ...user, attendance: "In Person", note: "" }))
+						data.map((user) => ({ ...user, attendance: "In Person" }))
 					)
 				);
 		};
@@ -30,7 +30,7 @@ function AttendanceForm() {
 
 	const handleNoteChange = (index, value) => {
 		const updatedUsers = [...users];
-		updatedUsers[index].note = value;
+		updatedUsers[index].notes = value;
 		setUsers(updatedUsers);
 	};
 
@@ -44,7 +44,7 @@ function AttendanceForm() {
 						return {
 							user_id: user.id,
 							session_id: sessionId,
-							notes: user.note,
+							notes: user.notes,
 						};
 					})
 				),
@@ -65,6 +65,7 @@ function AttendanceForm() {
 						<th>Users</th>
 						<th>Attendance</th>
 						<th>Note</th>
+						<th>Clockin Time</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -128,9 +129,14 @@ function AttendanceForm() {
 							<td>
 								<input
 									type="text"
-									value={user.note}
+									value={user.notes}
 									onChange={(e) => handleNoteChange(index, e.target.value)}
 								/>
+							</td>
+							<td>
+								<span>
+									{user.clockin_time}
+								</span>
 							</td>
 						</tr>
 					))}
