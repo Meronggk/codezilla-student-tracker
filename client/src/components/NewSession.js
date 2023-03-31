@@ -61,79 +61,85 @@ function NewSession() {
 	}
 
 	return (
-		<div  style={{ position: "relative", left: "23rem", top: "20px" }}>
+		<div style={{ position: "relative", left: "23rem", top: "20px" }}>
 			<h1 style={{ fontFamily: "serif", fontSize: "25px" }}>Add Session</h1>
-		<form className= "input-field" onSubmit={handleSubmit}>
-			<label>
-				Name:
-				<input
-					type="text"
-					name="name"
-					value={formData.name}
-					onChange={handleChange}
-
-				/>
-			</label>
-			<br />
-			<label htmlFor={"timepicker"}>
-				Time:
-				<div className="input-group date" id="timepicker">
-					<DatePicker
-						name="time"
-						selected={formData.time}
-						onChange={(date) =>
-							setFormData((prevFormData) => ({
-								...prevFormData,
-								time: date,
-							}))
-						}
-						showTimeSelect
-						timeFormat="HH:mm"
-						timeIntervals={15}
-						dateFormat="yyyy-MM-dd HH:mm:ss"
-						placeholderText="Select time"
-
+			<form className="input-field" onSubmit={handleSubmit}>
+				<label>
+					Name:
+					<input
+						type="text"
+						name="name"
+						value={formData.name}
+						onChange={handleChange}
 					/>
+				</label>
+				<br />
+				<label htmlFor={"timepicker"}>
+					Time:
+					<div className="input-group date" id="timepicker">
+						<DatePicker
+							name="time"
+							selected={formData.time}
+							onChange={(date) =>
+								setFormData((prevFormData) => ({
+									...prevFormData,
+									time: date,
+								}))
+							}
+							showTimeSelect
+							timeFormat="HH:mm"
+							timeIntervals={15}
+							dateFormat="yyyy-MM-dd HH:mm:ss"
+							placeholderText="Select time"
+						/>
 
-					<span className="input-group-addon">
-						<i className="fa fa-calendar"></i>
-					</span>
-				</div>
-			</label>
+						<span className="input-group-addon">
+							<i className="fa fa-calendar"></i>
+						</span>
+					</div>
+				</label>
 
-			<br />
-			<label>
-				Meeting URL:
-				<input
-					type="text"
-					name="meetingUrl"
-					value={formData.meetingUrl}
-					onChange={handleChange}
-
-				/>
-			</label>
-			<br />
-			<label className="input-label">
-				Cohort:
-				<select
-					name="cohortId"
-					value={formData.cohortId}
-					onChange={handleChange}
-
+				<br />
+				<label>
+					Meeting URL:
+					<input
+						type="text"
+						name="meetingUrl"
+						value={formData.meetingUrl}
+						onChange={handleChange}
+					/>
+				</label>
+				<br />
+				<label className="input-label">
+					Cohort:
+					<select
+						name="cohortId"
+						value={formData.cohortId}
+						onChange={handleChange}
+					>
+						<option value="">Select a cohort</option>
+						{Array.isArray(cohorts) &&
+							cohorts.map((cohort) => (
+								<option key={cohort.id} value={cohort.id}>
+									{cohort.name}
+								</option>
+							))}
+					</select>
+				</label>
+				<br />
+				<button
+					type="submit"
+					style={{
+						border: "1px solid #ccc",
+						position: "relative",
+						backgroundColor: "rgb(31, 79, 236)",
+						fontFamily: "serif",
+						fontSize: "25",
+					}}
 				>
-					<option value="">Select a cohort</option>
-					{Array.isArray(cohorts) &&
-						cohorts.map((cohort) => (
-							<option key={cohort.id} value={cohort.id}>
-								{cohort.name}
-							</option>
-						))}
-				</select>
-			</label>
-			<br />
-			<button type="submit" style={{ border: "1px solid #ccc", position: "relative", backgroundColor: "rgb(31, 79, 236)",
-			fontFamily: "serif", fontSize: "25" }}>Create session</button>
-		</form>
+					Create session
+				</button>
+			</form>
 		</div>
 	);
 }

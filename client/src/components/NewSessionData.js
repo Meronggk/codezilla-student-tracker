@@ -5,8 +5,6 @@ import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import SingleSession from "./SingleSession";
 import "./NewSessionData.css";
 
-
-
 const NewSessionData = () => {
 	// Create state variables
 	const [value, setValue] = useState(1);
@@ -29,7 +27,9 @@ const NewSessionData = () => {
 			.get("/api/getAllSession")
 			.then((response) => {
 				// eslint-disable-next-line no-unused-vars
-				let data = response.data.sort((a, b) => new Date(a.time) - new Date(b.time));
+				let data = response.data.sort(
+					(a, b) => new Date(a.time) - new Date(b.time)
+				);
 				setResponseData(response.data);
 				handleFilterData(value, response.data);
 				// setFilterData(response.data);
@@ -83,9 +83,9 @@ const NewSessionData = () => {
 				<input
 					type="text"
 					placeholder="Search"
-					onChange={(e) => handleSearch(e.target.value)} style={{ display: "block", width: "100%" }}
+					onChange={(e) => handleSearch(e.target.value)}
+					style={{ display: "block", width: "100%" }}
 				/>
-
 			</div>
 
 			{filterData.map((sessionData) => {

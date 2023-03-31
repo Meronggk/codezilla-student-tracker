@@ -323,7 +323,6 @@ router.get("/cohorts", (req, res) => {
 	});
 });
 
-
 // POST request to create a new session
 router.post("/sessions", (req, res) => {
 	const { name, time, meetingUrl, cohortId } = req.body;

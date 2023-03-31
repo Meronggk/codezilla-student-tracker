@@ -37,7 +37,6 @@ const SessionDash = () => {
 				return <UserOutlined />;
 
 			case "Add-session":
-
 				return <PlusOutlined />;
 			case "Upcoming-sessions":
 				return <CalendarOutlined />;
@@ -71,8 +70,6 @@ const SessionDash = () => {
 		flexDirection: "column",
 		textDecoration: "none",
 	};
-
-
 
 	let siderContent;
 	if (role === "Trainee") {
@@ -112,14 +109,14 @@ const SessionDash = () => {
 				collapsedWidth={screens.xs ? 0 : 80}
 				style={sidebarStyle}
 			>
-	{siderContent}
+				{siderContent}
 			</Sider>
 			<Routes>
 				<Route path="User-profile" element={<Profile />} />
 				<Route path="Add-session" element={<NewSession />} />
 				<Route path=":sessionId/attendanceform" element={<AttendenceForm />} />
 				<Route path="Upcoming-Sessions" element={<NewSessionData />} />
-				<Route path="Register-user" element={<RegisterUser  />} />
+				<Route path="Register-user" element={<RegisterUser />} />
 				<Route path="*" element={<NewSessionData />} />
 			</Routes>
 		</div>

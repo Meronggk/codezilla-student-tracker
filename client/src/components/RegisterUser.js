@@ -72,7 +72,14 @@ function RegisterUser() {
 					</select>
 				</label>
 				<br />
-				<button type="submit" style={{ position: "relative", backgroundColor: "rgb(31, 79, 236)", top: "1rem" }}>
+				<button
+					type="submit"
+					style={{
+						position: "relative",
+						backgroundColor: "rgb(31, 79, 236)",
+						top: "1rem",
+					}}
+				>
 					Register New User
 				</button>
 			</form>

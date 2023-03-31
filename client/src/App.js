@@ -11,7 +11,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import RoleContext from "./components/RoleContext";
 import { useState } from "react";
 
-
 function App() {
 	const [role, setRole] = useState("Trainee");
 	const context = [role, setRole];
@@ -31,7 +30,6 @@ function App() {
 				</Routes>
 				<Footer />
 			</RoleContext.Provider>
-
 		</div>
 	);
 }

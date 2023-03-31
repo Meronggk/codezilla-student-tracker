@@ -21,9 +21,6 @@ const GitHubCalllBack = () => {
 			if (result.data.error) {
 				console.log("You can`t login, access to your manager");
 				setLoginError("You can`t log in please contact your admin"); // callback
-
-
-
 			} else {
 				console.log("You are logged in");
 			}

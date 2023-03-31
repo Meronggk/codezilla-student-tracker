@@ -62,20 +62,19 @@ function GitHubLogin() {
 	return (
 		<div className="App">
 			<header className="App-header">
-
-					<a
-						href={
-							"https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
-						}
-					className="github-btn">
-						<img
-							src={github_icon}
-							alt="GitHub icon"
-							style={{ width: "20px", height: "20px", marginRight: "10px" }}
-						/>
-						Login with GitHub
-					</a>
-
+				<a
+					href={
+						"https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
+					}
+					className="github-btn"
+				>
+					<img
+						src={github_icon}
+						alt="GitHub icon"
+						style={{ width: "20px", height: "20px", marginRight: "10px" }}
+					/>
+					Login with GitHub
+				</a>
 			</header>
 		</div>
 	);
