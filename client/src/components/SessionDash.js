@@ -15,6 +15,7 @@ import LogoutButton from "./LogoutButton";
 import Profile from "./Profile";
 import RegisterUser from "./RegisterUser";
 import RoleContext from "./RoleContext";
+import "./SessionDash.css";
 
 const { Sider } = Layout;
 const { useBreakpoint } = Grid;
@@ -34,6 +35,7 @@ const SessionDash = () => {
 		switch (item) {
 			case "User-profile":
 				return <UserOutlined />;
+
 			case "Add-session":
 				return <PlusOutlined />;
 			case "Upcoming-sessions":
@@ -59,13 +61,14 @@ const SessionDash = () => {
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
-		justifyContent: "start",
+		justifyContent: "center",
 	};
 
 	const sidebarStyle = {
 		minHeight: "100vh",
 		display: "flex",
 		flexDirection: "column",
+		textDecoration: "none",
 	};
 
 	let siderContent;
@@ -90,7 +93,6 @@ const SessionDash = () => {
 				{[
 					"User-profile",
 					"Add-session",
-					"Attendance-form",
 					"Upcoming-sessions",
 					"Register-user",
 				].map(renderMenuItem)}
@@ -107,16 +109,15 @@ const SessionDash = () => {
 				collapsedWidth={screens.xs ? 0 : 80}
 				style={sidebarStyle}
 			>
-				<h1 style={{ fontFamily: "serif" }}>{role}</h1>
 				{siderContent}
 			</Sider>
 			<Routes>
 				<Route path="User-profile" element={<Profile />} />
 				<Route path="Add-session" element={<NewSession />} />
-				<Route path="Attendance-form/:sessionId" element={<AttendenceForm />} />
 				<Route path=":sessionId/attendanceform" element={<AttendenceForm />} />
 				<Route path="Upcoming-Sessions" element={<NewSessionData />} />
 				<Route path="Register-user" element={<RegisterUser />} />
+				<Route path="*" element={<NewSessionData />} />
 			</Routes>
 		</div>
 	);

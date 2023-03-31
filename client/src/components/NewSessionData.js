@@ -3,6 +3,7 @@ import axios from "axios";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import SingleSession from "./SingleSession";
+import "./NewSessionData.css";
 
 const NewSessionData = () => {
 	// Create state variables
@@ -25,6 +26,10 @@ const NewSessionData = () => {
 		axios
 			.get("/api/getAllSession")
 			.then((response) => {
+				// eslint-disable-next-line no-unused-vars
+				let data = response.data.sort(
+					(a, b) => new Date(a.time) - new Date(b.time)
+				);
 				setResponseData(response.data);
 				handleFilterData(value, response.data);
 				// setFilterData(response.data);
@@ -58,7 +63,7 @@ const NewSessionData = () => {
 	const today = new Date().setHours(0, 0, 0, 0);
 
 	return (
-		<div>
+		<div style={{ position: "relative", left: "25rem", top: "3rem" }}>
 			<div>
 				<ToggleButtonGroup
 					type="radio"
@@ -79,16 +84,8 @@ const NewSessionData = () => {
 					type="text"
 					placeholder="Search"
 					onChange={(e) => handleSearch(e.target.value)}
+					style={{ display: "block", width: "100%" }}
 				/>
-
-				{/* <button
-
-         // eslint-disable-next-line react/no-unknown-property
-         allowClearonSearch={
-             (value) => handleSearch (searchText, value)
-         }
-         value={searchText}
-             onChange={(e) => setSearchText(e.target.value)}>Search</button> */}
 			</div>
 
 			{filterData.map((sessionData) => {

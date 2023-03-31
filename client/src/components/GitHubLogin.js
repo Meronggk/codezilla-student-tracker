@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -61,20 +62,19 @@ function GitHubLogin() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<button className="gitbtn" onClick={handleEvent}>
-					<a
-						href={
-							"https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
-						}
-					>
-						<img
-							src={github_icon}
-							alt="GitHub icon"
-							style={{ width: "20px", height: "20px", marginRight: "10px" }}
-						/>
-						Login with Github
-					</a>
-				</button>
+				<a
+					href={
+						"https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID
+					}
+					className="github-btn"
+				>
+					<img
+						src={github_icon}
+						alt="GitHub icon"
+						style={{ width: "20px", height: "20px", marginRight: "10px" }}
+					/>
+					Login with GitHub
+				</a>
 			</header>
 		</div>
 	);

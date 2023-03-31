@@ -3,14 +3,16 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: start;
-	height: 100vh;
-	margin-left: -600px;
+	padding: 2em;
 	font-family: serif;
+	position: relative;
+	top: 3rem;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) {
 	.profile-container {
-		height: auto;
+		height: 100vh;
+		left: 23rem;
 	}
 }
 
@@ -46,4 +48,17 @@
 
 .profile-img:hover {
 	transform: scale(1.2);
+}
+
+@media screen and (max-width: 600px) {
+	.profile-container {
+		top: 1rem;
+		padding: 1em;
+	}
+	.profile-img {
+		max-width: 150px;
+	}
+	.github-btn {
+		font-size: 18px;
+	}
 }

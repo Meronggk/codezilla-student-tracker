@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./AttendanceForm.css";

@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useEffect, useState } from "react";
 //import GitHubLogin from "../components/GitHubLogin";
 import { useSearchParams } from "react-router-dom";
@@ -20,7 +21,6 @@ const GitHubCalllBack = () => {
 			if (result.data.error) {
 				console.log("You can`t login, access to your manager");
 				setLoginError("You can`t log in please contact your admin"); // callback
-				navigate("/signin");
 			} else {
 				console.log("You are logged in");
 			}
@@ -38,15 +38,15 @@ const GitHubCalllBack = () => {
 					<p>{loginError}</p>
 					<button
 						onClick={() => {
-							navigate("/signin");
+							navigate("/");
 						}}
 					>
 						{" "}
-						Return to Log In Page
+						Return to Homepage
 					</button>
 				</div>
 			) : (
-				<Spinner animation="grow" />
+				<Spinner animation="grow" style={{ justifySelf: "center" }} />
 			)}
 		</div>
 	);

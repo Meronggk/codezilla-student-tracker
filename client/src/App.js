@@ -4,7 +4,9 @@ import GitHubLogin from "./components/GitHubLogin";
 import Homepage from "./components/Homepage/Homepage";
 import NavBar from "./components/Homepage/NavBar";
 import SessionDash from "./components/SessionDash";
+
 import Footer from "./components/Footer";
+import About_us from "./components/About_us";
 import "bootstrap/dist/css/bootstrap.min.css";
 import RoleContext from "./components/RoleContext";
 import { useState } from "react";
@@ -19,6 +21,7 @@ function App() {
 				<NavBar />
 				<Routes>
 					<Route path="/" element={<Homepage />} />
+					<Route path="/about" element={<About_us />} />
 					<Route path="/login" element={<GitHubLogin />} />
 					<Route path="/callback" element={<GitHubCalllBack />} />
 					<Route path="/homepage" element={<Homepage />} />

@@ -27,9 +27,14 @@ const SwitchRoles = () => {
 				id="SwitchRoles-dropdown"
 				title={role || "selectRole"}
 				onSelect={handleRoleChange}
+				style={{ fontSize: "25px" }}
 			>
-				<Dropdown.Item eventKey="Trainee">Trainee</Dropdown.Item>
-				<Dropdown.Item eventKey="Volunteer">Volunteer</Dropdown.Item>
+				<Dropdown.Item eventKey="Trainee" style={{ fontSize: "25px" }}>
+					Trainee
+				</Dropdown.Item>
+				<Dropdown.Item eventKey="Volunteer" style={{ fontSize: "25px" }}>
+					Volunteer
+				</Dropdown.Item>
 			</DropdownButton>
 		</div>
 	);

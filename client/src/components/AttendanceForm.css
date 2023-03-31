@@ -46,3 +46,48 @@ button {
 button:hover {
 	background-color: #ac3112;
 }
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+	table th,
+	table td {
+		padding: 4px;
+	}
+
+	select,
+	input[type="text"],
+	button {
+		padding: 4px 8px;
+		font-size: 14px;
+	}
+}
+
+/* Medium screens */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+	table th,
+	table td {
+		padding: 6px;
+	}
+
+	select,
+	input[type="text"],
+	button {
+		padding: 6px 12px;
+		font-size: 16px;
+	}
+}
+
+/* Large screens */
+@media only screen and (min-width: 901px) {
+	table th,
+	table td {
+		padding: 8px;
+	}
+
+	select,
+	input[type="text"],
+	button {
+		padding: 8px 16px;
+		font-size: 18px;
+	}
+}
