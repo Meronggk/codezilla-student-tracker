@@ -62,7 +62,7 @@ const SessionDash = () => {
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
-		justifyContent: "start",
+		justifyContent: "center",
 	};
 
 	const sidebarStyle = {
@@ -93,7 +93,6 @@ const SessionDash = () => {
 				{[
 					"User-profile",
 					"Add-session",
-					"Attendance-form",
 					"Upcoming-sessions",
 					"Register-user",
 				].map(renderMenuItem)}
@@ -110,7 +109,6 @@ const SessionDash = () => {
 				collapsedWidth={screens.xs ? 0 : 80}
 				style={sidebarStyle}
 			>
-				{/* <h1 style={{ fontFamily: "serif" }}>{role}</h1> */}
 	{siderContent}
 			</Sider>
 			<Routes>
@@ -118,7 +116,7 @@ const SessionDash = () => {
 				<Route path="Add-session" element={<NewSession />} />
 				<Route path=":sessionId/attendanceform" element={<AttendenceForm />} />
 				<Route path="Upcoming-Sessions" element={<NewSessionData />} />
-				<Route path="Register-user" element={<RegisterUser />} />
+				<Route path="Register-user" element={<RegisterUser  />} />
 				<Route path="*" element={<NewSessionData />} />
 			</Routes>
 		</div>

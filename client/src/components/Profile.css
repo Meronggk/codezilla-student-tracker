@@ -6,6 +6,9 @@
 	height: 100vh;
 	padding: 2em;
 	font-family: serif;
+	position: relative;
+	left: 23rem;
+	top: 3rem;
 }
 
 @media screen and (max-width: 600px) {

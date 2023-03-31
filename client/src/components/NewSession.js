@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./NewSession.css";
 
 function NewSession() {
 	const [cohorts, setCohorts] = useState([]);
@@ -60,7 +61,9 @@ function NewSession() {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<div  style={{ position: "relative", left: "23rem", top: "20px" }}>
+			<h1 style={{ fontFamily: "serif", fontSize: "25px" }}>Add Session</h1>
+		<form className= "input-field" onSubmit={handleSubmit}>
 			<label>
 				Name:
 				<input
@@ -68,6 +71,7 @@ function NewSession() {
 					name="name"
 					value={formData.name}
 					onChange={handleChange}
+
 				/>
 			</label>
 			<br />
@@ -88,6 +92,7 @@ function NewSession() {
 						timeIntervals={15}
 						dateFormat="yyyy-MM-dd HH:mm:ss"
 						placeholderText="Select time"
+
 					/>
 
 					<span className="input-group-addon">
@@ -104,15 +109,17 @@ function NewSession() {
 					name="meetingUrl"
 					value={formData.meetingUrl}
 					onChange={handleChange}
+
 				/>
 			</label>
 			<br />
-			<label>
+			<label className="input-label">
 				Cohort:
 				<select
 					name="cohortId"
 					value={formData.cohortId}
 					onChange={handleChange}
+
 				>
 					<option value="">Select a cohort</option>
 					{Array.isArray(cohorts) &&
@@ -124,8 +131,10 @@ function NewSession() {
 				</select>
 			</label>
 			<br />
-			<button type="submit">Create session</button>
+			<button type="submit" style={{ border: "1px solid #ccc", position: "relative", backgroundColor: "rgb(31, 79, 236)",
+			fontFamily: "serif", fontSize: "25" }}>Create session</button>
 		</form>
+		</div>
 	);
 }
 

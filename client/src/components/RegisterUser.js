@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./RegisterUser.css";
 
 function RegisterUser() {
 	const [name, setName] = useState("");
@@ -29,8 +30,8 @@ function RegisterUser() {
 	};
 
 	return (
-		<div>
-			<h1>Create User</h1>
+		<div className="Register-user">
+			<h1 style={{ fontFamily: "serif", fontSize: "25px" }}>Register User</h1>
 			<form onSubmit={handleSubmit}>
 				<label>
 					Name:
@@ -50,7 +51,7 @@ function RegisterUser() {
 					/>
 				</label>
 				<br />
-				<label>
+				<label className="input-label">
 					Role:
 					<select value={role} onChange={(e) => setRole(e.target.value)}>
 						<option value="">Select a role</option>
@@ -71,7 +72,7 @@ function RegisterUser() {
 					</select>
 				</label>
 				<br />
-				<button type="submit" style={{ backgroundColor: "rgb(31, 79, 236)" }}>
+				<button type="submit" style={{ position: "relative", backgroundColor: "rgb(31, 79, 236)", top: "1rem" }}>
 					Register New User
 				</button>
 			</form>

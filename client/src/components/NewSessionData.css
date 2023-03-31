@@ -11,7 +11,7 @@
     margin-bottom: 20px;
   }
   
-  .new-session-data .toggle-button {
+  .new-session-data toggle-button {
     flex: 1;
     border: none;
     border-radius: 0;
@@ -35,8 +35,8 @@
   /* Search input */
   .new-session-data .search-input {
     width: 100%;
-    max-width: 500px;
-    margin-bottom: 20px;
+    max-width: 400px;
+    margin-bottom: 50px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;

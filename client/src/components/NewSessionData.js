@@ -63,7 +63,7 @@ const NewSessionData = () => {
 	const today = new Date().setHours(0, 0, 0, 0);
 
 	return (
-		<div>
+		<div style={{ position: "relative", left: "25rem", top: "3rem" }}>
 			<div>
 				<ToggleButtonGroup
 					type="radio"
@@ -83,7 +83,7 @@ const NewSessionData = () => {
 				<input
 					type="text"
 					placeholder="Search"
-					onChange={(e) => handleSearch(e.target.value)}
+					onChange={(e) => handleSearch(e.target.value)} style={{ display: "block", width: "100%" }}
 				/>
 
 			</div>
