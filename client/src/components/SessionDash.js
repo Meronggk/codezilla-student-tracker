@@ -71,6 +71,9 @@ const SessionDash = () => {
 		flexDirection: "column",
 		textDecoration: "none",
 	};
+
+
+
 	let siderContent;
 	if (role === "Trainee") {
 		siderContent = (
