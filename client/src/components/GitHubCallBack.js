@@ -24,7 +24,7 @@ const GitHubCalllBack = () => {
 			} else {
 				console.log("You are logged in");
 			}
-			navigate("/dashboard");
+			 navigate("/dashboard");
 		});
 	}
 	useEffect(() => {
