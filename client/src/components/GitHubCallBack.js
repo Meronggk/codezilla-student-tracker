@@ -23,8 +23,9 @@ const GitHubCalllBack = () => {
 				setLoginError("You can`t log in please contact your admin"); // callback
 			} else {
 				console.log("You are logged in");
+				navigate("/dashboard");
 			}
-			 navigate("/dashboard");
+
 		});
 	}
 	useEffect(() => {
