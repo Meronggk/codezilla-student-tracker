@@ -35,7 +35,7 @@ input[type="text"] {
 }
 
 button {
-	background-color: #2a1d9c;
+	background-color: rgb(31, 79, 236);
 	color: white;
 	padding: 8px 16px;
 	border: none;
@@ -44,7 +44,7 @@ button {
 }
 
 button:hover {
-	background-color: #101185;
+	background-color: rgb(25, 80, 153);
 }
 
 /* Small screens */

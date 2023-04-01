@@ -39,7 +39,9 @@ function LogoutButton() {
 					cursor: "pointer",
 					display: "block",
 					fontFamily: "serif",
-					fontSize: "25px",
+					fontSize: "20px",
+					position: "relative",
+					top: "1rem",
 				}}
 			>
 				Logout

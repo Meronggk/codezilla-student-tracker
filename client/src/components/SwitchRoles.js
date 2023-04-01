@@ -29,10 +29,10 @@ const SwitchRoles = () => {
 				onSelect={handleRoleChange}
 				style={{ fontSize: "25px" }}
 			>
-				<Dropdown.Item eventKey="Trainee" style={{ fontSize: "25px" }}>
+				<Dropdown.Item eventKey="Trainee" style={{ fontSize: "20px" }}>
 					Trainee
 				</Dropdown.Item>
-				<Dropdown.Item eventKey="Volunteer" style={{ fontSize: "25px" }}>
+				<Dropdown.Item eventKey="Volunteer" style={{ fontSize: "20px" }}>
 					Volunteer
 				</Dropdown.Item>
 			</DropdownButton>
